@@ -36,16 +36,16 @@ module.exports = {
     lastUpdated: false,
     nav: [
       {
-        text: 'Guide',
+        text: 'Passwordless Guide',
         link: '/guide/',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'fido2-net-lib',
+        link: '/fido2-net-lib/'
       },
       {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
+        text: 'Passwordless homepage',
+        link: 'https://beta.passwordless.dev'
       }
     ],
     sidebar: {

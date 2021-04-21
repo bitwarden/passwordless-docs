@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: https://v1.vuepress.vuejs.org/hero.png
-tagline: Documentation for Passwordless
+tagline: Documentation for Passwordless.dev
 actionText: Quick Start →
 actionLink: /guide/
 features:
@@ -11,5 +11,5 @@ features:
   details: Feature 2 Description
 - title: Based on Open Source
   details: Feature 3 Description
-footer: Made by Anders Åberg with ❤️
+footer: Made by Anders Åberg and Alex Seigler
 ---

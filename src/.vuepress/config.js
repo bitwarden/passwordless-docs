@@ -5,6 +5,8 @@ module.exports = {
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
   title: 'Passwordless Docs',
+
+  base: "/docs/",
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */

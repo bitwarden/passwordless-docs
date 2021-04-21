@@ -2,7 +2,7 @@
 
 FIDO2 / WebAuthn is a modern open authentication standard, supported by browsers and many large tech companies such as Microsoft, Google etc. The main driver is to allow a user to login without passwords, creating passwordless flows or strong MFA for user signup/login on websites. The standard is not limited to web applications with support coming to Active Directory and native apps. The technology builds on public/private keys, allowing authentication to happen without sharing a secret between the user & platform. This brings many benefits, such as easier and safer logins and makes phishing attempts extremely hard.
 
-## Concepts
+## WebAuthn Concepts
 
 ### Fido2 vs WebAuthn?
 

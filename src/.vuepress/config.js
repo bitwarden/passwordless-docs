@@ -30,9 +30,10 @@ module.exports = {
    */
   themeConfig: {
     repo: '',
-    editLinks: false,
+    editLinks: true,
+    docsRepo: 'passwordless/docs',
     docsDir: '',
-    editLinkText: '',
+    editLinkText: 'Edit this page on GitHub',
     lastUpdated: false,
     nav: [
       {

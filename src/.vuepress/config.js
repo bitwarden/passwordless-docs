@@ -57,6 +57,7 @@ module.exports = {
             '',
             'demo-and-examples',
             'getting-started',
+            'operations',
             'what-is-webauthn-and-fido2',
           ]
         }

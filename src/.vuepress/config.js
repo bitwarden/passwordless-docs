@@ -32,7 +32,8 @@ module.exports = {
     repo: '',
     editLinks: true,
     docsRepo: 'passwordless/docs',
-    docsDir: '',
+    docsDir: 'src',
+    docsBranch: 'main',
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: false,
     nav: [

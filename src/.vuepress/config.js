@@ -6,7 +6,7 @@ module.exports = {
    */
   title: 'Passwordless Docs',
 
-  base: "/docs/",
+  base: "/",
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */

@@ -4,5 +4,14 @@
  * ref：https://v1.vuepress.vuejs.org/config/#index-styl
  */
 
+@keyframes rotateIn {
+   0% {
+    transform: rotate(40deg);
+  }
+}
+
 .home .hero img
   max-width 450px!important
+  transform: rotate(0deg)
+  animation: 1s ease 0s 1 rotateIn;  
+

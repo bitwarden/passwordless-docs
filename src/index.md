@@ -6,10 +6,10 @@ actionText: Quick Start →
 actionLink: /guide/
 features:
 - title: Simplicty
-  details: Feature 1 Description
-- title: Fits with your app
-  details: Feature 2 Description
+  details: Say no to keys management. Say yes to passwordless
+- title: Integrates with your app
+  details: Use as compliment, MFA or completely replace passwords
 - title: Based on Open Source
-  details: Feature 3 Description
-footer: Made by Anders Åberg and Alex Seigler
+  details: Built by the maintainers of fido2-net-lib
+footer: Passwordless is powered by Anders Åberg and Alex Seigler
 ---

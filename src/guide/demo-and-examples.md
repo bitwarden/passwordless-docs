@@ -2,7 +2,7 @@
 
 ## Node.js
 
-[Checkout the demo-files](cdn.passwordless.dev/dist/demo-node.zip)
+[See the code on github](https://github.com/passwordless/passwordless-nodejs-example)
 
 You only need a couple lines of code to get the code working in node. This example uses Express.js and node.js to register and sign in users.
 

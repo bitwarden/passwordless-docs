@@ -37,8 +37,3 @@ Notable features:
 ## Purpose
 
 We built passwordless.dev and the open source library to make it really easy for developers to adopt WebAuthn. Adopting WebAuthn makes your users and data better protected against hacks based on password re-use and phishing attacks.
-
-
-## Why leave passwords?
-
-To be written.

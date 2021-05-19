@@ -34,6 +34,22 @@ Content-Type: application/json
 { "token": "zzz" }
 ```
 
+response:
+```json
+{
+  "success": true,
+  "username": "anders@user.com",
+  "timestamp": "2021-05-19T13:12:20.4691748Z",
+  "rpid": "localhost",
+  "origin": "http://localhost:3000",
+  "device": "Firefox, Windows 10",
+  "country": "SE",
+  "nickname": null,
+  "expiresAt": "2021-05-19T13:14:20.4691749Z"
+}
+
+```
+
 ## List Credentials for user
 
 List all credentials for a certain username

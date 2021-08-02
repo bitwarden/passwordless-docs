@@ -18,11 +18,13 @@ This section will only describe concepts specific to the Passwordless API. See [
 When using the Passwordless API, you will encounter three type of tokens:
 
 * **ApiKey** `example:public:6b086b1e...` This is a Public API key, safe and intended to be included client side. It allows the browser to connect to our backend and initiate key negotiations and assertions.
-* **ApiSecret** `example:secret:4fd1992...` This is a Secret API key and should be well protected. It allows your backend to verify sign ins and register keys on behalf of your users.
+* **ApiSecret** `example:secret:4fd1992...` This is a Secret API key and should be well protected. It allows your backend to verify sign ins and register keys on behalf of your users. ([Create an account](https://beta.passwordless.dev/create-account) to get your API keys.)
 * **Token** `wWdDh02ItIvnCKT...` This is a ephemeral token (exists only temporarily) and is passed between the client, your backend and the Passwordless API. It encodes the status of an ongoing operation, such as registering a credential or signing in. You can think of it as an session or JWT token.
 
-[Create an account](https://beta.passwordless.dev/create-account) to get your API keys.
+It's also good to understand how WebAuthn and the Passwordless API views on UserIDs, Emails, usernames, etc.
 
+* **UserId** is a string which will be used as the [WebAuthn Userhandle](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialuserentity-id). It must therfore **NOT contain PII**. (This should be a database ID or GUID).
+* **Alias** is a "human friendly" reference to a UserId. In order to allow a sign in to be initiated with a "username" of some sort (email, username, phonenumer etc), it is possible (but not required) to attach one or multiple aliases to a specific UserId. This is done with the Alias API endpoint. The Alias is hashed with PBKDF2 before storage and is only an alternative way to initiate a signin (e.g. when the UserId might not be known to the front end code initiating the sign in)
 
 ## Quick start
 
@@ -50,7 +52,7 @@ POST https://api.passwordless.dev/register/token
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "username": "anders@user.com", "displayName": "Anders" } 
+{ "UserId": "123", Alias: ["anders@user.com], username: "anders@user.com", "displayName": "Anders" } 
 ```
 
 Response:
@@ -83,7 +85,7 @@ try {
 
 This section will explain the flow of this operation. Code is available in the examples section
 
-1. Client-side library calls the passwordless API with the username and initiates the WebAuthn process.
+1. Client-side library calls the passwordless API with the UserId or Alias and initiates the WebAuthn process.
     * If the sign-in is cryptographically successful, a token is returned from the passwordless api to the client side.
     * Client-side forwards the token your backend.
 2. Your backend calls the Passworldess api `/signin/verify` endpoint with the token.
@@ -93,7 +95,7 @@ This section will explain the flow of this operation. Code is available in the e
 
 #### 1. Start the passwordless sign in
 
-Pass a username or id to the sign in method to begin the WebAuthn process.
+Pass a alias or id to the sign in method to begin the WebAuthn process.
 
 ```js
 var p = new Passwordless.Client({
@@ -103,7 +105,7 @@ var p = new Passwordless.Client({
 var username = ""; // get username from input
 
 // yUf6_wWdDh02ItIvnCKT_02ItIvn...
-var token = await p.signin(username);
+var token = await p.signinWithAlias(username);
 
 // verify the token
 var verifiedUser = await fetch("/example-backend/passwordless/signin?token=" + token).then(r => r.json());
@@ -128,7 +130,7 @@ Response:
 ```json
 {
    "success":true,
-   "username":"anders@user.com",
+   "userId":"123",
    "timestamp":"2020-08-21T16:42:48.5061807Z",
    "rpid":"example.com",
    "origin":"https://example.com"

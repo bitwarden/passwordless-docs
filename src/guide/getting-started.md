@@ -68,7 +68,8 @@ Response:
 "wWdDh02ItIvnCKT_02ItIvn..."
 ```
 
-And to allow a user to sign in using an alias (email etc), make sure to also set the alias:
+
+To allow a user to sign in using an alias (email etc), make sure to also set the alias:
 
 ```http
 POST https://apiv2.passwordless.dev/alias

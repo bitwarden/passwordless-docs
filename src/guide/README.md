@@ -3,7 +3,7 @@
 
 Hey there, fellow web app developer! 👋
 
-This guide will help you understand:
+This guide will help you **add Face/Fingerprint/Security Key sign in** to your webapp and understand:
 
 * What is passwordless.dev?
 * Why would you use it? What do you gain?

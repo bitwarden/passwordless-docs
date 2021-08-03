@@ -61,7 +61,7 @@ POST https://apiv2.passwordless.dev/register/token
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "UserId": "123", username: "anders@user.com", "displayName": "Anders" } 
+{ "UserId": "123", "username": "anders@user.com", "displayName": "Anders Åberg" } 
 ```
 Response:
 ```json
@@ -70,12 +70,12 @@ Response:
 
 And to allow a user to sign in using an alias (email etc), make sure to also set the alias:
 
-```
+```http
 POST https://apiv2.passwordless.dev/alias
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "UserId": "123", aliases: ["anders@user.com"]} 
+{ "UserId": "123", "aliases": ["anders@user.com"]} 
 ```
 Response: 200 OK.
 

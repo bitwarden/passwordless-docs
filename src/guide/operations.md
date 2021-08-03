@@ -8,12 +8,14 @@ The following API operations are available:
 
 To register a credential for a user, your backend calls the passwordless api:
 
+Required information:
+
 ```http
-POST https://api.passwordless.dev/register/token HTTP/1.1
+POST https://apiv2.passwordless.dev/register/token HTTP/1.1
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "username": "anders@user.com", "displayName": "Anders" }
+{ "userId: "123, "username": "anders@passwordless.dev", "displayName": "Anders Åberg" }
 ```
 
 Response:
@@ -21,13 +23,27 @@ Response:
 ```json
 "wWdDh02ItIvnCKT_02ItIvn..."
 ```
-
 This token is used to begin a registration event.
+
+Additional parameters available in the POST request body:
+
+```js
+{
+  userId: "123", // WebAuthn userHandle. Maxium 64 bytes. Used to identify a user after succesfull login.
+  displayname: "Anders Åberg", // WebAuthn displayname, used in UI. Never stored in database.
+  username: "anders@passwordless.dev", // WebAuthn username, used in UI. Never stored in database.
+  attType: "None", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
+  authType: "platform", // Webauthn AuthenticationType, can be "platform" (triggers faceid/touchid/windows hello) or "cross-platform" (triggers security-key). Default is platform.
+  userVerifiation: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
+  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. 
+}
+```
+
 
 ## Sign in - Verify token
 
 ```http
-POST https://api.passwordless.dev/signin/verify HTTP/1.1
+POST https://apiv2.passwordless.dev/signin/verify HTTP/1.1
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
@@ -48,6 +64,17 @@ response:
   "expiresAt": "2021-05-19T13:14:20.4691749Z"
 }
 
+```
+
+## Set alias
+Sets an alias for the userid, so that a sign in can be initiated with a username or email.
+
+```
+POST https://apiv2.passwordless.dev/alias
+ApiSecret: demo:secret:yyy
+Content-Type: application/json
+
+{ "UserId": "123", alias: ["anders@user.com"]} 
 ```
 
 ## List Credentials for user
@@ -123,7 +150,7 @@ Returns 200 OK
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://api.passwordless.dev/register/begin HTTP/1.1
+POST https://apiv2.passwordless.dev/register/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -176,7 +203,7 @@ Response:
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://api.passwordless.dev/register/complete HTTP/1.1
+POST https://apiv2.passwordless.dev/register/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -204,7 +231,7 @@ Content-Type: application/json
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://api.passwordless.dev/signin/begin HTTP/1.1
+POST https://apiv2.passwordless.dev/signin/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -248,7 +275,7 @@ Response:
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://api.passwordless.dev/signin/complete HTTP/1.1
+POST https://apiv2.passwordless.dev/signin/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 

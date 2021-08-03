@@ -6,7 +6,7 @@ It hosts the NodeJS demo backend for your convenience.
 
 To have more control of the UserID and the backend, see Node.js demo.
 
-[Online example](https://demo-backend.passwordless.dev/minimal) - [See the code on github](https://github.com/passwordless/passwordless-nodejs-example/blob/main/public/minimal.html#L27)
+[Online example](https://demo-backend.passwordless.dev/minimal.html) - [See the code on github](https://github.com/passwordless/passwordless-nodejs-example/blob/main/public/minimal.html#L27)
 
 
 ```html

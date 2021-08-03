@@ -66,15 +66,15 @@ response:
 
 ```
 
-## Set alias
-Sets an alias for the userid, so that a sign in can be initiated with a username or email.
+## Alias - Set, Update, remove aliases for a user
+Sets aliases for the userid, so that a sign in can be initiated with a username or email.
 
 ```
 POST https://apiv2.passwordless.dev/alias
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "UserId": "123", alias: ["anders@user.com"]} 
+{ "UserId": "123", aliases: ["anders@user.com"]} 
 ```
 
 ## List Credentials for user

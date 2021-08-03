@@ -23,7 +23,7 @@ When using the Passwordless API, you will encounter three type of tokens:
 
 It's also good to understand how WebAuthn and the Passwordless API treats UserIDs, Emails, usernames, etc.
 
-* **UserId** is a string which will be used as the [WebAuthn Userhandle](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialuserentity-id). It must therfore **NOT contain PII**. (This should be a database ID or GUID).
+* **UserId** is a string which will be used as the [WebAuthn Userhandle](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialuserentity-id). It must **NOT contain PII** such as an email or similiar (This should be a database ID or GUID).
 * **Alias** is a "human friendly" reference to a UserId. In order to allow a sign in to be initiated with a "username" of some sort (email, username, phonenumer etc), it is possible (but not required) to attach one or multiple aliases to a specific UserId. This is done with the Alias API endpoint. The Alias is hashed with PBKDF2 before storage and is only an alternative way to initiate a signin (e.g. when the UserId might not be known to the front end code initiating the sign in)
 
 ## ✨ Quick start with copy-paste <Badge text="frontend only" type="tip"/>

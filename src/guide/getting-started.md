@@ -56,29 +56,43 @@ This section will explain the flow of this operation. Code is available in the e
 
 To register a credential for a user, your backend calls the passwordless api:
 
+<CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
+<template v-slot:js>
+
+```js
+// your backend app.js
+const payload = {
+    userId: "123",
+    username:"anders@passwordless.dev",
+    displayname:"Mr. Anders Åberg",
+    aliases: ["anders@passwordless.dev"] // Allow signin to be initiated without knowing userid
+};
+
+// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+var token = await fetch(apiurl + "/register/token", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
+}).then(r => r.text());
+
+console.log("received token", token); // "wWdDh02ItIvnCKT_02ItIvn..."
+```
+</template>
+<template v-slot:http>
+
 ```http
 POST https://apiv2.passwordless.dev/register/token
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "UserId": "123", "username": "anders@user.com", "displayName": "Anders Åberg" } 
+{ "UserId": "123", "username": "anders@passwordless.dev", "displayName": "Mr. Anders Åberg" } 
 ```
 Response:
 ```json
 "wWdDh02ItIvnCKT_02ItIvn..."
 ```
-
-
-To allow a user to sign in using an alias (email etc), make sure to also set the alias:
-
-```http
-POST https://apiv2.passwordless.dev/alias
-ApiSecret: demo:secret:yyy
-Content-Type: application/json
-
-{ "UserId": "123", "aliases": ["anders@user.com"]} 
-```
-Response: 200 OK.
+</template>
+</CodeSwitcher>
 
 #### 2. Initiate the registration <Badge text="frontend" type="tip"/>
 
@@ -142,6 +156,28 @@ if(verifiedUser.success === true) {
 Once the client-side code has finished the WebAuthn process you need to verify the token with the backend api.
 Only then can you trust that the WebAuthn process succeeded and identify what user has signed in.
 
+<CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
+<template v-slot:js>
+
+```js
+const token = { token: req.query.token };
+
+const response = await fetch(apiurl + "/signin/verify", {
+    method: "POST",
+    body: JSON.stringify(token),
+    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json' }
+});
+
+var body = await response.json();
+if (body.success) {
+    console.log("Succesfully verfied signin for user", body);
+} else {
+    console.warn("Sign in failed", body);
+}
+```
+</template>
+<template v-slot:http>
+
 ```http
 POST https://apiv2.passwordless.dev/signin/verify
 ApiSecret: demo:secret:yyy
@@ -149,14 +185,22 @@ Content-Type: application/json
 
 { "token": "yUf6_wWdDh02ItIvnCKT_02ItIvn..." }
 ```
+</template>
+</CodeSwitcher>
+
 Response:
 ```json
 {
-   "success":true,
-   "userId":"123",
-   "timestamp":"2020-08-21T16:42:48.5061807Z",
-   "rpid":"example.com",
-   "origin":"https://example.com"
+  "success": true,
+  "userId": "123",
+  "timestamp": "2021-08-01T01:33:36.9773187Z",
+  "rpid": "example.com",
+  "origin": "http://example.com:3000",
+  "device": "Chrome, Windows 10",
+  "country": "",
+  "nickname": "Home laptop",
+  "credentialId": "Mq1ZhrHBmhly34YaO/uuXuNuf/VCHDkuknENz/LZJR4=",
+  "expiresAt": "2021-08-01T01:35:36.9773193Z"
 }
 ```
 

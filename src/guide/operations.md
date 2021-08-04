@@ -66,46 +66,102 @@ response:
 
 ```
 
-## Alias - Set, Update, remove aliases for a user
+## Alias
 Sets aliases for the userid, so that a sign in can be initiated with a username or email.
+Any existing aliases for that user are overwritten.
+Alias are only stored as a hash to ensure user privacy. They are never returned in any API respones.
+
+Rules:
+* Alias has to be unique to the specified userId. 
+* Alias can be maxium 250 chars long
+* Maximum of 10 alias
+
+<CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
+<template v-slot:js>
+
+```js
+// your backend app.js
+const payload = {
+    userId: "123",
+    aliases: ["anders@passwordless.dev"] // Allow signin to be initiated without knowing userid
+};
+
+// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+var token = await fetch(apiurl + "/alias", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
+});
+```
+
+</template>
+<template v-slot:http>
 
 ```http
 POST https://apiv2.passwordless.dev/alias
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "UserId": "123", "aliases": ["anders@user.com"]} 
+{ "UserId": "123", "aliases": ["anders@passwordless.dev"]} 
 ```
+</template>
+</CodeSwitcher>
 
 ## List Credentials for user
 
-List all credentials for a certain username
+List all credentials for a certain userId
+
+<CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
+<template v-slot:js>
+
+```js
+// your backend app.js
+const payload = {
+    userId: "123"
+};
+
+// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+var credentials = await fetch(apiurl + "/credentials/list", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
+});
+```
+</template>
+<template v-slot:http>
 
 ```http
-GET /credentials/list?username=USERNAME HTTP/1.1
+GET /credentials/list?userId=USERID HTTP/1.1
 ApiSecret: demo:secret:yyy
 ```
+</template>
+</CodeSwitcher>
 
-Response 204 No Content or 200 ok:
+
+
+Response 200 ok:
 
 ```json
 [
-  {
-    "aaGuid": "00000000-0000-0000-0000-000000000000",
-    "credType": "none",
-    "descriptor": {
-      "id": "rhrZguMM_yiMA-LVquCkUdGELeCoweSdwI_PaU9cq7U",
-      "type": "public-key"
-    },
-    "publicKey": "pAEDAzkBACBZAQDEB/aDgUQ1uHMXNmYYqJAxPJYOx9uS3eC5U1B4zE3PUoED1Z5k2PdFr5huW/KruuwZCY9FYmJf5xUc/z0WUF6ENZL0rzM3aQ+OeYW13lVR0t7tyzLd4ZDOLu4jSdxgqkbxA333lbR4SCiqNQrw5KkB88mqumodWsF/J+1IyY523UR4iR7J/4jLhNTEcmsO8FFc82konW+7U5LpujqMgQBkM+WreclCrm4L5QtIqMabW9KD31FLKwm5OryAmTBWd+XP1nsIae2X6wqVg9HVOGM0hkcu5WphA4/6VZTZM90JWavNPpZHmnnG62UkiXBR45Ncmx1HEKdptT3GwXwwiY9hIUMBAAE=",
-    "signatureCounter": 1,
-    "userHandle": "aWlp",
-    "userId": null,
-    "createdAt": "0001-01-01T00:00:00",
-    "lastUsedAt": "0001-01-01T00:00:00",
-    "RPID": "example.com",
-    "Origin": "https://example.com"
-  }
+    {
+        "aaGuid": "08987058-cadc-4b81-b6e1-30de50dcbe96",
+        "country": "",
+        "createdAt": "2021-08-01T01:29:49.7492687Z",
+        "credType": "none",
+        "descriptor": {
+            "id": "qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w",
+            "type": "public-key"
+        },
+        "device": "Firefox, Windows 10",
+        "lastUsedAt": "2021-08-01T01:30:01.7528872Z",
+        "origin": "http://example.com:3000",
+        "publicKey": "pAEDAzkBACBZAQDK7vyAAihWxVR7lT0nlhfzVtcnlTUNRynJvUxbdu0C+R57G51MlSYhJhhv9UTx5qkyiz2nanvDX14cSqbAsCu7DjgXVVxLQT5C0QbrI8ZSdWv00Hkp5HGXpdmTTy5hHzTywaz4QwBJG92u5bwpVRkzH3C3JFI6uLt5QW5XdIG/bTqYozP8f+Gxh33ecyS9Vr4v56E3vl1+/E/dlTU8utCuoFBNjcQzocWX9XzPBMr5YfWuH2BBuiVo75US52GOIT6UQHth58Bq3ja2+E746dcCFJQoi1GN5xYru5jBQtGkBebgnmgz10QI5/a3I8MZSg7NFljccG+6nY++LY92OO6zIUMBAAE=",
+        "rpid": "example.com",
+        "signatureCounter": 1,
+        "userHandle": "ODIzMzI2OTk2",
+        "userId": "123",
+        "nickname": "Home laptop"
+    }
 ]
 ```
 
@@ -119,7 +175,7 @@ ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
 {
-    "CredentialId":"vUZudaBNjzJWf-POrGxsso6ztQ3HQ5C6Aef_T-qnKwzEhfqYXQfvuPuPvC09_6IcSfQYdE130s4rU1zqXVlOkw"
+    "CredentialId":"qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w"
 }
 ```
 
@@ -145,7 +201,7 @@ ApiSecret: demo:secret:yyy
 
 Returns 200 OK
 
-### Register - Begin
+<!-- ### Register - Begin
 
 Internal - This API is used by the Passwordless Client JS library
 
@@ -305,4 +361,4 @@ Response:
 {
   "data": "zDM3wmUMaXjKole4EUKYbw:kSmJNcfcGiAxsHmEb2VPwBPc9hsMlvGg5HJS4zIjmnKbMvRj4oEIy_Ld9vZHoGW7KoGZAL9zDVGuDAQYcO4eiCIvjcGb2Oq-40svSgWWOVClG9UfXw7UaSlwMkBlG5Op"
 }
-```
+``` -->

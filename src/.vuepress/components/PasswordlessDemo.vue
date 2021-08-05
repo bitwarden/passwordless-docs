@@ -1,29 +1,32 @@
 <template>
   <div>
     <div v-if="platform">
-      <button class="button" @click="fire" :disabled="loading">Try: Sign in using passwordless</button>
+      <button class="button" @click="fire" :disabled="loading">
+        Try: Sign in using passwordless
+      </button>
       <span>{{ message }}</span>
     </div>
     <script
       type="application/javascript"
       src="https://cdn.passwordless.dev/dist/0.2.0/passwordless.iife.js"
       crossorigin="anonymous"
+      v-on:load="scriptload"
     ></script>
   </div>
 </template>
 
 <style scoped>
 .button {
-    padding: 16px 28px;
-    background: #0f207b;
-    color: #a4d7f0;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
+  padding: 16px 28px;
+  background: #0f207b;
+  color: #a4d7f0;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
 }
 
 .button:hover {
-    background: #1b33b3;
+  background: #1b33b3;
 }
 </style>
 
@@ -2933,6 +2936,15 @@ export default {
     };
   },
   methods: {
+    async scriptload() {
+      const res = await Passwordless.isPlatformSupported();
+      localStorage.setItem("isPlatformSupporterd", res);
+      if (res) {
+        this.platform = true;
+      } else {
+        this.platform = false;
+      }
+    },
     async fire() {
       // Create a random userid
       this.loading = true;
@@ -2954,18 +2966,11 @@ export default {
     },
   },
   mounted() {
-    setTimeout(async () => {
-      const p = new Passwordless.Client({ apiKey });
-
-      const res = await Passwordless.isPlatformSupported();
-      if (res) {
-        this.platform = false;
-      }
-      {
-        this.platform = true;
-      }
-    }, 1000);
-  },
+    const cached = localStorage.getItem("isPlatformSupporterd");
+    if (cached) {
+      this.platform = true;
+    }
+  }
 };
 </script>
 

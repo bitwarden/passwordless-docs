@@ -10,6 +10,9 @@ This guide will help you **add Face/Fingerprint/Security Key sign in** to your w
 * How does the passwordless.dev service work?
 * How does the underlying technique work?
 
+<PasswordlessDemo />
+[Jump to example code →](demo-and-examples)
+
 ## What is passwordless.dev?
 
 Passwordless.dev is a service that enables developers to use the next-gen technology for fast and secure sign in on the web - WebAuthn - without reading the w3c spec.

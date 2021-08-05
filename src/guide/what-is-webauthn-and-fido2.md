@@ -13,7 +13,7 @@ Fido2 is the umbrella term and branding of two new w3c standards: WebAuthn and C
 The Relying Party - often called RP - is the server that the browser communicates with. If you are a developer reading this, your server is the Relying Party and your domain is the Relying Party ID (example.com).
 
 ### Security Key
-A USB-like physical device. It stores private-keys and handles cryptography. See YubiKey or search for "Fido2 Security Key".
+A USB-like physical device. It stores private-keys and handles cryptography. See YubiKey or search for "FIDO2 Security Key".
 
 ### User Verification
 

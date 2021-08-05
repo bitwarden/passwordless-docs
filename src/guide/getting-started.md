@@ -13,7 +13,7 @@ The passwordless.dev service consists of three parts:
 
 ## Terminology and concepts
 
-This section will only describe concepts specific to the Passwordless API. See [What is Webauthn and Fido?](what-is-webauthn-and-fido) for more terminology.
+This section will only describe concepts specific to the Passwordless API. See [What is Webauthn and FIDO2?](what-is-webauthn-and-fido2) for more terminology.
 
 When using the Passwordless API, you will encounter three type of tokens:
 

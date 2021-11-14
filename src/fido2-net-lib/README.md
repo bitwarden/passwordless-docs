@@ -6,7 +6,7 @@ sidebar: auto
 
 Hello, .net developer! Welcome to the documentation for the open source Fido2 .net library, which brings WebAuthn to the .net world!
 
-Please visit the [Github repository](github.com/abergs/fido2-net-lib) and checkout the readme.
+Please visit the [Github repository](https://github.com/passwordless-lib/fido2-net-lib) and checkout the readme.
 
 ## Purpose of the library
 

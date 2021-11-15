@@ -30,7 +30,7 @@ It's also good to understand how WebAuthn and the Passwordless API treats UserID
 
 If you just want to **try signing in using your face/fingerprint**, you can copy-paste the demo code to your application.
 
-[Get the code](guide/demo-and-examples.html#copy-paste-demo-client-side-only)
+[Get the code](demo-and-examples.html#copy-paste-demo-client-side-only)
 
 ## ✅ Getting started for real
 

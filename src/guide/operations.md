@@ -6,7 +6,7 @@ The following API operations are available:
 
 ## Register - Create token
 
-To register a credential for a user, your backend calls the passwordless api:
+To register a credential for a user, your backend calls the passwordless API:
 
 Required information:
 
@@ -35,7 +35,7 @@ Additional parameters available in the POST request body:
   attType: "None", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
   authType: "platform", // Webauthn AuthenticationType, can be "platform" (triggers faceid/touchid/windows hello) or "cross-platform" (triggers security-key). Default is platform.
   userVerifiation: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
-  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. 
+  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in UTC + 120 seconds. 
 }
 ```
 
@@ -55,13 +55,13 @@ response:
 {
   "success": true,
   "username": "anders@user.com",
-  "timestamp": "2021-05-19T13:12:20.4691748Z",
+  "timestamp": "2022-01-19T13:12:20.4691748Z",
   "rpid": "localhost",
   "origin": "http://localhost:3000",
-  "device": "Firefox, Windows 10",
+  "device": "Firefox, Windows 11",
   "country": "SE",
   "nickname": null,
-  "expiresAt": "2021-05-19T13:14:20.4691749Z"
+  "expiresAt": "2022-01-19T13:14:20.4691749Z"
 }
 
 ```
@@ -72,9 +72,9 @@ Any existing aliases for that user are overwritten.
 Alias are only stored as a hash to ensure user privacy. They are never returned in any API respones.
 
 Rules:
-* Alias has to be unique to the specified userId. 
+* Alias has to be unique to the specified userId
 * Alias can be maxium 250 chars long
-* Maximum of 10 alias
+* Maximum of 10 aliases
 
 <CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
 <template v-slot:js>
@@ -86,8 +86,8 @@ const payload = {
     aliases: ["anders@passwordless.dev"] // Allow signin to be initiated without knowing userid
 };
 
-// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
-var token = await fetch(apiurl + "/alias", {
+// Make a HTTPS POST to `/register/token` with the UserId (using your API secret)...
+var token = await fetch(apiUrl + "/alias", {
     method: "POST",
     body: JSON.stringify(payload),
     headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
@@ -107,7 +107,7 @@ Content-Type: application/json
 </template>
 </CodeSwitcher>
 
-## List Credentials for user
+## List credentials for user
 
 List all credentials for a certain userId
 
@@ -120,7 +120,7 @@ const payload = {
     userId: "123"
 };
 
-// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+// Make a HTTPS POST to `/register/token` with the UserId (using your API secret)...
 var credentials = await fetch(apiurl + "/credentials/list", {
     method: "POST",
     body: JSON.stringify(payload),
@@ -138,7 +138,6 @@ ApiSecret: demo:secret:yyy
 </CodeSwitcher>
 
 
-
 Response 200 ok:
 
 ```json
@@ -154,7 +153,7 @@ Response 200 ok:
         },
         "device": "Firefox, Windows 10",
         "lastUsedAt": "2021-08-01T01:30:01.7528872Z",
-        "origin": "http://example.com:3000",
+        "origin": "https://example.com:3000",
         "publicKey": "pAEDAzkBACBZAQDK7vyAAihWxVR7lT0nlhfzVtcnlTUNRynJvUxbdu0C+R57G51MlSYhJhhv9UTx5qkyiz2nanvDX14cSqbAsCu7DjgXVVxLQT5C0QbrI8ZSdWv00Hkp5HGXpdmTTy5hHzTywaz4QwBJG92u5bwpVRkzH3C3JFI6uLt5QW5XdIG/bTqYozP8f+Gxh33ecyS9Vr4v56E3vl1+/E/dlTU8utCuoFBNjcQzocWX9XzPBMr5YfWuH2BBuiVo75US52GOIT6UQHth58Bq3ja2+E746dcCFJQoi1GN5xYru5jBQtGkBebgnmgz10QI5/a3I8MZSg7NFljccG+6nY++LY92OO6zIUMBAAE=",
         "rpid": "example.com",
         "signatureCounter": 1,
@@ -175,7 +174,7 @@ ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
 {
-    "CredentialId":"qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w"
+    "CredentialId": "qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w"
 }
 ```
 
@@ -203,7 +202,7 @@ Returns 200 OK
 
 <!-- ### Register - Begin
 
-Internal - This API is used by the Passwordless Client JS library
+Internal - This API is used by the Passwordless client JavaScript library
 
 ```http
 POST https://apiv2.passwordless.dev/register/begin HTTP/1.1
@@ -256,7 +255,7 @@ Response:
 
 ### Register - Complete
 
-Internal - This API is used by the Passwordless Client JS library
+Internal - This API is used by the Passwordless client JavaScript library
 
 ```http
 POST https://apiv2.passwordless.dev/register/complete HTTP/1.1
@@ -284,7 +283,7 @@ Content-Type: application/json
 
 ### Sign in - Begin
 
-Internal - This API is used by the Passwordless Client JS library
+Internal - This API is used by the Passwordless client JavaScript library
 
 ```http
 POST https://apiv2.passwordless.dev/signin/begin HTTP/1.1
@@ -328,7 +327,7 @@ Response:
 
 ### Sign in - Complete
 
-Internal - This API is used by the Passwordless Client JS library
+Internal - This API is used by the Passwordless client JavaScript library
 
 ```http
 POST https://apiv2.passwordless.dev/signin/complete HTTP/1.1

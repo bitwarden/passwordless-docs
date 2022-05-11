@@ -34,7 +34,7 @@ Additional parameters available in the POST request body:
   username: "anders@passwordless.dev", // WebAuthn username, used in UI. Never stored in database.
   attType: "None", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
   authType: "platform", // Webauthn AuthenticationType, can be "platform" (triggers faceid/touchid/windows hello) or "cross-platform" (triggers security-key). Default is platform.
-  userVerifiation: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
+  userVerification: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
   expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. 
 }
 ```

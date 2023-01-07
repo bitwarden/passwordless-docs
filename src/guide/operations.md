@@ -11,7 +11,7 @@ To register a credential for a user, your backend calls the passwordless api:
 Required information:
 
 ```http
-POST https://apiv2.passwordless.dev/register/token HTTP/1.1
+POST https://v3.passwordless.dev/register/token HTTP/1.1
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
@@ -43,7 +43,7 @@ Additional parameters available in the POST request body:
 ## Sign in - Verify token
 
 ```http
-POST https://apiv2.passwordless.dev/signin/verify HTTP/1.1
+POST https://v3.passwordless.dev/signin/verify HTTP/1.1
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
@@ -98,7 +98,7 @@ var token = await fetch(apiurl + "/alias", {
 <template v-slot:http>
 
 ```http
-POST https://apiv2.passwordless.dev/alias
+POST https://v3.passwordless.dev/alias
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
@@ -206,7 +206,7 @@ Returns 200 OK
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://apiv2.passwordless.dev/register/begin HTTP/1.1
+POST https://v3.passwordless.dev/register/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -259,7 +259,7 @@ Response:
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://apiv2.passwordless.dev/register/complete HTTP/1.1
+POST https://v3.passwordless.dev/register/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -287,7 +287,7 @@ Content-Type: application/json
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://apiv2.passwordless.dev/signin/begin HTTP/1.1
+POST https://v3.passwordless.dev/signin/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 
@@ -331,7 +331,7 @@ Response:
 Internal - This API is used by the Passwordless Client JS library
 
 ```http
-POST https://apiv2.passwordless.dev/signin/complete HTTP/1.1
+POST https://v3.passwordless.dev/signin/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
 

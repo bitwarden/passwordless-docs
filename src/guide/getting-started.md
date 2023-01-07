@@ -81,7 +81,7 @@ console.log("received token", token); // "wWdDh02ItIvnCKT_02ItIvn..."
 <template v-slot:http>
 
 ```http
-POST https://apiv2.passwordless.dev/register/token
+POST https://v3.passwordless.dev/register/token
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
@@ -179,7 +179,7 @@ if (body.success) {
 <template v-slot:http>
 
 ```http
-POST https://apiv2.passwordless.dev/signin/verify
+POST https://v3.passwordless.dev/signin/verify
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 

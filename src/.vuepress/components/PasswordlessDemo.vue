@@ -8,7 +8,7 @@
     </div>
     <script
       type="application/javascript"
-      src="https://cdn.passwordless.dev/dist/0.2.0/passwordless.iife.js"
+      src="https://cdn.passwordless.dev/dist/0.3.0/passwordless.iife.js"
       crossorigin="anonymous"
       v-on:load="scriptload"
     ></script>

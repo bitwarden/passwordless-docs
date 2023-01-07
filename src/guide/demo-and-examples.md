@@ -14,7 +14,7 @@ To have more control of the UserID and the backend, see Node.js demo.
 
 ```html
 <script
-      src="https://cdn.passwordless.dev/dist/0.2.0/passwordless.iife.js"
+      src="https://cdn.passwordless.dev/dist/0.3.0/passwordless.iife.js"
       crossorigin="anonymous"
     ></script>
 

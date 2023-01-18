@@ -24,7 +24,7 @@ When using the Passwordless API, you will encounter three type of tokens:
 It's also good to understand how WebAuthn and the Passwordless API treats UserIDs, Emails, usernames, etc.
 
 * **UserId** is a string which will be used as the [WebAuthn Userhandle](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialuserentity-id). It must **NOT contain PII** such as an email or similiar (This should be a database ID or GUID).
-* **Alias** is a "human friendly" reference to a UserId. In order to allow a sign in to be initiated with a "username" of some sort (email, username, phonenumer etc), it is possible (but not required) to attach one or multiple aliases to a specific UserId. This is done with the Alias API endpoint. The Alias is hashed with PBKDF2 before storage and is only an alternative way to initiate a signin (e.g. when the UserId might not be known to the front end code initiating the sign in)
+* **Alias** is a "human friendly" reference to a UserId. In order to allow a sign in to be initiated with a "username" of some sort (email, username, phonenumer etc), it is possible (but not required) to attach one or multiple aliases to a specific UserId. This is done with the Alias API endpoint. The Alias is hashed before storage and is only an alternative way to initiate a signin (e.g. when the UserId might not be known to the front end code initiating the sign in)
 
 ## ✨ Quick start with copy-paste <Badge text="frontend only" type="tip"/>
 
@@ -34,7 +34,7 @@ If you just want to **try signing in using your face/fingerprint**, you can copy
 
 ## ✅ Getting started for real
 
-To really use Passwordless you need to add our library to your frontend and add a small backend integration. 
+To use Passwordless you need to add our library to your frontend and add a small backend integration. 
 Integrating Passwordless into your app or website can begin as soon as you create a Passwordless account, and requires three steps:
 
 
@@ -75,7 +75,7 @@ var token = await fetch(apiurl + "/register/token", {
     headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
 }).then(r => r.text());
 
-console.log("received token", token); // "wWdDh02ItIvnCKT_02ItIvn..."
+console.log("received token", token); // "register_wWdDh02ItIvnCKT_02ItIvn..."
 ```
 </template>
 <template v-slot:http>
@@ -89,7 +89,7 @@ Content-Type: application/json
 ```
 Response:
 ```json
-"wWdDh02ItIvnCKT_02ItIvn..."
+"register_wWdDh02ItIvnCKT_02ItIvn..."
 ```
 </template>
 </CodeSwitcher>
@@ -104,7 +104,7 @@ var p = new Passwordless.Client({
     apiKey: "demo:public:6b08891222194fd1992465f8668f"
 });
 
-// wWdDh02ItIvnCKT_02ItIvn...
+// register_wWdDh02ItIvnCKT_02ItIvn...
 var myToken = await fetch("/example-backend/passwordless/token").then(r => r.text());
 
 try {
@@ -140,7 +140,7 @@ var p = new Passwordless.Client({
 
 var alias = "anders@user.com"; // get username from input
 
-// yUf6_wWdDh02ItIvnCKT_02ItIvn...
+// verify_yUf6_wWdDh02ItIvnCKT_02ItIvn...
 var token = await p.signinWithAlias(alias);
 // var token = await p.signinWithId("123"); // if you did not set an alias, you can signin with the UserId.
 
@@ -183,7 +183,7 @@ POST https://v3.passwordless.dev/signin/verify
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "token": "yUf6_wWdDh02ItIvnCKT_02ItIvn..." }
+{ "token": "verify_yUf6_wWdDh02ItIvnCKT_02ItIvn..." }
 ```
 </template>
 </CodeSwitcher>

@@ -18,7 +18,7 @@ This section will only describe concepts specific to the Passwordless API. See [
 When using the Passwordless API, you will encounter three type of tokens:
 
 * **ApiKey** `example:public:6b086b1e...` This is a Public API key, safe and intended to be included client side. It allows the browser to connect to our backend and initiate key negotiations and assertions.
-* **ApiSecret** `example:secret:4fd1992...` This is a Secret API key and should be well protected. It allows your backend to verify sign ins and register keys on behalf of your users. ([Create an account](https://beta.passwordless.dev/create-account) to get your API keys.)
+* **ApiSecret** `example:secret:4fd1992...` This is a Secret API key and should be well protected. It allows your backend to verify sign ins and register keys on behalf of your users. ([Create an account](https://www.passwordless.dev/create-tenant/) to get your API keys.)
 * **Token** `wWdDh02ItIvnCKT...` This is a ephemeral token (exists only temporarily) and is passed between the client, your backend and the Passwordless API. It encodes the status of an ongoing operation, such as registering a credential or signing in. You can think of it as an session or JWT token.
 
 It's also good to understand how WebAuthn and the Passwordless API treats UserIDs, Emails, usernames, etc.
@@ -38,7 +38,7 @@ To use Passwordless you need to add our library to your frontend and add a small
 Integrating Passwordless into your app or website can begin as soon as you create a Passwordless account, and requires three steps:
 
 
-1. [Obtain your API keys](https://beta.passwordless.dev/create-account) so Passwordless can authenticate your integration’s API requests.
+1. [Obtain your API keys](https://www.passwordless.dev/create-tenant/) so Passwordless can authenticate your integration’s API requests.
 2. [Install the client library](https://github.com/passwordless/passwordless-client-js#get-coding) so your integration can interact with the Passwordless API and the browser
 3. Register a credential to confirm everything is up and running
 

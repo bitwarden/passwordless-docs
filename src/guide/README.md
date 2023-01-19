@@ -17,7 +17,7 @@ This guide will help you **add Face/Fingerprint/Security Key sign in** to your w
 
 Passwordless.dev is a service that enables developers to use the next-gen technology for fast and secure sign in on the web - WebAuthn - without reading the w3c spec.
 
-> WebAuthn is a new W3C Standard that is now supported in most browser. It allows a user to sign into a webpage using a number of methods, such as: *FaceID, Fingerprint scanning, Windows Hello Credentials or Security Key*.
+> WebAuthn is a new W3C Standard that is now supported in most browsers. It allows a user to sign into a webpage using a number of methods, such as: *FaceID, Fingerprint scanning, Windows Hello Credentials or Security Key*.
 
 **Passwordless.dev wraps all the complexity in using WebAuthn behind a simple API**. No need to worry about running the cryptography and storing public keys, we help you with that too.
 

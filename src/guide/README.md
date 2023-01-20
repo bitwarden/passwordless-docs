@@ -26,7 +26,7 @@ The team who built passwordless.dev are also the creators and maintainers behind
 ## What do you gain from using it?
 
 The Passwordless API helps you **get started with WebAuthn in minutes rather than weeks.**
-WebAuthn is based on public key cryptography and which is quite complex. Passwordless.dev allows you to bring the features of WebAuthn to your users, rather than encoding key byte arrays correctly.
+WebAuthn is based on public key cryptography which is quite complex. Passwordless.dev allows you to bring the features of WebAuthn to your users, rather than encoding key byte arrays correctly.
 
 Notable features:
 

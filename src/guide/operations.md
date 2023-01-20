@@ -29,13 +29,13 @@ Additional parameters available in the POST request body:
 
 ```js
 {
-  userId: "123", // WebAuthn userHandle. Maxium 64 bytes. Used to identify a user after succesfull login.
+  userId: "123", // WebAuthn userHandle. Maxium 64 bytes. Used to identify a user after successful login.
   displayname: "Anders Åberg", // WebAuthn displayname, used in UI. Never stored in database.
   username: "anders@passwordless.dev", // WebAuthn username, used in UI. Never stored in database.
-  attType: "None", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
+  attType: "none", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
   authType: "platform", // Webauthn AuthenticationType, can be "platform" (triggers faceid/touchid/windows hello) or "cross-platform" (triggers security-key). Default is platform.
   userVerification: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
-  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. 
+  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to current time in utc + 120seconds. 
 }
 ```
 
@@ -69,12 +69,12 @@ response:
 ## Alias
 Sets aliases for the userid, so that a sign in can be initiated with a username or email.
 Any existing aliases for that user are overwritten.
-Alias are only stored as a hash to ensure user privacy. They are never returned in any API respones.
+Aliases are only stored as a hash to ensure user privacy. They are never returned in any API responses.
 
 Rules:
 * Alias has to be unique to the specified userId. 
 * Alias can be maxium 250 chars long
-* Maximum of 10 alias
+* Maximum of 10 aliases
 
 <CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
 <template v-slot:js>
@@ -86,7 +86,7 @@ const payload = {
     aliases: ["anders@passwordless.dev"] // Allow signin to be initiated without knowing userid
 };
 
-// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+// Make an HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
 var token = await fetch(apiurl + "/alias", {
     method: "POST",
     body: JSON.stringify(payload),
@@ -120,7 +120,7 @@ const payload = {
     userId: "123"
 };
 
-// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
+// Make an HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
 var credentials = await fetch(apiurl + "/credentials/list", {
     method: "POST",
     body: JSON.stringify(payload),

@@ -6,7 +6,7 @@ FIDO2 / WebAuthn is a modern open authentication standard, supported by browsers
 
 ### Fido2 vs WebAuthn?
 
-Fido2 is the umbrella term and branding of two new w3c standards: WebAuthn and CTAP2. WebAuthn is the JS API that allows browser to talk to the operating system to generate assertions and CTAP2 is the API that allows the operating system to talk to Authenticators (usb security keys etc)
+Fido2 is the umbrella term and branding of two new w3c standards: WebAuthn and CTAP2. WebAuthn is the JS API that allows browser to talk to the operating system to generate assertions and CTAP2 is the API that allows the operating system to talk to Authenticators (USB security keys etc)
 
 ### Relying Party (RP)
 

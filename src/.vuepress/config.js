@@ -61,7 +61,9 @@ module.exports = {
             'demo-and-examples',
             'getting-started',
             'operations',
+            'passwordless-js-client',
             'what-is-webauthn-and-fido2',
+            
           ]
         }
       ],

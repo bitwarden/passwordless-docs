@@ -1,4 +1,4 @@
-# 💡 Demo and Examples
+# Demo and Examples
 
 ## Copy-paste demo (client side only!)
 If you just want to try using FaceID on your webapp, this example has copy-pasteable client-side code.

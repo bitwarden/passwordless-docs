@@ -1,4 +1,4 @@
-# 🚀 Getting started
+# Getting started
 
 We will now go into to details, what you need to know about the API and explain the terminology and concepts of the API.
 
@@ -32,7 +32,7 @@ If you just want to **try signing in using your face/fingerprint**, you can copy
 
 [Get the code](demo-and-examples.html#copy-paste-demo-client-side-only)
 
-## ✅ Getting started for real
+## ✅ First step
 
 To use Passwordless you need to add our library to your frontend and add a small backend integration. 
 Integrating Passwordless into your app or website can begin as soon as you create a Passwordless account, and requires three steps:
@@ -140,8 +140,9 @@ var p = new Passwordless.Client({
 
 var alias = "anders@user.com"; // get username from input
 
-// verify_yUf6_wWdDh02ItIvnCKT_02ItIvn...
+// returns verify_yUf6_wWdDh02ItIvnCKT_02ItIvn...
 var token = await p.signinWithAlias(alias);
+// var token = await p.signinWithConditional(); // Uses what is known as the Conditional UI to sign in using autocomplete in the browser
 // var token = await p.signinWithId("123"); // if you did not set an alias, you can signin with the UserId.
 
 // verify the token
@@ -208,3 +209,8 @@ Response:
 
 That's all that is required to get started with Passwordless.
 There will be more to explore however, see our other API endpoints.
+
+
+## Using Autofill / Conditional UI
+
+The browser can present webauhtn credentials in input fields, making it easy to migrate to using passkeys.

@@ -47,7 +47,7 @@ Integrating Passwordless into your app or website can begin as soon as you creat
 
 This section will explain the flow of this operation. Code is available in the examples section
 
-1. Your backend calls the Passworldess api `/register/token` endpoint with the username/id of the user.
+1. Your backend calls the Passwordless api `/register/token` endpoint with the username/id of the user.
 2. Client-side initiates the WebAuthn process and is allowed to store the credential with the Passwordless API using the token.
 
 ![Passwordless register flow](https://cdn.passwordless.dev/assets/passwordless.register.png)

@@ -35,7 +35,7 @@ Notable features:
 * Integrates nicely to your existing authentication
 * Fully featured REST API
 * Examples available (Node, PHP, .NET)
-* GDPR Compliace built in
+* GDPR Compliance built in
 
 ## Purpose
 

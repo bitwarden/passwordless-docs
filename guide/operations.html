@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>REST API Operations | Passwordless documentation</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Documentation for Passwordless">
+    <meta name="theme-color" content="#3eaf7c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/assets/css/0.styles.ec74732a.css" as="style"><link rel="preload" href="/assets/js/app.1c1a2fc4.js" as="script"><link rel="preload" href="/assets/js/3.38ec727e.js" as="script"><link rel="preload" href="/assets/js/17.5618bb42.js" as="script"><link rel="preload" href="/assets/js/9.003cc7a0.js" as="script"><link rel="prefetch" href="/assets/js/10.2fc536b1.js"><link rel="prefetch" href="/assets/js/11.dae649c5.js"><link rel="prefetch" href="/assets/js/12.c8d2bd5d.js"><link rel="prefetch" href="/assets/js/13.44f9abdd.js"><link rel="prefetch" href="/assets/js/14.668803d8.js"><link rel="prefetch" href="/assets/js/15.14807006.js"><link rel="prefetch" href="/assets/js/16.339700e2.js"><link rel="prefetch" href="/assets/js/18.1c027eb6.js"><link rel="prefetch" href="/assets/js/19.83839f42.js"><link rel="prefetch" href="/assets/js/20.726220f9.js"><link rel="prefetch" href="/assets/js/21.b526e308.js"><link rel="prefetch" href="/assets/js/4.58c08bbf.js"><link rel="prefetch" href="/assets/js/5.cad47134.js"><link rel="prefetch" href="/assets/js/6.1126b183.js"><link rel="prefetch" href="/assets/js/7.1d089232.js"><link rel="prefetch" href="/assets/js/8.964bcf4d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.933fbd93.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.ec74732a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Passwordless documentation</span></a> <div class="links"><form id="search-form" role="search" class="algolia-search-wrapper search-box"><input id="algolia-search-input" class="search-query"></form> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Passwordless Guide
+</a></div><div class="nav-item"><a href="/fido2-net-lib/" class="nav-link">
+  fido2-net-lib
+</a></div><div class="nav-item"><a href="https://beta.passwordless.dev" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Passwordless homepage
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link router-link-active">
+  Passwordless Guide
+</a></div><div class="nav-item"><a href="/fido2-net-lib/" class="nav-link">
+  fido2-net-lib
+</a></div><div class="nav-item"><a href="https://beta.passwordless.dev" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Passwordless homepage
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>Guide</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/guide/" aria-current="page" class="sidebar-link">Overview</a></li><li><a href="/guide/demo-and-examples.html" class="sidebar-link">Demo and Examples</a></li><li><a href="/guide/getting-started.html" class="sidebar-link">Getting started</a></li><li><a href="/guide/operations.html" aria-current="page" class="active sidebar-link">REST API Operations</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/guide/operations.html#register-create-token" class="sidebar-link">Register - Create token</a></li><li class="sidebar-sub-header"><a href="/guide/operations.html#sign-in-verify-token" class="sidebar-link">Sign in - Verify token</a></li><li class="sidebar-sub-header"><a href="/guide/operations.html#alias" class="sidebar-link">Alias</a></li><li class="sidebar-sub-header"><a href="/guide/operations.html#list-credentials-for-user" class="sidebar-link">List Credentials for user</a></li><li class="sidebar-sub-header"><a href="/guide/operations.html#delete-credentials-for-user" class="sidebar-link">Delete credentials for user</a></li><li class="sidebar-sub-header"><a href="/guide/operations.html#others" class="sidebar-link">Others</a></li></ul></li><li><a href="/guide/passwordless-js-client.html" class="sidebar-link">Passwordless JS client</a></li><li><a href="/guide/what-is-webauthn-and-fido2.html" class="sidebar-link">What is WebAuthn and FIDO2?</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="rest-api-operations"><a href="#rest-api-operations" class="header-anchor">#</a> REST API Operations</h1> <p>The following API operations are available:</p> <p></p><div class="table-of-contents"><ul><li><a href="#register-create-token">Register - Create token</a></li><li><a href="#sign-in-verify-token">Sign in - Verify token</a></li><li><a href="#alias">Alias</a></li><li><a href="#list-credentials-for-user">List Credentials for user</a></li><li><a href="#delete-credentials-for-user">Delete credentials for user</a></li><li><a href="#others">Others</a><ul><li><a href="#delete-your-account-at-passwordless-dev">Delete your account at passwordless.dev</a></li></ul></li></ul></div><p></p> <h2 id="register-create-token"><a href="#register-create-token" class="header-anchor">#</a> Register - Create token</h2> <p>To register a credential for a user, your backend calls the passwordless api:</p> <p>Required information:</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token property">POST</span> https://v3.passwordless.dev/register/token HTTP/1.1</span>
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+<span class="token header-name keyword">Content-Type:</span> application/json<span class="token application-json">
+
+<span class="token punctuation">{</span> <span class="token string">&quot;userId: &quot;</span><span class="token number">123</span><span class="token punctuation">,</span> <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;anders@passwordless.dev&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;displayName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Anders Åberg&quot;</span> <span class="token punctuation">}</span>
+</span></code></pre></div><p>Response:</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token string">&quot;wWdDh02ItIvnCKT_02ItIvn...&quot;</span>
+</code></pre></div><p>This token is used to begin a registration event.</p> <p>Additional parameters available in the POST request body:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  userId<span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span> <span class="token comment">// WebAuthn userHandle. Maxium 64 bytes. Used to identify a user after succesfull login.</span>
+  displayname<span class="token operator">:</span> <span class="token string">&quot;Anders Åberg&quot;</span><span class="token punctuation">,</span> <span class="token comment">// WebAuthn displayname, used in UI. Never stored in database.</span>
+  username<span class="token operator">:</span> <span class="token string">&quot;anders@passwordless.dev&quot;</span><span class="token punctuation">,</span> <span class="token comment">// WebAuthn username, used in UI. Never stored in database.</span>
+  attType<span class="token operator">:</span> <span class="token string">&quot;None&quot;</span><span class="token punctuation">,</span> <span class="token comment">// WebAuthn AttestationType, can be &quot;direct&quot;, &quot;indirect&quot; and &quot;none. Default is none.</span>
+  authType<span class="token operator">:</span> <span class="token string">&quot;platform&quot;</span><span class="token punctuation">,</span> <span class="token comment">// Webauthn AuthenticationType, can be &quot;platform&quot; (triggers faceid/touchid/windows hello) or &quot;cross-platform&quot; (triggers security-key). Default is platform.</span>
+  userVerification<span class="token operator">:</span> <span class="token string">&quot;preferred&quot;</span> <span class="token comment">// Webauhtn UserVerification. Can be &quot;required&quot;, &quot;preferred&quot; or &quot;discourage&quot; . Default is preferred&quot;.</span>
+  expiresAt<span class="token operator">:</span> <span class="token string">&quot;2021-08-01T14:43:03Z&quot;</span><span class="token punctuation">,</span> <span class="token comment">// Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. </span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="sign-in-verify-token"><a href="#sign-in-verify-token" class="header-anchor">#</a> Sign in - Verify token</h2> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token property">POST</span> https://v3.passwordless.dev/signin/verify HTTP/1.1</span>
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+<span class="token header-name keyword">Content-Type:</span> application/json<span class="token application-json">
+
+<span class="token punctuation">{</span> <span class="token property">&quot;token&quot;</span><span class="token operator">:</span> <span class="token string">&quot;zzz&quot;</span> <span class="token punctuation">}</span>
+</span></code></pre></div><p>response:</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;success&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;username&quot;</span><span class="token operator">:</span> <span class="token string">&quot;anders@user.com&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;timestamp&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2021-05-19T13:12:20.4691748Z&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;rpid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;localhost&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;origin&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://localhost:3000&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;device&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Firefox, Windows 10&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;country&quot;</span><span class="token operator">:</span> <span class="token string">&quot;SE&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;nickname&quot;</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;expiresAt&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2021-05-19T13:14:20.4691749Z&quot;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="alias"><a href="#alias" class="header-anchor">#</a> Alias</h2> <p>Sets aliases for the userid, so that a sign in can be initiated with a username or email.
+Any existing aliases for that user are overwritten.
+Alias are only stored as a hash to ensure user privacy. They are never returned in any API respones.</p> <p>Rules:</p> <ul><li>Alias has to be unique to the specified userId.</li> <li>Alias can be maxium 250 chars long</li> <li>Maximum of 10 alias</li></ul> <div class="code-switcher"><div class="tab-header"><ul><li class="active"> JavaScript
+            </li><li> HTTP
+            </li></ul></div> <div class="tab-content" style="display:;"><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// your backend app.js</span>
+<span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token punctuation">{</span>
+    userId<span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+    aliases<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;anders@passwordless.dev&quot;</span><span class="token punctuation">]</span> <span class="token comment">// Allow signin to be initiated without knowing userid</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...</span>
+<span class="token keyword">var</span> token <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>apiurl <span class="token operator">+</span> <span class="token string">&quot;/alias&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    method<span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+    body<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    headers<span class="token operator">:</span> <span class="token punctuation">{</span> ApiSecret<span class="token operator">:</span> <span class="token constant">API_SECRET</span><span class="token punctuation">,</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div><div class="tab-content" style="display:none;"><div class="language-http extra-class"><pre class="language-http"><code>POST https://v3.passwordless.dev/alias
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+<span class="token header-name keyword">Content-Type:</span> application/json<span class="token application-json">
+
+<span class="token punctuation">{</span> <span class="token property">&quot;UserId&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span> <span class="token property">&quot;aliases&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;anders@passwordless.dev&quot;</span><span class="token punctuation">]</span><span class="token punctuation">}</span> 
+</span></code></pre></div></div></div> <h2 id="list-credentials-for-user"><a href="#list-credentials-for-user" class="header-anchor">#</a> List Credentials for user</h2> <p>List all credentials for a certain userId</p> <div class="code-switcher"><div class="tab-header"><ul><li class="active"> JavaScript
+            </li><li> HTTP
+            </li></ul></div> <div class="tab-content" style="display:;"><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// your backend app.js</span>
+<span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token punctuation">{</span>
+    userId<span class="token operator">:</span> <span class="token string">&quot;123&quot;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...</span>
+<span class="token keyword">var</span> credentials <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span>apiurl <span class="token operator">+</span> <span class="token string">&quot;/credentials/list&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    method<span class="token operator">:</span> <span class="token string">&quot;POST&quot;</span><span class="token punctuation">,</span>
+    body<span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    headers<span class="token operator">:</span> <span class="token punctuation">{</span> ApiSecret<span class="token operator">:</span> <span class="token constant">API_SECRET</span><span class="token punctuation">,</span> <span class="token string">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div><div class="tab-content" style="display:none;"><div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token property">GET</span> /credentials/list?userId=USERID HTTP/1.1</span>
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+</code></pre></div></div></div> <p>Response 200 ok:</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">&quot;aaGuid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;08987058-cadc-4b81-b6e1-30de50dcbe96&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;country&quot;</span><span class="token operator">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;createdAt&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2021-08-01T01:29:49.7492687Z&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;credType&quot;</span><span class="token operator">:</span> <span class="token string">&quot;none&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;descriptor&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w&quot;</span><span class="token punctuation">,</span>
+            <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;public-key&quot;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;device&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Firefox, Windows 10&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;lastUsedAt&quot;</span><span class="token operator">:</span> <span class="token string">&quot;2021-08-01T01:30:01.7528872Z&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;origin&quot;</span><span class="token operator">:</span> <span class="token string">&quot;http://example.com:3000&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;publicKey&quot;</span><span class="token operator">:</span> <span class="token string">&quot;pAEDAzkBACBZAQDK7vyAAihWxVR7lT0nlhfzVtcnlTUNRynJvUxbdu0C+R57G51MlSYhJhhv9UTx5qkyiz2nanvDX14cSqbAsCu7DjgXVVxLQT5C0QbrI8ZSdWv00Hkp5HGXpdmTTy5hHzTywaz4QwBJG92u5bwpVRkzH3C3JFI6uLt5QW5XdIG/bTqYozP8f+Gxh33ecyS9Vr4v56E3vl1+/E/dlTU8utCuoFBNjcQzocWX9XzPBMr5YfWuH2BBuiVo75US52GOIT6UQHth58Bq3ja2+E746dcCFJQoi1GN5xYru5jBQtGkBebgnmgz10QI5/a3I8MZSg7NFljccG+6nY++LY92OO6zIUMBAAE=&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;rpid&quot;</span><span class="token operator">:</span> <span class="token string">&quot;example.com&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;signatureCounter&quot;</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;userHandle&quot;</span><span class="token operator">:</span> <span class="token string">&quot;ODIzMzI2OTk2&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;userId&quot;</span><span class="token operator">:</span> <span class="token string">&quot;123&quot;</span><span class="token punctuation">,</span>
+        <span class="token property">&quot;nickname&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Home laptop&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre></div><h2 id="delete-credentials-for-user"><a href="#delete-credentials-for-user" class="header-anchor">#</a> Delete credentials for user</h2> <p>Delete a certain credential for a user</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token property">POST</span> /credentials/delete HTTP/1.1</span>
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+<span class="token header-name keyword">Content-Type:</span> application/json<span class="token application-json">
+
+<span class="token punctuation">{</span>
+    <span class="token property">&quot;CredentialId&quot;</span><span class="token operator">:</span><span class="token string">&quot;qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w&quot;</span>
+<span class="token punctuation">}</span>
+</span></code></pre></div><p>Returns 200 OK</p> <h2 id="others"><a href="#others" class="header-anchor">#</a> Others</h2> <p>These API endpoints are secondary and/or internal.</p> <h3 id="delete-your-account-at-passwordless-dev"><a href="#delete-your-account-at-passwordless-dev" class="header-anchor">#</a> Delete your account at passwordless.dev</h3> <p>If you want to delete your account and all data stored.</p> <p><strong>Please note: This will not delete your data immediately.</strong>
+All admin emails connected to the account will receive a warning email with a link to abort the deletion process.
+After 24 hours your API keys will be frozen.
+After 14 days your data will be permanently deleted.</p> <div class="language-http extra-class"><pre class="language-http"><code><span class="token request-line"><span class="token property">POST</span> /account/delete HTTP/1.1</span>
+<span class="token header-name keyword">ApiSecret:</span> demo:secret:yyy
+</code></pre></div><p>Returns 200 OK</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/passwordless/docs/edit/main/src/guide/operations.md" target="_blank" rel="noopener noreferrer">Edit this page on GitHub</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/guide/getting-started.html" class="prev">
+        Getting started
+      </a></span> <span class="next"><a href="/guide/passwordless-js-client.html">
+        Passwordless JS client
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.1c1a2fc4.js" defer></script><script src="/assets/js/3.38ec727e.js" defer></script><script src="/assets/js/17.5618bb42.js" defer></script><script src="/assets/js/9.003cc7a0.js" defer></script>
+  </body>
+</html>

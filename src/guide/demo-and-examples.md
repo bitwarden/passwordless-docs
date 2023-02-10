@@ -58,4 +58,12 @@ Note: .NET framework is also fully supported.
 
 ## PHP
 
-Coming soon...
+PHP is supported, please follow the instructions in the getting started guide.
+
+More examples comping soon.
+
+## Use any language you want!
+
+You can use any Passwordless.dev with any programming language you want. On the server, you just need to implement two calls to our REST API to be able to register and sign in users.
+
+Please read the getting started part of the documentation.

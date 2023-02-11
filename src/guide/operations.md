@@ -15,7 +15,7 @@ POST https://v3.passwordless.dev/register/token HTTP/1.1
 ApiSecret: demo:secret:yyy
 Content-Type: application/json
 
-{ "userId: "123, "username": "anders@passwordless.dev", "displayName": "Anders Åberg" }
+{ "userId: "123", "username": "anders@passwordless.dev", "displayName": "Anders Åberg" }
 ```
 
 Response:
@@ -34,8 +34,8 @@ Additional parameters available in the POST request body:
   username: "anders@passwordless.dev", // WebAuthn username, used in UI. Never stored in database.
   attType: "None", // WebAuthn AttestationType, can be "direct", "indirect" and "none. Default is none.
   authType: "platform", // Webauthn AuthenticationType, can be "platform" (triggers faceid/touchid/windows hello) or "cross-platform" (triggers security-key). Default is platform.
-  userVerification: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is preferred".
-  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to curren time in utc + 120seconds. 
+  userVerification: "preferred" // Webauhtn UserVerification. Can be "required", "preferred" or "discourage" . Default is "preferred".
+  expiresAt: "2021-08-01T14:43:03Z", // Datetime when token is set to expire encoded using UTC ISO 8601-1:2019. Defaults to current time in utc + 120seconds. 
 }
 ```
 
@@ -67,14 +67,14 @@ response:
 ```
 
 ## Alias
-Sets aliases for the userid, so that a sign in can be initiated with a username or email.
+Sets aliases for the userId, so that a sign in can be initiated with a username or email.
 Any existing aliases for that user are overwritten.
 Alias are only stored as a hash to ensure user privacy. They are never returned in any API respones.
 
 Rules:
-* Alias has to be unique to the specified userId. 
-* Alias can be maxium 250 chars long
-* Maximum of 10 alias
+* Aliases have to be unique to the specified userId. 
+* Aliases can be a maximum of 250 characters long
+* Maximum of 10 aliases
 
 <CodeSwitcher :languages="{js:'JavaScript',http:'HTTP'}">
 <template v-slot:js>
@@ -87,7 +87,7 @@ const payload = {
 };
 
 // Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
-var token = await fetch(apiurl + "/alias", {
+const token = await fetch(apiurl + "/alias", {
     method: "POST",
     body: JSON.stringify(payload),
     headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
@@ -121,7 +121,7 @@ const payload = {
 };
 
 // Make a HTTPS POST to `/register/token` with the UserId (using your ApiSecret)...
-var credentials = await fetch(apiurl + "/credentials/list", {
+const credentials = await fetch(apiurl + "/credentials/list", {
     method: "POST",
     body: JSON.stringify(payload),
     headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}

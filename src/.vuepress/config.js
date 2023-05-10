@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         text: 'Home',
-        link: 'https://docs.passwordless.dev'
+        link: 'https://www.passwordless.dev/'
       }
     ],
     sidebar: {

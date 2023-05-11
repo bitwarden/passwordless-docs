@@ -74,9 +74,22 @@ Make sure you use your tokens immediately once they are have been created. Token
 
 ### alias_conflict
 
-* You receive this error if you are trying to set or update the aliases of a user.
+You receive this error if you are trying to set or update the aliases of a user.
 
 #### Reason
 The alias you are trying to use is already being used by a different userId.
 #### Solution
 You need to use a unique alias per userId. You can remove the alias from an existing user by calling the `/alias` endpoint.
+
+
+### invalid_attestation
+
+You receive this error if you're trying to use another attestation format than `"none"`.
+
+#### Reason
+
+Currently, passwordless.dev only supports attestation format `"none"`. While this is suitable for most applications, should you have a requirement that forces you to use `"direct"` or `"indirect"` attestation, please contact support our support at [support@passwordless.dev](mailto:support@passwordless.dev) to discuss the possibilities.
+
+#### Solution
+
+When you call `/register/token` either remove the `attestation` property or change the value to be `"none"`.

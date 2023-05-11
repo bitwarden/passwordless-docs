@@ -84,7 +84,7 @@ You need to use a unique alias per userId. You can remove the alias from an exis
 
 ### invalid_attestation
 
-You receive this error if you're trying to use another attestation format than `"none"`.
+You receive this error if you're trying to use another attestation format than `"none"` while calling `/register/token` 
 
 #### Reason
 

@@ -45,15 +45,16 @@ const p = new Client({ apiKey: "" })
 </script>
 ```
 </template>
-<template v-slot:script>
+<template v-slot:html>
 
 ```html
 <script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.min.js" crossorigin="anonymous"></script>
 ```
-In all cases, your frontend must import the library to call the methods in this document:
+In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
 ```html
 <script>
-const p = new Passwordless.Client({ apiKey: "" });
+const Client = Passwordless.Client;
+const p = new Client({});
 </script>
 ```
 

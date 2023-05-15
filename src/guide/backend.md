@@ -2,7 +2,7 @@
 
 You can use Passwordless.dev with any programming language by implementing calls to the Passwordless.dev API, but this document will provide some code examples, guidelines, and other help integrating Passwordless.dev with popular languages.
 
-## ASP.NET Core <Badge text="example" type="warning"/>
+## ASP.NET Core
 
 This ASP.NET Core implementation uses .NET7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
 
@@ -39,7 +39,7 @@ public async Task<IActionResult> GetRegisterToken(string alias)
 
 [Open the ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet-example).
 
-## Node.js <Badge text="example" type="warning"/> <Badge text="demo" type="tip"/>
+## Node.js
 
 This Node.js implementation is done in only a few lines of code. A [register](api/#register-token) function might look something like:
 
@@ -76,7 +76,9 @@ app.get("/create-token", async (req, res) => {
 });
 ```
 
-[Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example).
+[Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example)
+
+If you just want to see the Node.js demo run, we host an example at [demo-backend.passwordless.dev](https://demo-backend.passwordless.dev/)
 
 ## PHP
 

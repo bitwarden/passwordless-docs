@@ -4,59 +4,79 @@ You can use Passwordless.dev with any programming language by implementing calls
 
 ## ASP.NET Core <Badge text="example" type="warning"/>
 
-This ASP.NET Core implementation uses .NET5 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
+This ASP.NET Core implementation uses .NET7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
+
 
 ```csharp
-// Call the API to receive the register token. The following values are required.
-public async Task<ActionResult<string>> GetRegisterToken(string alias) {
-    string userId = Guid.NewGuid().ToString(); 
-
-    var json = JsonSerializer.Serialize(new
+[HttpGet("/create-token")]
+public async Task<IActionResult> GetRegisterToken(string alias)
+{
+    var userId = Guid.NewGuid().ToString();
+    var payload = new
     {
-        userId = userId, // Required.
-        username = alias, // Required.
-        DisplayName = "Mr Guest" 
-    });
+        userId,
+        username = alias,
+        Aliases = new[] { alias }
+    };
 
-    var request = await _httpClient.PostAsync("register/token", new StringContent(json, Encoding.UTF8, "application/json"));
-    
-    var json = await request.Content.ReadAsStringAsync();
-    if (res.IsSuccessStatusCode) {   
-        return json; // { "token": "register_xxyyzz..."}    
-    } else {
-        // Log the error
-        throw new Exception(json);
-        // { errorCode: "unknown_credentials", "title": "This is what is wrong", "details": "..."}
+    var request = await _httpClient.PostAsJsonAsync("register/token", payload);
+
+    if (request.IsSuccessStatusCode)
+    {
+        var token = await request.Content.ReadFromJsonAsync<TokenResponse>();
+        return Ok(token);
     }
+
+    // Handle or log any API error, { errorCode: "unknown_credentials", "title": "This is what is wrong", "details": "..."}
+    var error = await request.Content.ReadFromJsonAsync<ProblemDetails>();    
+    return new JsonResult(error)
+    {
+        StatusCode = (int)request.StatusCode
+    };
 }
 ```
 
 
-[See more sample code](https://github.com/passwordless/passwordless-dotnet-example).
+[Open the ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet-example).
 
 ## Node.js <Badge text="example" type="warning"/> <Badge text="demo" type="tip"/>
 
 This Node.js implementation is done in only a few lines of code. A [register](api/#register-token) function might look something like:
 
 ```js
-const apiKey = "demobackend:public:c203e65b581443778ea4823b3ef0d6af"; 
-const backendUrl = "https://localhost:8002"; // Your backend.
-// Instantiate a passwordless client using your API public key.
-async function registerPasskey(alias) {
-    const p = new Passwordless.Client({ apiKey }); // Fetch the returned registration token from the backend.
-    const registerToken = await fetch(backendUrl + "/create-token?alias=" + alias).then((r) => r.json()); 
-    const { token, error} = await p.register(registerToken); //Register the token with the end-user's device.
-    if(token) {
-        console.log("Succesfully registered as passkey!"); // Successfully registered.
-    } else {
-        console.error(error);
-    }
-}
+app.get("/create-token", async (req, res) => {
+
+  const alias = req.query.alias;
+  
+  // Generate a new userid or grab the userid from session, cookie etc
+  const payload = {
+    userId: getRandomInt(),
+    username: alias,
+    aliases: [alias] // We can also set aliases for the userid, so that signin can be initiated without knowing the userid
+  };
+
+  // Send the username to the passwordless api to get a token
+  var response = await fetch("https://v4.passwordless.dev/register/token", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
+  });
+
+  var responseData = await response.json();
+  console.log("passwordless api response", response.status, response.statusText, responseData);
+    
+  if(response.status == 200) {
+    console.log("received token: ", responseData.token);
+  } else {
+    // Handle or log any API error, { errorCode: "unknown_credentials", "title": "This is what is wrong", "details": "..."}
+  }
+
+  res.status(response.status);
+  res.send(responseData);
+});
 ```
 
-[See more sample code](https://github.com/passwordless/passwordless-nodejs-example).
-
-Alternatively, check out our demo application, which you can use by adding your [API key](concepts)'s secret to `index.html` and `app.js`. [See our demo](https://demo-backend.passwordless.dev/).
+[Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example).
 
 ## PHP
 

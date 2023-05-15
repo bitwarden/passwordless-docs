@@ -4,7 +4,7 @@ You can use Passwordless.dev with any programming language by implementing calls
 
 ## ASP.NET Core
 
-This ASP.NET Core implementation uses .NET7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
+This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
 
 
 ```csharp

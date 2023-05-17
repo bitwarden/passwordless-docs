@@ -70,11 +70,11 @@ module.exports = {
           ]
         }
       ],
-    },
-    algolia: {
-      apiKey: '667aee5054356705f2a71ecff6ce867e',
-      indexName: 'passwordless'
     }
+    // ,algolia: {
+    //   apiKey: '667aee5054356705f2a71ecff6ce867e',
+    //   indexName: 'passwordless'
+    // }
   },
 
   /**

@@ -67,7 +67,7 @@ Registering an application with the [Passwordless.dev admin console](get-started
 ### Credential
 A credential represents a FIDO2 authenticator that is registered by passwordless.dev for a user. Examples of credentials include [passkeys](https://fidoalliance.org/passkeys/) and [hardware security keys](https://www.yubico.com/products/security-key/). For each credential, the following information is stored:
 
-|Proprety|Description|
+|Property|Description|
 |----|----|
 |`descriptorId`|A Base64Url string representation of the byte array that identifies the specific credential. Also referred to as the `credentialId`.|
 |`publicKey`|The credential's public key, used to cryptographically verify authentication. Note: Knowing the public key **does not** give access to an account/credential.|

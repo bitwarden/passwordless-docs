@@ -18,7 +18,7 @@ A passkey can have MFA properties when user verification is in use, requiring so
 
 ### Discoverable Credential
 
-A Discoverable Credential is a FIDO2 WebAuthn credentials that is usable for authentication without the server requiring a `credentialId` first. This means that you don't need to first identify the user with a username or email, making it even simpler to sign-in. Passkeys are an example of Discoverable Credentials.
+A Discoverable Credential is a FIDO2 passkeys that is usable for authentication without the server requiring a `credentialId` first. This means that you don't need to first identify the user with a username or email, making it even simpler to sign-in. Passkeys are an example of Discoverable Credentials.
 
 ### User identifiers
 

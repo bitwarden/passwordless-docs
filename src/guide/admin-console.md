@@ -8,7 +8,7 @@ Once you create a new application, you'll have a handful of pages available to y
 
 ## Applications
 
-The number of applications you can create depends on your plan. Select an application to view the following components:
+The number of applications you can create depends on your [plan](https://bitwarden.com/products/passwordless/#pricing). Select an application to view the following components:
 
 ### Get started
 
@@ -32,7 +32,7 @@ Aliases registered to teach user are listed, however aliases that are hashed can
 
 ### Settings
 
-The **Settings** page will offer some options for configuring your application, including what plan your application is on. More to come.
+The **Settings** page will offer some options for configuring your application, including what [plan](https://bitwarden.com/products/passwordless/#pricing) your application is on. More to come.
 
 ### Playground
 
@@ -40,7 +40,7 @@ The **Playground** page gives access to a simple passwordless demo you can use f
 
 ## Billing
 
-The **Billing** page allows you to upgrade to a paid organization and view a list of applications attached to your account.
+The **Billing** page allows you to upgrade to a [paid organization](https://bitwarden.com/products/passwordless/#pricing) and view a list of applications attached to your account.
 
 ## Admins
 

@@ -10,7 +10,7 @@ In this guide we'll provide JavaScript examples, however you can check out sampl
 
 ## Sign up
 
-[Sign up](https://admin.passwordless.dev/signup) for a free Passwordless.dev account. Bitwarden offers a free Passwordless.dev account, or paid plans that unlock certain tiers of usage and features.
+[Sign up](https://admin.passwordless.dev/signup) for a free Passwordless.dev account. Bitwarden offers a free Passwordless.dev account, or [paid plans](https://bitwarden.com/products/passwordless/#pricing) that unlock certain tiers of usage and features.
 
 When you sign up you'll land on the [admin console](admin-console), your primary GUI for creating and configuring applications, monitoring application usage, and managing billing:
 </br>
@@ -127,7 +127,7 @@ Successful implementation will create a registration token returned that is retu
 Should your API request fail, you will receive a error response with `json`-formatted [problem details](errors).
 :::
 
-2. On your frontend, initiate the WebAuthn process to create and store a WebAuthn credential using the generated registration token ([learn more](js-client)), for example:
+2. On your frontend, initiate the WebAuthn process to create and store a passkey using the generated registration token ([learn more](js-client)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -153,7 +153,7 @@ if(token) {
 }
 ```
 
-Successful implementation will prompt Passwordless.dev to negotiate creation of a WebAuthn credential through the user's web browser API and save its public key to the database for future sign-in operations.
+Successful implementation will prompt Passwordless.dev to negotiate creation of a passkey through the user's web browser API and save its public key to the database for future sign-in operations.
 
 ## Build a signin flow
 

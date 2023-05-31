@@ -1,10 +1,10 @@
 # About Passwordless.dev
 
-Bitwarden Passwordless.dev is a software toolkit that helps developers build [FIDO2 WebAuthn passkey](concepts.html#fido2) features for seamless authentication flows.
+Bitwarden Passwordless.dev is a software toolkit that helps developers build [FIDO2 WebAuthn-based passkey](concepts.html#fido2) features into websites and enterprise applications for seamless authentication flows.
 
 Using Passwordless.dev means there's no need to read extensive W3C specification documentation, determine what cryptography to implement, or worry about managing stored public keys. The team behind Bitwarden will take care of that for you.
 
-Passwordless.dev wraps FIDO2 WebAuthn passkey functionality in easy-to-use tools, designed to make it faster for web developers to adopt passkey-based authentication, and meet the challenges of an ever-shifting cybersecurity landscape.
+Passwordless.dev wraps passkey authentication for your website in easy-to-use tools, designed to make it faster for web developers to adopt, and meet the challenges of an ever-shifting cybersecurity landscape.
 </br>
 </br>
 ![Passwordless.dev operation flow](./diagram.png)

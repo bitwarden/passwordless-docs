@@ -20,7 +20,7 @@ This page contains your [API keys](concepts.html#api-keys). It's important to do
 
 ### Users
 
-The **Users** page allows you to monitor the end-users with FIDO2 WebAuthn passkeys registered for your application. For each user, as determined by their `userId`, you'll be able to view:
+The **Users** page allows you to monitor the end-users with passkeys registered for your application. For each user, as determined by their `userId`, you'll be able to view:
 
 #### Credentials
 

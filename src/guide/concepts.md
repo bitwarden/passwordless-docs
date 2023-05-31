@@ -8,17 +8,17 @@ FIDO2 consists of two standardized components, **WebAuthn** and **CTAP**. Togeth
 * **WebAuthn** is an API that connects a relying party to an application or login system. In a practical sense, WebAuthn creates an easy connection between the web and an application to allow passwordless authentication to occur. Learn more about WebAuthn [here](https://www.yubico.com/resource/why-webauthn-matters/).
 * **CTAP2** The client to authenticator protocol components allow an external and portable authenticator (security key) to operate with a client platform. FIDO CTAP2 is responsible for the external factor, like a security key, communicating with a website or account via an authenticator.
 
-In order to acheive FIDO2 compliance, the passwordless.dev authentication process will incorporate both WebAuthn and CTAP2 standards.
+In order to achieve FIDO2 compliance, the Passwordless.dev authentication process will incorporate both WebAuthn and CTAP2 standards.
 
 ### Passkeys
 
-Passkeys are a replacement for passwords. They are based on secure cryptography, easy to use, resistant against phishing attacks and even breach resistant. *A more technical definition:* A passkey is a FIDO2 Discoverable Credential that is protected against device loss.
+Passkeys are a replacement for passwords that provide faster, easier, and more secure sign-ins to websites and apps across a user's devices. More precisely, "passkey" is a consumer-friendly term for a discoverable FIDO credential that can be synced to allow secure passwordless sign-ins across devices, or dedicates to a single piece of hardware as a device-bound passkey.
 
-A passkey can have MFA properties when user verification is in use, requiring something that you have (the Private Key) and something you know/are (a PIN or biometric).
+Passkeys may also have the capability to provide step-up authentication when bound to a device.
 
 ### Discoverable Credential
 
-A Discoverable Credential is a FIDO2 passkey that is usable for authentication without the server requiring a `credentialId` first. This means that you don't need to first identify the user with a username or email, making it even simpler to sign-in. Passkeys are an example of Discoverable Credentials.
+A Discoverable Credential is a passkey that is usable for authentication without the server requiring a `credentialId` first. This means that you don't need to first identify the user with a username or email, making it even simpler to sign-in. Passkeys are an example of Discoverable Credentials.
 
 ### User identifiers
 

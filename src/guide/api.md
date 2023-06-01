@@ -194,10 +194,10 @@ A few rules to take into consideration when allowing users to create aliases:
 
  Alias are never returned in any API responses, and can be hashed to preserve user privacy (see above). If successful, the `/alias` endpoint will return an HTTP 200 OK [status code](#status-codes).
 
-## /list
+## /credentials/list
 ### Request
 
-`GET` requests made to the `/list` endpoint list all [registered credentials](concepts.html#credentials) associated with a user, as dictated by their `userId`. The request **must include** the `userId` in question, for example:
+`GET` requests made to the `/credentials/list` endpoint list all [registered credentials](concepts.html#credentials) associated with a user, as dictated by their `userId`. The request **must include** the `userId` in question, for example:
 
 <CodeSwitcher :languages="{http:'HTTP',js:'JavaScript'}">
 <template v-slot:http>
@@ -229,7 +229,7 @@ const credentials = await fetch(apiUrl + "/credentials/list", {
 
 ### Response
 
-If successful, the `/list` endpoint will return an array of `.json` objects where each object represents a [registered credential](concepts.html#credentials):
+If successful, the `/credentials/list` endpoint will return an array of `.json` objects where each object represents a [registered credential](concepts.html#credentials):
 
 ```json
 [
@@ -257,10 +257,10 @@ If successful, the `/list` endpoint will return an array of `.json` objects wher
 
 [Learn more about what these key-value pairs signify](concepts.html#credentials).
 
-## /delete
+## /credentials/delete
 ### Request
 
-`POST` requests made to the `/delete` endpoint delete a specific credential associated with a user, as dictated by a `credentialId`. The request **must include** the `credentialId` in question, for example:
+`POST` requests made to the `/credentials/delete` endpoint delete a specific credential associated with a user, as dictated by a `credentialId`. The request **must include** the `credentialId` in question, for example:
 
 ```http
 POST https://v4.passwordless.dev/credentials/delete HTTP/1.1
@@ -274,7 +274,7 @@ Content-Type: application/json
 
 ### Response
 
-If successful, the `/delete` endpoint will return an HTTP 200 OK [status code](#status-codes).
+If successful, the `/credentials/delete` endpoint will return an HTTP 200 OK [status code](#status-codes).
 
 <!--
 ## Errors

@@ -37,6 +37,7 @@ module.exports = {
     docsBranch: 'main',
     editLinkText: 'Edit this page on GitHub',
     lastUpdated: false,
+    smoothScroll: false,
     nav: [
       {
         text: 'Documentation',

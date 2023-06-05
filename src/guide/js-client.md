@@ -9,7 +9,7 @@ All methods **require** your API [public key](concepts.html#api-keys) for authen
 
 ## Installation
 
-To install the passwordless.dev JavaScript client:
+To install the Passwordless.dev JavaScript client:
 
 <CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
 <template v-slot:bash1>

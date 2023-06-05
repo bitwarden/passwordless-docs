@@ -65,7 +65,7 @@ Registering an application with the [Passwordless.dev admin console](get-started
   ```
 
 ### Credential
-A credential represents a FIDO2 authenticator that is registered by passwordless.dev for a user. Examples of credentials include [passkeys](https://fidoalliance.org/passkeys/) and [hardware security keys](https://www.yubico.com/products/security-key/). For each credential, the following information is stored:
+A credential represents a FIDO2 authenticator that is registered by Passwordless.dev for a user. Examples of credentials include [passkeys](https://fidoalliance.org/passkeys/) and [hardware security keys](https://www.yubico.com/products/security-key/). For each credential, the following information is stored:
 
 |Property|Description|
 |----|----|

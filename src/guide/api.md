@@ -1,6 +1,6 @@
 # Backend API Reference
 
-The **Passwordless.dev private API** is used by your backend to initiate key registrations, verify signins, retrieve keys for end-users, and more.
+The **Passwordless.dev private API** is used by your backend to initiate key registrations, verify sign0ins, retrieve keys for end-users, and more.
 
 All requests made to this API **require** your API [private secret](concepts.html#api-keys) in the header for authentication. Requests made to the public API, which are facilitated by methods in the [JavaScript client](js-client), will instead require your API [public key](concepts.html#api-keys).
 
@@ -62,7 +62,7 @@ The request body may include additional parameters besides those required, all o
 |`displayname`|A human-palatable name for the account, which should be chosen by the user. Used in Browser UI's and never stored on the server. |`"Philip J Fry"`|
 |`attestation`| WebAuthn attestation conveyance preference. Only `"none"` (default) is supported.|`"none"` (default)|
 |`authenticatorType`| WebAuthn authenticator attachment modality. Can be `"any"` (default), `"platform"`, which triggers client device-specific options Windows Hello, FaceID, or TouchID, or `"cross-platform"`, which triggers roaming options like security keys.|`"any"` (default)
-|`discoverable`| If `true`, creates a Client Side Discoverable Credential that allows sign in without needing a username.|`true` (default)|
+|`discoverable`| If `true`, creates a client-side Discoverable Credential that allows sign in without needing a username.|`true` (default)|
 |`userVerification`|Allows choosing preference for requiring User Verification (biometrics, pin code etc) when authenticating  Can be `"preferred"` (default), `"required"` or `"discouraged"`.|`"preferred"`
 |`expiresAt`|Timestamp (UTC) when the registration token should expire. By default, current time + 120 seconds.|`"3023-08-01T14:43:03Z"`|
 |`aliases`| A array of aliases for the userId, such as an email or username. Used to initiate a signin on the client side with the `signinWithAlias()` method. An alias must be unique to the userId. Defaults to an empty array `[]`.|`["pjfry@passwordless.dev"]`|

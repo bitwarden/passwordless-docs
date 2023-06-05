@@ -48,7 +48,7 @@ Also see [invalid_token](#invalid_token).
 Make sure you have an expected value in your `registerToken`. Obtain a register token from your backend by calling the `/register/token` endpoint. It should begin with `register_`.
 
 ### unknown_credential
-You'll receive this error when you call `p.signinWith*()` but the passkey that was used is not registered in our system. This can happen if the passkey has been deleted on the server (e.g. removing it in your app UI or the Admin Console) but still exists on a users device.
+You'll receive this error when you call `p.signinWith*()` but the passkey that was used is not registered in our system. This can happen if the passkey has been deleted on the server (e.g. removing it in your app UI or the admin console) but still exists on a users device.
 
 #### Solution
 Remove the passkey from the user device. This can be done in the browser's settings or on the operating system's credential manager.

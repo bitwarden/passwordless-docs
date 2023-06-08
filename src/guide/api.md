@@ -1,6 +1,6 @@
 # Backend API Reference
 
-The **Passwordless.dev private API** is used by your backend to initiate key registrations, verify sign0ins, retrieve keys for end-users, and more.
+The **Passwordless.dev private API** is used by your backend to initiate key registrations, verify sign-ins, retrieve keys for end-users, and more.
 
 All requests made to this API **require** your API [private secret](concepts.html#api-keys) in the header for authentication. Requests made to the public API, which are facilitated by methods in the [JavaScript client](js-client), will instead require your API [public key](concepts.html#api-keys).
 

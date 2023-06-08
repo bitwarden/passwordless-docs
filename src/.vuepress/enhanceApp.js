@@ -53,7 +53,7 @@ export default ({
   }
 
   router.options.scrollBehavior = (to, from, savedPosition) => {
-    console.log("Running custom scroll behavior");
+    console.log("Running custom scroll behavior", to, from , savedPosition);
     if (savedPosition) {
       console.log("Scroll to saved position", savedPosition)
       return window.scrollTo({

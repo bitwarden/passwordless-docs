@@ -38,43 +38,46 @@ export default ({
     { path: "/guide/getting-started", redirect: "/guide/get-started"}
   );
 
-  // if (typeof document === 'undefined') return
-  // document.onreadystatechange = () => {
-  //   if (document.readyState === 'complete') {
-  //     const { hash } = location
-  //     const decoded = decodeURIComponent(hash);
+  if (typeof document === 'undefined') return
+  document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+      const { hash } = location
+      const decoded = decodeURIComponent(hash);
 
-  //     console.log("decode", hash, decoded);
-  //     if (hash !== decoded) {
-  //       console.log("scroll");
-  //       document.querySelector(decoded).scrollIntoView()
-  //     }
-  //   }
-  // }
+      console.log("decode", hash, decoded);
+      if (hash !== decoded) {
+        console.log("scroll");
+        document.querySelector(decoded).scrollIntoView()
+      }
+    }
+  }
 
   router.options.scrollBehavior = (to, from, savedPosition) => {
-    console.log(111);
+    console.log("Running custom scroll behavior");
     if (savedPosition) {
+      console.log("Scroll to saved position", savedPosition)
       return window.scrollTo({
         top: savedPosition.y,
         behavior: 'smooth',
       })
     } else if (to.hash) {
       if (Vue.$vuepress.$get('disableScrollBehavior')) {
+        console.log("Disable scrollBehavior is true")
         return false
       }
       const scrollResult = scrollToAnchor(to)
 
-      console.log("SCROL RESULT", scrollResult);
+      console.log("Scroll result", scrollResult);
       if (scrollResult) {
         return scrollResult
       } else {
-        console.log("SCROL", to);
+        console.log("scroll to", to);
         window.onload = () => {
           scrollToAnchor(to)
         }
       }
     } else {
+      console.log("Scroll to top, no hash");
       return window.scrollTo({
         top: 0,
         behavior: 'smooth',

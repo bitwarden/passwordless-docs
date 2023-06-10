@@ -151,7 +151,7 @@ Call the static `.isBrowserSupported()` method to check if the end-user's browse
 
 ```js
 
-if (Passwordless.isBrowserSupported() === true) {
+if (Passwordless.isBrowserSupported()) {
 
 }
 ```
@@ -162,7 +162,7 @@ if (Passwordless.isBrowserSupported() === true) {
 Call the static async `.isPlatformSupported()` method to check if the end-users device or browser supports platform authentication such as Windows Hello, for example:
 
 ```js
-if (await Passwordless.isPlatformSupported() === true) {
+if (await Passwordless.isPlatformSupported()) {
 
 }
 ```
@@ -173,7 +173,7 @@ Call the static async `.isAutofillSupported()` method to check if the end-user's
 
 ```js
 
-if (await Passwordless.isAutofillSupported() === true) {
+if (await Passwordless.isAutofillSupported()) {
 
 }
 ```

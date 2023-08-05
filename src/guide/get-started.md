@@ -6,7 +6,7 @@ Passwordless.dev is a software toolkit that empowers web developers to build app
 This guide will skip over some conceptual basics in order to get you started as quickly as possible. Check out [Concepts](concepts) for in-depth discussion of the ideas used by Passwordless.dev.
 :::
 
-In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend) and [Frontend Framework Exmaples](frontend).
+In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend) and [Frontend Framework Examples](frontend).
 
 ## Sign up
 

@@ -214,7 +214,7 @@ export default function RegisterPage() {
 }
 ```
 
-The `AuthContext` and `AuthProvider` will manage our authenticated state.
+Suppose you have multiple components that need access to authentication-related data, such as whether a user is logged in or not. Instead of passing this data as props through the component hierarchy, you can use this `AuthContext` to provide the authentication state and update function to any component that needs it. This reduces the need for prop drilling and makes the code cleaner and more maintainable.
 
 ```javascript
 import { createContext, useState } from "react";
@@ -233,7 +233,7 @@ export const AuthProvider = ({ children }) => {
 export default AuthContext;
 ```
 
-Our `useAuth` React hook:
+For example, you can use the `useContext` hook in child components to access the auth state and setAuth function provided by the AuthContext.Provider.
 
 ```javascript
 import { useContext } from "react";
@@ -244,4 +244,125 @@ const useAuth = () => {
 }
 
 export default useAuth;
+```
+
+Our `index.jsx`: `AuthProvider` will wrap your entire application, making authentication state available to all components that consume it.
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import App from './App';
+import {AuthProvider} from "./context/AuthProvider";
+
+const root = ReactDOM.createRoot(
+    document.getElementById('root')
+);
+root.render(
+  <React.StrictMode>
+      <AuthProvider>
+          <BrowserRouter>
+              <App />
+          </BrowserRouter>
+      </AuthProvider>
+  </React.StrictMode>
+);
+```
+
+We will need to be able to decode the JWT token, and read what roles the user has assigned.
+
+```javascript
+import { useLocation, Navigate, Outlet } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import jwtDecode from "jwt-decode";
+
+function hasMatchingRole(allowedRoles, userRoles) {
+    if (!allowedRoles || allowedRoles.length === 0) {
+        return true;
+    }
+
+    for (let i = 0; i < allowedRoles.length; i++) {
+        if (userRoles.indexOf(allowedRoles[i]) !== -1) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+const RequireAuth = ({ allowedRoles }) => {
+    const { auth } = useAuth();
+    const location = useLocation();
+
+    let isAllowed = true;
+
+    if (allowedRoles) {
+        if (auth?.verifiedToken?.jwt) {
+            const decodedToken = jwtDecode(auth.verifiedToken.jwt);
+            isAllowed = hasMatchingRole(allowedRoles, decodedToken.role);
+        } else {
+            isAllowed = false;
+        }
+    }
+
+    // Do you want to redirect to a specific page or show an error message?
+    return (
+        isAllowed
+            ? <Outlet />
+            : auth?.verifiedToken
+                ? <Navigate to="/unauthorized" state={{ from: location }} replace />
+                : <Navigate to="/login" state={{ from: location }} replace />
+    );
+}
+
+export default RequireAuth;
+```
+
+In our `app.jsx` or wherever your routing is, you can define your routes as follows whether you require specific roles for to access a certain route.
+
+```javascript
+import React, {Component} from 'react';
+import {Route, Routes} from "react-router-dom";
+import UserPage from "./pages/UserPage";
+import AdminPage from "./pages/AdminPage";
+import PublicPage from "./pages/PublicPage";
+import Layout from "./components/Layout";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import RequireAuth from "./components/RequireAuth";
+import {ROLE_ADMIN, ROLE_USER} from "./constants/Roles";
+import UnauthorizedPage from "./pages/UnauthorizedPage";
+import 'react-toastify/dist/ReactToastify.css';
+
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+        <Layout>
+            <Routes>
+                <Route exact path="/" element={ <PublicPage/> } />
+                <Route path="/register" element={ <RegisterPage/> } />
+                <Route path="/login" element={ <LoginPage/> } />
+                <Route path="unauthorized" element={<UnauthorizedPage />} />
+
+                <Route element={<RequireAuth allowedRoles={[ROLE_USER]} />}>
+                    <Route path="/user" element={ <UserPage/> } />
+                </Route>
+
+                <Route element={<RequireAuth allowedRoles={[ROLE_ADMIN]} />}>
+                    <Route path="/admin" element={ <AdminPage/> } />
+                </Route>
+            </Routes>
+        </Layout>
+        );
+    }
+}
+
+export default App;
 ```

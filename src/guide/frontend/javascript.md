@@ -1,7 +1,7 @@
 ---
-title: Frontend JS Client Reference
+title: JS Client Reference
 ---
-# Frontend JavaScript Client Reference
+# JavaScript Client Reference
 
 The Passwordless.dev JavaScript client is used by your frontend to complete FIDO2 WebAuthn cryptographic exchanges with the browser.
 

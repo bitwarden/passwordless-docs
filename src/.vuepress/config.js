@@ -63,8 +63,15 @@ module.exports = {
             'get-started',
             'api',
             'backend',
-            'js-client',
-            'frontend',
+            {
+              title: 'Frontend',
+              path: '/guide/frontend',
+              collapsable: true,
+              children: [
+                ['/guide/frontend/javascript', 'JavaScript Client'],
+                ['/guide/frontend/react', 'React']
+              ]
+            },
             'errors',
             'admin-console',
             'concepts'

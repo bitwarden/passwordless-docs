@@ -10,4 +10,4 @@ You can use Passwordless.dev with any frontend framework by implementing calls t
 
 * Vue 3 (coming soon) <Badge text="example" type="warning"/>
 
-* [React](frontend/react) <Badge text="example" type="warning"/> <Badge text="demo" type="tip"/>
+* [React](frontend/react) <Badge text="example" type="warning"/>

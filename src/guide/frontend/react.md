@@ -1,5 +1,5 @@
 # React
-
+## How to
 First of all, create your react application as described [here](https://create-react-app.dev/).
 
 Once you've generated your React app, we want to install our client library:
@@ -358,3 +358,6 @@ class App extends Component {
 
 export default App;
 ```
+
+## References
+* [Sample app](https://github.com/passwordless/passwordless-react-example)

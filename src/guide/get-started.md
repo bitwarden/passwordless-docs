@@ -23,6 +23,12 @@ When you sign up you'll land on the [admin console](admin-console), your primary
 
 Select the **Create Application** button and give your new application an **Application name** and **Description**. For each application, a set of [API keys](concepts.html#api-keys) will be generated. You'll use these API keys for authentication with the Passwordless.dev API. Save your public key and private secret somewhere safe, like [Bitwarden Secrets Manager](https://bitwarden.com/help/secrets-manager-overview).
 
+![Creating a Passwordless.dev application](../assets/images/guide/get-started_1.png)
+
+![Creating a Passwordless.dev application](../assets/images/guide/get-started_2.png)
+
+![Creating a Passwordless.dev application](../assets/images/guide/get-started_3.png)
+
 :::warning
 It's important to download your API keys to a safe place, as they will be removed from the admin console after 7 days.
 :::

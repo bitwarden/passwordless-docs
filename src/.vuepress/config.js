@@ -92,7 +92,7 @@ module.exports = {
                 ['/guide/self-hosting/getting-started', 'Getting Started'],
                 ['/guide/self-hosting/configuration', 'Configuration'],
                 ['/guide/self-hosting/running-locally', 'Running Locally'],
-                ['guide/self-hosting/advanced', 'Advanced']
+                ['/guide/self-hosting/advanced', 'Advanced']
               ]
             },
             'errors',

@@ -256,4 +256,4 @@ Congratulations on mastering a basic implementation of Passwordless.dev! Next:
 
 - Check out other [Backend Languages](backend) and [Frontend Frameworks](frontend) to find the best fit for your application.
 - Dig into the functionality offered by the [Admin Console](admin-console).
-- Figure out the [best plan](https://bitwarden.com/pricing/passwordless/) to fit the needs of your application or business.
+- Figure out the [best plan](https://bitwarden.com/products/passwordless/#pricing) to fit the needs of your application or business.

@@ -51,6 +51,35 @@ Setting SSL with `BWP_ENABLE_SSL` is required in [insecure contexts](https://w3c
 Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/TR/webauthn-2/#web-authentication-api)'.
 :::
 
+## E-mail
+
+By default, all e-mail communication happens to a file:
+* `/app/Admin/mail.md`
+* `/app/Api/mail.md`.
+
+It's recommended you configure the SMTP parameters below:
+
+| Key                   | Default | Required | Description         |
+|-----------------------|---------|----------|---------------------|
+| BWP_SMTP_FROM         |         | Y        | ['you@example.com'] |
+| BWP_SMTP_USERNAME     |         | Y        |                     |
+| BWP_SMTP_PASSWORD     |         | Y        |                     |
+| BWP_SMTP_HOST         |         | Y        | Hostname            |
+| BWP_SMTP_PORT         |         | Y        | [0-65535]           |
+| $BWP_SMTP_STARTTLS    |         | N        |                     |
+| $BWP_SMTP_SSL         | false   | N        |                     |
+| $BWP_SMTP_TRUSTSERVER |         | N        |                     |
+
+### SendGrid example with SSL
+
+* BWP_SMTP_FROM: you@example.com
+* BWP_SMTP_USERNAME: apikey
+* BWP_SMTP_PASSWORD: <your-api-key>
+* BWP_SMTP_HOST: smtp.sendgrid.net
+* BWP_SMTP_PORT: 465
+* BWP_SMTP_SSL: true
+* BWP_SMTP_TRUSTSERVER: true (for local testing)
+
 ## config.json
 
 :::warning

@@ -29,6 +29,18 @@ By default, the container will use Sqlite if nothing else is specified. The data
 - /etc/bitwarden_passwordless/api.db
 - /etc/bitwarden_passwordless/admin.db
 
+### Microsoft SQL Server
+
+| Key                   | Default | Required | Description                                                                               |
+|-----------------------|---------|----------|-------------------------------------------------------------------------------------------|
+| BWP_DB_PROVIDER       |         | Y        | [sqlserver/mssql] Both values will allow you to use Microsoft SQL Server.                 |
+| BWP_DB_SERVER         |         | Y        | Hostname, for example 'localhost' or 'db.example.com'.                                    |
+| BWP_DB_PORT           | 1433    | N        | [0-65536]                                                                                 |
+| BWP_DB_DATABASE_API   | Api     | N        | Name for the 'Api' application's database on the Microsoft SQL Server instance.           |
+| BWP_DB_DATABASE_ADMIN | Admin   | N        | Name for the 'Admin Console' application's database on the Microsoft SQL Server instance. |
+| BWP_DB_USERNAME       | sa      | N        |                                                                                           |
+| BWP_DB_PASSWORD       |         | Y        |                                                                                           |
+
 ## Environment variables
 
 | Key                   | Default   | Required | Description                                                                                                                                           |

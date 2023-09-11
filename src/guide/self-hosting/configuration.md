@@ -82,6 +82,12 @@ It's recommended you configure the SMTP parameters below:
 | BWP_SMTP_SSL         | false   | N        | [true/false]                                                                            |
 | BWP_SMTP_TRUSTSERVER | false   | N        | [true/false] Allows you to skip certificate validation. Not recommended for production. |
 
+:::warning
+To verify e-mailing is working correctly:
+* Create an admin with a new organization.
+* Invite an admin to an existing organization.
+:::
+
 ### SendGrid example with SSL
 
 * BWP_SMTP_FROM: you@example.com

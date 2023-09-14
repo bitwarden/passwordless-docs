@@ -80,7 +80,9 @@ module.exports = {
               path: '/guide/frontend',
               collapsable: true,
               children: [
+
                 ['/guide/frontend/javascript', 'JavaScript Client'],
+                ['/guide/frontend/aspnet', 'ASP.NET'],
                 ['/guide/frontend/react', 'React']
               ]
             },

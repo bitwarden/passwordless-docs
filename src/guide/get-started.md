@@ -62,7 +62,7 @@ import { Client } from '@passwordlessdev/passwordless-client';
 <template v-slot:es6>
 
 ```html
-<script src="https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs" crossorigin="anonymous"></script>
+<script src="https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs" type="module" crossorigin="anonymous"></script>
 ```
 In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
 ```html

@@ -12,7 +12,7 @@ In order to achieve FIDO2 compliance, the Passwordless.dev authentication proces
 
 ### Passkeys
 
-Passkeys are a replacement for passwords that provide faster, easier, and more secure sign-ins to websites and apps across a user's devices. More precisely, "passkey" is a consumer-friendly term for a discoverable FIDO credential that can be synced to allow secure passwordless sign-ins across devices, or dedicates to a single piece of hardware as a device-bound passkey.
+Passkeys are a replacement for passwords that provide faster, easier, and more secure sign-ins to websites and apps across a user's devices. More precisely, "passkey" is a consumer-friendly term for a discoverable FIDO credential that can be synced to allow secure passwordless sign-ins across devices, or dedicated to a single piece of hardware as a device-bound passkey.
 
 Passkeys may also have the capability to provide step-up authentication when bound to a device.
 
@@ -52,7 +52,7 @@ Architecturally, Passwordless.dev consists of three key parts:
 
 Registering an application with the [Passwordless.dev admin console](get-started.html#create-an-application) will create a set of API keys:
 
-- **ApiKey**: A public API key, safe and intended to be included client side. It allows the browser to connect to out backend and initiate key negotiations and assertions. Public API keys are in the format:
+- **ApiKey**: A public API key, safe and intended to be included client side. It allows the browser to connect to our backend and initiate key negotiations and assertions. Public API keys are in the format:
   ```
   <application-name>:public:<guid>
   //e.g. myapp:public:a28e285ec8b64ca58a3dec90c5af48c2

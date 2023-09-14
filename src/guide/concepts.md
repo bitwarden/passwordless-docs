@@ -52,7 +52,7 @@ Architecturally, Passwordless.dev consists of three key parts:
 
 Registering an application with the [Passwordless.dev admin console](get-started.html#create-an-application) will create a set of API keys:
 
-- **ApiKey**: A public API key, safe and intended to be included client side. It allows the browser to connect to our backend and initiate key negotiations and assertions. Public API keys are in the format:
+- **ApiKey**: A public API key, safe and intended to be included client side. It allows the browser to connect to out backend and initiate key negotiations and assertions. Public API keys are in the format:
   ```
   <application-name>:public:<guid>
   //e.g. myapp:public:a28e285ec8b64ca58a3dec90c5af48c2

@@ -4,7 +4,6 @@ Install NuGet packages:
 
 ```bash
 dotnet add package Passwordless
-dotnet add package Passwordless.AspNetCore
 ```
 
 This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:

@@ -123,7 +123,7 @@ const {token} = await fetch(apiUrl + "/register/token", {
 }).then(r => r.json());
 ```
 
-Successful implementation will create a registration token returned that is returned as a string, for example:
+Successful implementation will create a registration token that is returned as a string, for example:
 
 ```json
 { "token": "register_wWdDh02ItIvnCKT_02ItIvn..." }

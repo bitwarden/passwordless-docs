@@ -51,10 +51,13 @@ Calling `POST /passwordless-register` will create our `IdentityUser` and return 
 
 ```html
 @page
+
 @using Passwordless.Net
 @using Microsoft.Extensions.Options
 @using Passwordless.AspNetCore
+
 @model RegisterModel
+
 @inject IOptions<PasswordlessAspNetCoreOptions> PasswordlessOptions;
 
 @{

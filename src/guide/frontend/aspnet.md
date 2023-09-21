@@ -15,7 +15,8 @@ Bootstrapping is now a straightforward process, where the addition of Passwordle
 The example below assumes your `appsettings.json` will add all configuration settings under the key `Passwordless`.
 
 ```csharp
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services
+    .AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<PasswordlessContext>()
     .AddPasswordless(builder.Configuration.GetSection("Passwordless"));
 ```

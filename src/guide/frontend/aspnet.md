@@ -196,33 +196,36 @@ Upon a successful authentication, our sample application will automatically redi
 {
     <script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
     <script>
-    async function login() {
-        const alias = document.getElementById("email").value;
-        const p = new Passwordless.Client(
-            {
+        async function login() {
+            const alias = document.getElementById("email").value;
+            const p = new Passwordless.Client({
                 apiKey: "@PasswordlessOptions.Value.ApiKey",
                 apiUrl: "@PasswordlessOptions.Value.ApiUrl"
             });
-        const loginPasskeyResponse = await p.signinWithAlias(alias);
-        if (!loginPasskeyResponse) {
-            return;
-        }
-        const loginRequest = { token: loginPasskeyResponse.token };
-        const loginResponse = await fetch('/passwordless-login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginRequest)
-        });
+            const loginPasskeyResponse = await p.signinWithAlias(alias);
+            if (!loginPasskeyResponse) {
+                return;
+            }
+            const loginRequest = {
+                token: loginPasskeyResponse.token
+            };
+            const loginResponse = await fetch('/passwordless-login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(loginRequest)
+            });
         
-        if (loginResponse.ok) {
-            console.log('login successful: ' + await loginResponse.text());
-            
-            // redirect to authorized page /Authorized/HelloWorld
-            window.location.href = '/Authorized/HelloWorld';        }
-    }
-    login();
+            if (loginResponse.ok) {
+                console.log('login successful: ' + await loginResponse.text());
+        
+                // Redirect to authorized page /Authorized/HelloWorld
+                window.location.href = '/Authorized/HelloWorld';
+            }
+        }
+        
+        login();
     </script>
 }
 ```

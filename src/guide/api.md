@@ -133,7 +133,7 @@ If successful, the `/signin/verify` endpoint will return a success response obje
   "country": "SE",
   "nickname": "My Work Phone",
   "expiresAt": "3023-08-01T14:43:03Z",
-  "credentialId": "VCzDJDLuWmj_SrOuT5STsetG6-LUVENWuAkMY9uJXNM",
+  "tokenId": "TODO",
   "type": "passkey_signin" // or passkey_register  
 }
 ```

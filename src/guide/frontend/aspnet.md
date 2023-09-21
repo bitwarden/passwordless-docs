@@ -233,23 +233,23 @@ Upon a successful authentication, our sample application will automatically redi
 If we visit the login page when we're already authenticated, we do want to redirect elsewhere.
 
 ```csharp
-    public IActionResult OnGet()
+public IActionResult OnGet()
+{
+    if (HttpContext.User.Identity is { IsAuthenticated: true })
     {
-        if (HttpContext.User.Identity is { IsAuthenticated: true })
-        {
-            return LocalRedirect("/");
-        }
-        return Page();
+        return LocalRedirect("/");
     }
+    return Page();
+}
 
-    public async Task OnPostAsync(LoginForm form, CancellationToken cancellationToken)
-    {
-        if (!ModelState.IsValid) return;
-        _logger.LogInformation("Logging in user {email}", form.Email);
-        ViewData["CanLogin"] = true;
-    }
+public async Task OnPostAsync(LoginForm form, CancellationToken cancellationToken)
+{
+    if (!ModelState.IsValid) return;
+    _logger.LogInformation("Logging in user {email}", form.Email);
+    ViewData["CanLogin"] = true;
+}
 
-    public LoginForm Form { get; } = new();
+public LoginForm Form { get; } = new();
 ```
 
 You can then access information about your logged in user from the `HttpContext`:

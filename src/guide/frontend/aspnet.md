@@ -131,23 +131,24 @@ Calling `POST /passwordless-register` will create our `IdentityUser` and return 
 ```
 
 ```csharp
-    public IActionResult OnGet()
+public IActionResult OnGet()
+{
+    if (HttpContext.User.Identity is { IsAuthenticated: true })
     {
-        if (HttpContext.User.Identity is { IsAuthenticated: true })
-        {
-            return LocalRedirect("/");
-        }
-        return Page();
+        return LocalRedirect("/");
     }
 
-    public async Task OnPostAsync(FormModel form, CancellationToken cancellationToken)
-    {
-        if (!ModelState.IsValid) return;
-        _logger.LogInformation("Registering user {username}", form.Username);
-        ViewData["CanAddPasskeys"] = true;
-    }
-    
-    public FormModel Form { get; init; } = new();
+    return Page();
+}
+
+public async Task OnPostAsync(FormModel form, CancellationToken cancellationToken)
+{
+    if (!ModelState.IsValid) return;
+    _logger.LogInformation("Registering user {username}", form.Username);
+    ViewData["CanAddPasskeys"] = true;
+}
+
+public FormModel Form { get; init; } = new();
 ```
 
 Regarding the login page, `/Account/Login`, clicking the 'Login' button will once again trigger the setting of a similar flag, enabling the execution of our JavaScript code.

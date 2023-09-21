@@ -293,6 +293,7 @@ public record AuthenticatedUserModel(string Username, string Email);
 | Register__Discoverable       | true                        | [false/true] Discoverable Credentials store private keys and associated data in the authenticator's memory instead of on a server. This eliminates the need for the server to send the credential to the authenticator for decryption, reducing the reliance on usernames and passwords for identity verification. |
 | Register__UserVerification   | Preferred                   | [Discouraged/Preferred/Required] A WebAuthn Relying Party may require user verification for some of its operations but not for others, and may use this type to express its needs.                                                                                                                                 |
                                                                                                                                                                                                                                                                                        |
+
 # Advanced
 
 If you find yourself requiring greater flexibility, we invite you to explore our JavaScript client library and .NET SDK. This option is particularly suitable if you seek more granular control over the [ASP.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity) framework or aspire to undertake a fully customized implementation.

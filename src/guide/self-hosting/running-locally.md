@@ -2,42 +2,42 @@
 
 ## Simple example #1
 
-* Admin console is accessible on `http://localhost:8080/`
+* Admin console is accessible on `http://localhost:5042/`
 * No permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be lost.
 
 ```bash
 docker pull bitwarden/passwordless
 docker run \
-  --publish 8080:8080 \
-  --env BWP_DOMAIN_API_PORT=8080 \
+  --publish 5042:5701 \
+  --env BWP_PORT=5042 \
   bitwarden/passwordless
 ```
 
 ## Simple example #2
 
-* Admin console is accessible on `http://localhost:8080/`
+* Admin console is accessible on `http://localhost:5042/`
 * Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
 docker pull bitwarden/passwordless
 docker run \
-  --publish 8080:8080 \
+  --publish 5042:5701 \
   --volume /your/directory:/etc/bitwarden_passwordless \
-  --env BWP_DOMAIN_API_PORT=8080 \
+  --env BWP_PORT=5042 \
   bitwarden/passwordless
 ```
 
 ## Example with SSL
 
-* Admin console is accessible on `https://localhost:8443/`
+* Admin console is accessible on `https://localhost:5042/`
 * Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
 docker pull bitwarden/passwordless
 docker run \
-  --publish 8443:8443 \
+  --publish 5042:5701 \
   --volume /your/directory:/etc/bitwarden_passwordless \
-  --env BWP_DOMAIN_API_PORT=8443 \
+  --env BWP_PORT=5042 \
   --env BWP_ENABLE_SSL=true \
   bitwarden/passwordless
 ```

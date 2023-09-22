@@ -2,7 +2,9 @@
 
 ## Ports
 
-The container will expose port `8080` (http) or `8443` (https). Only one of them will be active depending on whether SSL is enabled with the `BWP_ENABLE_SSL` flag, see below.
+The container will expose port `5701`. You can map this to any port you want on your host machine.
+
+Internally the `AdminConsole` and `Api` will both communicate internally using ports 5000 and 5001. Network traffic will by default not leave the container.
 
 ## Volumes
 
@@ -47,7 +49,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 |-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BWP_ENABLE_ADMIN      | true      | N        | [true/false]                                                                                                                                          |
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
-| BWP_DOMAIN_API_PORT   |           | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
+| BWP_PORT              |           | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |
 | BWP_DB_PROVIDER       |           | N        | [mssql/sqlserver/] Defaults to using Sqlite if not set                                                                                                |
 | BWP_DB_SERVER         |           | N        | For any non-file hosted database, enter its domain name. Required for Microsoft SQL Server.                                                           |

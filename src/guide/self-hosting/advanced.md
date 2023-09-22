@@ -13,7 +13,7 @@ services:
       - db
     environment:
       BWP_ENABLE_SSL: true
-      BWP_DOMAIN_API_PORT: 8443
+      BWP_PORT: 443
       BWP_DB_PROVIDER: "mssql"
       BWP_DB_SERVER: "localhost"
       BWP_DB_PORT: 1433
@@ -24,7 +24,7 @@ services:
     image: ${REGISTRY:-bitwarden}/passwordless:latest
     restart: always
     ports:
-      - "8443:8443"
+      - "443:5701"
     volumes:
       - bitwarden_passwordless:/etc/bitwarden_passwordless
       - logs:/var/log/bitwarden_passwordless

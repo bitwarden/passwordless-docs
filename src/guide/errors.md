@@ -98,3 +98,6 @@ Currently, Passwordless.dev only supports attestation format `"none"`. While thi
 
 #### Solution
 When you call the `/register/token` endpoint, either remove the `attestation` property or change the value to be `"none"`.
+
+### max_users_reached
+You'll receive this error when you try to create a new user but have reached the maximum number of users for your plan. [Learn more](https://bitwarden.com/products/passwordless/).

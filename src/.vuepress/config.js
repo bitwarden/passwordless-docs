@@ -81,6 +81,7 @@ module.exports = {
               collapsable: true,
               children: [
                 ['/guide/frontend/javascript', 'JavaScript Client'],
+                ['/guide/frontend/aspnet', 'ASP.NET'],
                 ['/guide/frontend/react', 'React']
               ]
             },

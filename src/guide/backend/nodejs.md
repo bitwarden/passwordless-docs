@@ -1,38 +1,103 @@
 # Node.js
 
-This Node.js implementation is done in only a few lines of code. A [register](api/#register-token) function might look something like:
+## Installation
 
-```js
-app.get("/create-token", async (req, res) => {
+```bash
+$ npm i @@passwordlessdev/passwordless-nodejs
+```
 
-  const alias = req.query.alias;
-  
-  // Generate a new userid or grab the userid from session, cookie etc
-  const payload = {
-    userId: getRandomInt(),
-    username: alias,
-    aliases: [alias] // We can also set aliases for the userid, so that signin can be initiated without knowing the userid
-  };
+## Requirements
 
-  // Send the username to the passwordless api to get a token
-  var response = await fetch("https://v4.passwordless.dev/register/token", {
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: { ApiSecret: API_SECRET, 'Content-Type': 'application/json'}
-  });
+- ES2018 or newer, read more [here](https://node.green/).
+- Supported JavaScript modules: CommonJS, ES
+- Node.js 10 or newer
 
-  var responseData = await response.json();
-  console.log("passwordless api response", response.status, response.statusText, responseData);
-    
-  if(response.status == 200) {
-    console.log("received token: ", responseData.token);
-  } else {
-    // Handle or log any API error, { errorCode: "unknown_credentials", "title": "This is what is wrong", "details": "..."}
-  }
 
-  res.status(response.status);
-  res.send(responseData);
-});
+## Using
+
+Specifying the `baseUrl` would be optional, and will contain `https://v4.passwordless.dev` as its default value.
+
+To obtain your `ApiSecret`, you can find it in the admin console under `Applications > 'Your Application' > Getting Started`.
+
+```TSX
+const options: PasswordlessOptions = {
+  baseUrl: 'https://v4.passwordless.dev'
+};
+this._passwordlessClient = new PasswordlessClient('demo:secret:f831e39c29e64b77aba547478a4b3ec6', options);
+```
+
+```TSX
+const options: PasswordlessOptions = {};
+this._passwordlessClient = new PasswordlessClient('demo:secret:f831e39c29e64b77aba547478a4b3ec6', options);
+```
+
+### Registration
+
+If you had for example a 'UserController.ts' with a 'signup' arrow function. You could register a new token as shown below.
+
+You'll first want to proceed to store the new user in your database and verifying it has succeeded, before registering the token.
+
+```TSX
+signup = async (request: express.Request, response: express.Response) => {
+        const signupRequest: SignupRequest = request.body;
+        const repository: UserRepository = new UserRepository();
+        let id: string = null;
+        try {
+            // First, create the user in your database. We will use the id to register the token.
+            // This way we know what user the credentials will belong to.
+            id = repository.create(signupRequest.username, signupRequest.firstName, signupRequest.lastName);
+        } catch {
+            // do error handling, creating user failed.
+        } finally {
+            repository.close();
+        }
+
+        if (!id) {
+            // Do not proceed to create a token, we failed to create a user.
+            response.send(400);
+        }
+
+        let registerOptions = new RegisterOptions();
+        registerOptions.userId = id;
+        registerOptions.username = signupRequest.username;
+        
+        // We will use our deviceName as an alias. But using an alias is completely optional.
+        if (signupRequest.deviceName) {
+            registerOptions.aliases = new Array(1);
+            registerOptions.aliases[0] = signupRequest.deviceName;
+        }
+        
+        registerOptions.discoverable = true;
+        
+        // Now call Passwordless.dev to register a new token.
+        const token: RegisterTokenResponse = await this._passwordlessClient.createRegisterToken(registerOptions);
+        
+        // Return the token to the client.
+        response.send(token);
+    }
+```
+
+### Logging in
+
+```TSX
+signin = async (request: express.Request, response: express.Response) => {
+        try {
+            const token: string = request.query.token as string;
+            
+            // First check if the token is valid, and if a matching user is found.
+            const verifiedUser: VerifiedUser = await this._passwordlessClient.verifyToken(token);
+
+            // If a user is found, and the token is valid, you can proceed to log the user in.
+            if (verifiedUser && verifiedUser.success === true) {
+                // If you want to build a JWT token for SPA that are rendered client-side, you can do this here.
+                response.send(JSON.stringify(verifiedUser));
+                return;
+            }
+        } catch (error) {
+            console.error(error.message);
+        }
+        response.send(401);
+    }
 ```
 
 ## References

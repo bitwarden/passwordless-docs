@@ -94,38 +94,39 @@ Calling `POST /passwordless-register` will create our `IdentityUser` and return 
 {
     <script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
     <script>
-    async function register() {
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const registrationRequest = {
-            email: email,
-            username: username,
-            displayName: username,
-            aliases: [email]
-        };
-       const registrationResponse = await fetch('/passwordless-register', {
-           method: 'POST',
-           headers: {
-               'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(registrationRequest)
-       });
-       
-       // if no error then deserialize and use returned token to create now our passkeys
-       if (registrationResponse.ok) {
-           const registrationResponseJson = await registrationResponse.json();
-           const token = registrationResponseJson.token;
-                    
-                    // we need to use Client from https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js which is imported above.
-                    const p = new Passwordless.Client(
-                        {
-                            apiKey: "@PasswordlessOptions.Value.ApiKey",
-                            apiUrl: "@PasswordlessOptions.Value.ApiUrl"
-                        });
-                    const registeredPasskeyResponse = await p.register(token, email);
-                }
-    }
-    register();
+        async function register() {
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+            const registrationRequest = {
+                email: email,
+                username: username,
+                displayName: username,
+                aliases: [email]
+            };
+        
+            const registrationResponse = await fetch('/passwordless-register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(registrationRequest)
+            });
+        
+            // If no error then deserialize and use returned token to create now our passkeys
+            if (registrationResponse.ok) {
+                const registrationResponseJson = await registrationResponse.json();
+                const token = registrationResponseJson.token;
+        
+                // We need to use Client from https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js which is imported above.
+                const p = new Passwordless.Client({
+                    apiKey: "@PasswordlessOptions.Value.ApiKey",
+                    apiUrl: "@PasswordlessOptions.Value.ApiUrl"
+                });
+                const registeredPasskeyResponse = await p.register(token, email);
+            }
+        }
+        
+        register();
     </script>
 }
 ```

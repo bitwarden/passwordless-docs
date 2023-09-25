@@ -66,7 +66,7 @@ Calling `POST /passwordless-register` will create our `IdentityUser` and return 
 <h1>@ViewData["Title"]</h1>
 
 @{
-    var canAddPasskeys = ViewData["CanAddPasskeys"] != null && (bool)ViewData["CanAddPasskeys"];
+    var canAddPasskeys = ViewData["CanAddPasskeys"] is true;
 }
 
 <div class="row">

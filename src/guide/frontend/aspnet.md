@@ -40,7 +40,7 @@ Now, we'll need to modify the `WebApplication` object to add the Passwordless ro
 The endpoints are documented in a later section on this page.
 
 ```csharp
-app.MapPasswordless(true);
+app.MapPasswordless(enableRegisterEndpoint: true);
 ```
 
 Now we will create our registration page at `/Account/Register`. When we load the page, we will present a form to the user.

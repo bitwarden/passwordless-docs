@@ -49,7 +49,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 |-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BWP_ENABLE_ADMIN      | true      | N        | [true/false]                                                                                                                                          |
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
-| BWP_PORT              |           | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
+| BWP_PORT              | 5701      | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |
 | BWP_DB_PROVIDER       |           | N        | [mssql/sqlserver/] Defaults to using Sqlite if not set                                                                                                |
 | BWP_DB_SERVER         |           | N        | For any non-file hosted database, enter its domain name. Required for Microsoft SQL Server.                                                           |
@@ -91,6 +91,10 @@ To verify e-mailing is working correctly:
 :::
 
 ### SendGrid example with SSL
+
+For verifying e-mailing is working correctly, you can use health-checks, read more [here](health-checks).
+
+```bash
 
 * BWP_SMTP_FROM: you@example.com
 * BWP_SMTP_USERNAME: apikey

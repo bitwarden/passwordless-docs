@@ -1,5 +1,11 @@
 # ASP.NET Core
 
+Install NuGet packages:
+
+```bash
+dotnet add package Passwordless
+```
+
 This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
 
 The `Startup` class is responsible for configuring and setting up various services, middleware, and components that the application will use during its lifetime.
@@ -27,7 +33,7 @@ public class Startup
         services.Configure<PasswordlessOptions>(Configuration.GetRequiredSection("Passwordless"));
         services.AddPasswordlessSdk(options =>
         {
-            options = Configuration.GetRequiredSection("Passwordless") as PasswordlessOptions;
+            Configuration.GetRequiredSection("Passwordless").Bind(options);
         });
     }
 ```
@@ -42,10 +48,8 @@ public async Task<IActionResult> GetRegisterToken(string alias)
 {
     var userId = Guid.NewGuid().ToString();
 
-    var payload = new RegisterOptions
+    var payload = new RegisterOptions(userId, alias)
     {
-        UserId = userId,
-        Username = alias,
         Aliases = new HashSet<string> { alias }
     };
 
@@ -58,7 +62,7 @@ public async Task<IActionResult> GetRegisterToken(string alias)
     {
         return new JsonResult(e.Details)
         {
-            StatusCode = (int)e.StatusCode,
+            StatusCode = (int?)e.StatusCode,
         };
     }
 }
@@ -67,8 +71,7 @@ public async Task<IActionResult> GetRegisterToken(string alias)
 And logging in:
 
 ```csharp
-[HttpGet]
-[Route("/verify-signin")]
+[HttpGet("/verify-signin")]
 public async Task<IActionResult> VerifySignInToken(string token)
 {
     try
@@ -80,7 +83,7 @@ public async Task<IActionResult> VerifySignInToken(string token)
     {
         return new JsonResult(e.Details)
         {
-            StatusCode = (int)e.StatusCode
+            StatusCode = (int?)e.StatusCode
         };
     }
 }

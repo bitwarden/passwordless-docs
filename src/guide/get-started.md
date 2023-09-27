@@ -62,7 +62,7 @@ import { Client } from '@passwordlessdev/passwordless-client';
 <template v-slot:es6>
 
 ```html
-<script src="https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs" crossorigin="anonymous"></script>
+<script src="https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs" type="module" crossorigin="anonymous"></script>
 ```
 In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
 ```html
@@ -123,7 +123,7 @@ const {token} = await fetch(apiUrl + "/register/token", {
 }).then(r => r.json());
 ```
 
-Successful implementation will create a registration token returned that is returned as a string, for example:
+Successful implementation will create a registration token that is returned as a string, for example:
 
 ```json
 { "token": "register_wWdDh02ItIvnCKT_02ItIvn..." }
@@ -256,4 +256,4 @@ Congratulations on mastering a basic implementation of Passwordless.dev! Next:
 
 - Check out other [Backend Languages](backend) and [Frontend Frameworks](frontend) to find the best fit for your application.
 - Dig into the functionality offered by the [Admin Console](admin-console).
-- Figure out the [best plan](https://bitwarden.com/pricing/passwordless/) to fit the needs of your application or business.
+- Figure out the [best plan](https://bitwarden.com/products/passwordless/#pricing) to fit the needs of your application or business.

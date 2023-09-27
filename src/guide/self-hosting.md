@@ -19,3 +19,4 @@ You should now be able to access your own `Passwordless.dev` instance at:
 * [Configuration](self-hosting/configuration)
 * [Running Locally](self-hosting/running-locally) <Badge text="example" type="warning"/>
 * [Advanced](self-hosting/advanced)
+* [Health-checks](self-hosting/health-checks)

@@ -1,6 +1,6 @@
 # Python 2
 
-This Python 2.7+ implementation is done in only a few lines of code. A [register](https://docs.passwordless.dev/guide/api/#register-token) function might look something like:
+This Python 2.7+ implementation is done in only a few lines of code. A [register](../api#register-token) function might look something like:
 
 ```python
 import requests       # Import the requests library for making HTTP requests

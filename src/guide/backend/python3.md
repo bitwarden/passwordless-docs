@@ -1,6 +1,6 @@
 # Python 3+
 
-This Python 3.8+ implementation is done in only a few lines of code. A [register](https://docs.passwordless.dev/guide/api/#register-token) function might look something like:
+This Python 3.8+ implementation is done in only a few lines of code. A [register](../api#register-token) function might look something like:
 
 ```python
 import requests  # Import the requests library for making HTTP requests
@@ -49,8 +49,3 @@ if __name__ == "__main__":
   # Call the create_token function with the alias "alias" and store the response
   response_data = create_token("alias")
 ```
-
-## References
-
-* [Open the example Python 3.8+ application using Flask on GitHub
-](https://github.com/passwordless/sdk-collection/tree/main/Python%203.8-Flask)

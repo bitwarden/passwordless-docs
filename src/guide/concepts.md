@@ -44,7 +44,7 @@ FIDO2 authenticators can be one of two types:
 
 Architecturally, Passwordless.dev consists of three key parts:
 
-- An [open-source client side library](js-client), used by your frontend to make requests to end-users browsers' WebAuthn API and requests to the Passwordless.dev APIs.
+- An [open-source client side library](frontend/javascript), used by your frontend to make requests to end-users browsers' WebAuthn API and requests to the Passwordless.dev APIs.
 - A public RESTful API, used by your frontend to complete FIDO2 WebAuthn cryptographic exchanges with the browser.
 - A [private RESTful API](api), used by your backend to initiate key registrations, verify sign-ins, and retrieve keys for end-users.
 
@@ -86,7 +86,7 @@ A credential represents a FIDO2 authenticator that is registered by Passwordless
 In the regular course of business, Passwordless.dev uses two important types of ephemeral tokens:
 
 - A **registration token**, created by the private API from requests to the `/register/token` endpoint ([learn more](api.html#register-token)). Your frontend will register this token with the end-user's device for use in sign-in operations.
-- A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](js-client.html#signin)). Your backend will verify this token to complete a sign-in operation
+- A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.html#signin)). Your backend will verify this token to complete a sign-in operation
 
 ## More terms
 

@@ -1,6 +1,6 @@
 # Java 1.8+
 
-This Java implementation is compatible with Java 1.8 and above. A [register](https://docs.passwordless.dev/guide/api/#register-token) function might look something like:
+This Java implementation is compatible with Java 1.8 and above. A [register](../api#register-token) function might look something like:
 
 ```java
 import java.io.IOException;

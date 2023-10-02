@@ -6,7 +6,7 @@ Install NuGet packages:
 dotnet add package Passwordless
 ```
 
-This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
+This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api#register-token) function might look something like:
 
 The `Startup` class is responsible for configuring and setting up various services, middleware, and components that the application will use during its lifetime.
 

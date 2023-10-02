@@ -200,7 +200,7 @@ if(verifiedUser.success === true) {
 
 Successful implementation will make a verification token available to the backend. In the above example, the client waits for the backend to return `true` (**step 2**) before proceeding to act on the confirmed sign-in.
 
-2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.html/#signin-verify)) with generated token, for example:
+2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.html#signin-verify)) with generated token, for example:
 
 <Badge text="backend" type="warning"/>
 

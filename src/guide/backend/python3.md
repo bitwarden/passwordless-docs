@@ -49,8 +49,3 @@ if __name__ == "__main__":
   # Call the create_token function with the alias "alias" and store the response
   response_data = create_token("alias")
 ```
-
-## References
-
-* [Open the example Python 3.8+ application using Flask on GitHub
-](https://github.com/passwordless/sdk-collection/tree/main/Python%203.8-Flask)

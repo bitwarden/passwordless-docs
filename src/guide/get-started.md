@@ -35,7 +35,7 @@ It's important to download your API keys to a safe place, as they will be remove
 
 ## Install the library
 
-Next, install the [Passwordless.dev JavaScript client library](js-client), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
+Next, install the [Passwordless.dev JavaScript client library](frontend/javascript), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
 
 
 <CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
@@ -133,7 +133,7 @@ Successful implementation will create a registration token that is returned as a
 Should your API request fail, you will receive a error response with `json`-formatted [problem details](errors).
 :::
 
-2. On your frontend, initiate the WebAuthn process to create and store a passkey using the generated registration token ([learn more](js-client)), for example:
+2. On your frontend, initiate the WebAuthn process to create and store a passkey using the generated registration token ([learn more](frontend/javascript)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -171,7 +171,7 @@ Next, implement a workflow on your backend and frontend for signing in with a [p
 </br>
 Code that you write must:
 
-1. On your frontend, initiate your sign-in and retrieve a [verification token](concepts.html#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential  ([learn more](js-client.html#signin)), for example:
+1. On your frontend, initiate your sign-in and retrieve a [verification token](concepts.html#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential  ([learn more](frontend/javascript.html#signin)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -200,7 +200,7 @@ if(verifiedUser.success === true) {
 
 Successful implementation will make a verification token available to the backend. In the above example, the client waits for the backend to return `true` (**step 2**) before proceeding to act on the confirmed sign-in.
 
-2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.html/#signin-verify)) with generated token, for example:
+2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.html#signin-verify)) with generated token, for example:
 
 <Badge text="backend" type="warning"/>
 

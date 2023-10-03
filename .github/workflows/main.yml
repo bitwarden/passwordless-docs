@@ -5,7 +5,7 @@ on:
   pull_request:
 
 jobs:
-  # Validate links in the docs
+  # Validate links
   validate:
     runs-on: ubuntu-latest
     permissions:

@@ -1,4 +1,4 @@
-const { description } = require("../../package");
+const { description } = require('../../package');
 
 module.exports = {
   /**
@@ -6,7 +6,7 @@ module.exports = {
    */
   title: 'Passwordless.dev Documentation',
 
-  base: "/",
+  base: '/',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -22,7 +22,10 @@ module.exports = {
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
-    ["script", { src: "https://plausible.io/js/script.js", "data-domain":'docs.passwordless.dev' }]
+    [
+      'script',
+      { 'src': 'https://plausible.io/js/script.js', 'data-domain': 'docs.passwordless.dev' }
+    ]
   ],
 
   /**
@@ -41,7 +44,7 @@ module.exports = {
     nav: [
       {
         text: 'Documentation',
-        link: '/guide/',
+        link: '/guide/'
       },
       {
         text: 'Sign Up',
@@ -90,9 +93,9 @@ module.exports = {
             'concepts'
           ]
         }
-      ],
-    }
-    ,algolia: {
+      ]
+    },
+    algolia: {
       apiKey: '76fc9fe901fe62268368f74e492ccbd0',
       indexName: 'passwordless',
       appId: 'H4XQ4LY5NY'
@@ -108,4 +111,4 @@ module.exports = {
     'code-switcher',
     'check-md'
   ]
-}
+};

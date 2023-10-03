@@ -12,7 +12,6 @@ $ npm i @@passwordlessdev/passwordless-nodejs
 - Supported JavaScript modules: CommonJS, ES
 - Node.js 10 or newer
 
-
 ## Using
 
 Specifying the `baseUrl` would be optional, and will contain `https://v4.passwordless.dev` as its default value.
@@ -60,18 +59,18 @@ signup = async (request: express.Request, response: express.Response) => {
         let registerOptions = new RegisterOptions();
         registerOptions.userId = id;
         registerOptions.username = signupRequest.username;
-        
+
         // We will use our deviceName as an alias. But using an alias is completely optional.
         if (signupRequest.deviceName) {
             registerOptions.aliases = new Array(1);
             registerOptions.aliases[0] = signupRequest.deviceName;
         }
-        
+
         registerOptions.discoverable = true;
-        
+
         // Now call Passwordless.dev to register a new token.
         const token: RegisterTokenResponse = await this._passwordlessClient.createRegisterToken(registerOptions);
-        
+
         // Return the token to the client.
         response.send(token);
     }
@@ -83,7 +82,7 @@ signup = async (request: express.Request, response: express.Response) => {
 signin = async (request: express.Request, response: express.Response) => {
         try {
             const token: string = request.query.token as string;
-            
+
             // First check if the token is valid, and if a matching user is found.
             const verifiedUser: VerifiedUser = await this._passwordlessClient.verifyToken(token);
 
@@ -102,6 +101,6 @@ signin = async (request: express.Request, response: express.Response) => {
 
 ## References
 
-* [Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example)
+- [Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example)
 
-* If you just want to see the Node.js demo run, we host an example at [demo-backend.passwordless.dev](https://demo-backend.passwordless.dev/)
+- If you just want to see the Node.js demo run, we host an example at [demo-backend.passwordless.dev](https://demo-backend.passwordless.dev/)

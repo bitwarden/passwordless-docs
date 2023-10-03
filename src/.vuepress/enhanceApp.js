@@ -10,7 +10,5 @@ export default ({
   router, // the router instance for the app
   siteData // site metadata
 }) => {
-  router.addRoutes([
-    { path: "/guide/getting-started", redirect: "/guide/get-started"}
-  ]);
-}
+  router.addRoutes([{ path: '/guide/getting-started', redirect: '/guide/get-started' }]);
+};

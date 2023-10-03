@@ -11,12 +11,15 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
-    "validate": "vuepress check-md src"
+    "validate": "vuepress check-md src",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
     "vuepress-plugin-code-switcher": "^1.1.0"
   },
   "devDependencies": {
+    "prettier": "^3.0.3",
     "vuepress": "^1.5.3",
     "vuepress-plugin-check-md": "^0.0.3"
   }

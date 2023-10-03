@@ -1,6 +1,6 @@
 # Bitwarden Passwordless.dev Documentation
 
-Bitwarden Passwordless.dev is a software toolkit that helps developers build FIDO2 WebAuthn passkeys features for seamless authentication flows. This repository contains Passwordless.dev documentation, hosted at [docs.passwordless.dev](docs.passwordless.dev). The site uses Markdown and [VuePress](https://vuepress.vuejs.org/guide/).
+Bitwarden Passwordless.dev is a software toolkit that helps developers build FIDO2 WebAuthn passkeys features for seamless authentication flows. This repository contains Passwordless.dev documentation, hosted at [docs.passwordless.dev](https://docs.passwordless.dev). The site uses Markdown and [VuePress](https://vuepress.vuejs.org/guide).
 
 Using Passwordless.dev means there's no need to read extensive W3C specification documentation, determine what cryptography to implement, or worry about managing stored public keys. The team behind Bitwarden will take care of that for you.
 

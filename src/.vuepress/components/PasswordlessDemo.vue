@@ -1,28 +1,17 @@
 <template>
   <div>
     <div v-if="platform">
-      <button class="button" @click="fire" :disabled="loading">
+      <button
+        class="button"
+        :disabled="loading"
+        @click="fire"
+      >
         Try: Sign in using passwordless
       </button>
       <span>{{ message }}</span>
     </div>
   </div>
 </template>
-
-<style scoped>
-.button {
-  padding: 16px 28px;
-  background: #0f207b;
-  color: #a4d7f0;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background: #1b33b3;
-}
-</style>
 
 <script>
 import {generateName} from "./RandomName";
@@ -59,6 +48,12 @@ export default {
       platform: false,
     };
   },
+  mounted() {
+    const cached = localStorage.getItem("isPlatformSupporterd");
+    if (cached) {
+      this.platform = true;
+    }
+  },
   methods: {
     async scriptload() {
       const res = await Passwordless.isPlatformSupported();
@@ -88,13 +83,22 @@ export default {
         this.loading = false;
       }
     },
-  },
-  mounted() {
-    const cached = localStorage.getItem("isPlatformSupporterd");
-    if (cached) {
-      this.platform = true;
-    }
   }
 };
 </script>
+
+<style scoped>
+.button {
+  padding: 16px 28px;
+  background: #0f207b;
+  color: #a4d7f0;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1b33b3;
+}
+</style>
 

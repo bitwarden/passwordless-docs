@@ -27,7 +27,7 @@ The FIDO2 specification defines several user identifiers which are or can be use
 - A **userId** is a unique string that represents the [WebAuthn Userhandle](https://www.w3.org/TR/webauthn-2/#dom-publickeycredentialuserentity-id). This value is not meant to be displayed to a user and should not contain personally identifiable information. Authentication attempts are made exclusively against `userId` values. Examples of a `userId` is a database primary key, such as an int `123` or a guid `a2bd8bf7-2145-4a5a-910f-8fdc9ef421d3`.
 - A **username** (Only for display purposes) A human-palatable identifier for a user account. It is intended only for display, i.e., aiding the user in determining the difference between user accounts with similar displayNames. Used in Browser UI's and never stored in the database. E.g. `pjfry@passwordless.dev`
 - A **display name** (Only for display purposes) is a human-palatable name for the account, which should be chosen by the user and only used in your application's UI. E.g. `Philip J. Fry`
-- An **alias** is a user-facing reference to a `userId` which allows sign-in with additional usernames, email addresses, etc. By default, aliases are hashed before being stored to preserve user privacy. Multiple aliases can be set for a `userId` by making requests to the `/alias` endpoint ([learn more](api.html#alias)), however the following rules should be taken into consideration when allowing users to create aliases:
+- An **alias** is a user-facing reference to a `userId` which allows sign-in with additional usernames, email addresses, etc. By default, aliases are hashed before being stored to preserve user privacy. Multiple aliases can be set for a `userId` by making requests to the `/alias` endpoint ([learn more](api.md#alias)), however the following rules should be taken into consideration when allowing users to create aliases:
   - An alias must be unique to the specified `userId`.
   - An alias must be no more than 250 characters.
   - A `userId` may have no more than 10 aliases associated with it.
@@ -50,7 +50,7 @@ Architecturally, Passwordless.dev consists of three key parts:
 
 ### API keys
 
-Registering an application with the [Passwordless.dev admin console](get-started.html#create-an-application) will create a set of API keys:
+Registering an application with the [Passwordless.dev admin console](get-started.md#create-an-application) will create a set of API keys:
 
 - **ApiKey**: A public API key, safe and intended to be included client side. It allows the browser to connect to our backend and initiate key negotiations and assertions. Public API keys are in the format:
   ```
@@ -85,8 +85,8 @@ A credential represents a FIDO2 authenticator that is registered by Passwordless
 ### Tokens
 In the regular course of business, Passwordless.dev uses two important types of ephemeral tokens:
 
-- A **registration token**, created by the private API from requests to the `/register/token` endpoint ([learn more](api.html#register-token)). Your frontend will register this token with the end-user's device for use in sign-in operations.
-- A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.html#signin)). Your backend will verify this token to complete a sign-in operation
+- A **registration token**, created by the private API from requests to the `/register/token` endpoint ([learn more](api.md#register-token)). Your frontend will register this token with the end-user's device for use in sign-in operations.
+- A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.md#signinwith)). Your backend will verify this token to complete a sign-in operation
 
 ## More terms
 

@@ -15,7 +15,7 @@ The number of applications you can create depends on your [plan](https://bitward
 The **Get Started** page walks you through the preliminary steps for getting Passwordless.dev running in your application. This information is very similar to what's documented in the [Get Started](get-started) guide.
 
 :::warning
-This page contains your [API keys](concepts.html#api-keys). It's important to download your API keys to a safe place, as they will be removed from the admin console after 7 days.
+This page contains your [API keys](concepts.md#api-keys). It's important to download your API keys to a safe place, as they will be removed from the admin console after 7 days.
 :::
 
 ### Users
@@ -24,11 +24,11 @@ The **Users** page allows you to monitor the end-users with passkeys registered 
 
 #### Credentials
 
-Credentials registered to each user are listed. [Learn what data is stored for each credential](concepts.html#credentials).
+Credentials registered to each user are listed. [Learn what data is stored for each credential](concepts.md#credential).
 
 #### Aliases
 
-Aliases registered to teach user are listed, however aliases that are hashed cannot be viewed here ([learn more](api.html#alias)).
+Aliases registered to teach user are listed, however aliases that are hashed cannot be viewed here ([learn more](api.md#alias)).
 
 ### Settings
 

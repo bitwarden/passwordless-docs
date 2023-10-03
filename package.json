@@ -1,8 +1,8 @@
 {
   "name": "passwordless-docs",
   "version": "0.0.1",
+  "license": "MIT",
   "description": "Documentation for Passwordless",
-  "main": "index.js",
   "authors": {
     "name": "Anders Åberg",
     "email": "anders@passwordless.dev"
@@ -10,13 +10,14 @@
   "repository": "/passwordless-docs",
   "scripts": {
     "dev": "vuepress dev src",
-    "build": "vuepress build src"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "vuepress": "^1.5.3"
+    "build": "vuepress build src",
+    "validate": "vuepress check-md src"
   },
   "dependencies": {
     "vuepress-plugin-code-switcher": "^1.1.0"
+  },
+  "devDependencies": {
+    "vuepress": "^1.5.3",
+    "vuepress-plugin-check-md": "^0.0.3"
   }
 }

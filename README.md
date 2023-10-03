@@ -8,8 +8,10 @@ Using Passwordless.dev means there's no need to read extensive W3C specification
 
 After you've cloned the repository, run the following commands:
 
-- `npm install` to install VuePress & dependencies
-- `npm run dev` to build and run the site on `http://localhost:8080`
+- `yarn install` to install VuePress & dependencies
+- `yarn run dev` to build and run the site on `http://localhost:8080`
+
+If you're making changes, make sure to run `yarn run lint` before committing to ensure your code is formatted correctly.
 
 ## Contribute
 

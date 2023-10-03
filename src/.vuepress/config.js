@@ -1,4 +1,4 @@
-const { description } = require('../../package')
+const { description } = require("../../package");
 
 module.exports = {
   /**
@@ -105,6 +105,7 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
-    'code-switcher'
+    'code-switcher',
+    'check-md'
   ]
 }

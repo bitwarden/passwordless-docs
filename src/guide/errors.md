@@ -44,7 +44,7 @@ You'll receive this error when you call `p.register(registerToken)`, but the val
 
 The token you pass to your frontend `p.register(token)` was not valid. Your backend call to generate the register token may have failed, and subsequently fed an error response `.register()` call rather than a token.
 
-Also see [invalid_token](#invalid_token).
+Also see [invalid_token](#invalid-token).
 
 #### Solution
 
@@ -90,19 +90,19 @@ The alias you are trying to use is already being used by a different userId.
 
 #### Solution
 
-You need to use a unique alias per userId. You can remove the alias from an existing user by calling the `/alias` endpoint. [Learn more](https://docs.passwordless.dev/guide/api.html#alias).
+You need to use a unique alias per userId. You can remove the alias from an existing user by calling the `/alias` endpoint. [Learn more](https://docs.passwordless.dev/guide/api.md#alias).
 
 ### missing_token
 
 This endpoint expected a token, but no token was present.
 
-Also see [invalid_token](#invalid_token).
+Also see [invalid_token](#invalid-token).
 
 ### invalid_token_format
 
 You'll receive this error when calling an endpoint with a token but the format is not properly encoded with base64url. Under normal circumstances, you should never encounter this issue or need to care about the encoding.
 
-Also see [invalid_token](#invalid_token).
+Also see [invalid_token](#invalid-token).
 
 ### invalid_attestation
 

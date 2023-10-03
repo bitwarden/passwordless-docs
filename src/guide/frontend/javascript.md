@@ -6,7 +6,7 @@ title: JS Client Reference
 
 The Passwordless.dev JavaScript client is used by your frontend to complete FIDO2 WebAuthn cryptographic exchanges with the browser.
 
-All methods **require** your API [public key](../concepts.html#api-keys) for authentication. Requests made to the [private API](../api) will instead require your API [private secret](../concepts.html#api-keys).
+All methods **require** your API [public key](../concepts.md#api-keys) for authentication. Requests made to the [private API](../api) will instead require your API [private secret](../concepts.md#api-keys).
 
 ## Installation
 
@@ -76,7 +76,7 @@ In all cases, your frontend must import the library to call the methods used by 
 
 ## .register()
 
-Call the `.register()` method to fetch a [registration token](../concepts.html#tokens) from your backend to authorize creation of a passkey on the end-user's device, for example:
+Call the `.register()` method to fetch a [registration token](../concepts.md#tokens) from your backend to authorize creation of a passkey on the end-user's device, for example:
 
 ```js
 // Instantiate a passwordless client using your API public key.
@@ -98,14 +98,14 @@ Successful implementation will prompt Passwordless.dev to negotiate creation of 
 
 ## .signinWith()
 
-Call the `.signin` methods to generate a [verification token](../concepts.html#tokens) that will be checked by your backend to complete a sign-in. There are a few different `.signinWith*()` methods available:
+Call the `.signin` methods to generate a [verification token](../concepts.md#tokens) that will be checked by your backend to complete a sign-in. There are a few different `.signinWith*()` methods available:
 
-| Method                      | Description                                                               | Example                                            |
-| --------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------- |
-| `.signinWithAutofill()`     | Triggers the Browser native autofill UI to select identity and sign in.   | `verify_token = await p.signinWithAutofill();`     |
-| `.signinWithDiscoverable()` | Triggers the Browsers native UI prompt to select identity and sign in.    | `verify_token = await p.signinWithDiscoverable();` |
-| `.signinWithAlias(alias)`   | Uses a [alias](api.html#alias) (e.g. email,username) to specify the user. | `verify_token = await p.signinWithAlias(email);`   |
-| `.signinWithId(id)`         | Uses the userId to specify the user.                                      | `verify_token = await p.signinWithId(userId);`     |
+| Method                      | Description                                                                | Example                                            |
+| --------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------- |
+| `.signinWithAutofill()`     | Triggers the Browser native autofill UI to select identity and sign in.    | `verify_token = await p.signinWithAutofill();`     |
+| `.signinWithDiscoverable()` | Triggers the Browsers native UI prompt to select identity and sign in.     | `verify_token = await p.signinWithDiscoverable();` |
+| `.signinWithAlias(alias)`   | Uses a [alias](../api.md#alias) (e.g. email,username) to specify the user. | `verify_token = await p.signinWithAlias(email);`   |
+| `.signinWithId(id)`         | Uses the userId to specify the user.                                       | `verify_token = await p.signinWithId(userId);`     |
 
 ```js
 // Instantiate a passwordless client using your API public key.
@@ -158,7 +158,7 @@ console.log(signinResponse.error) // undefined or a problem details object
 
 ```
 
-If the signin was successful, the `token` has a string value `"verify_xxyyzz"`. If the sign-in failed, the `error` property contains the [problem details](../errors.html#problem-details).
+If the signin was successful, the `token` has a string value `"verify_xxyyzz"`. If the sign-in failed, the `error` property contains the [problem details](../errors.md#problem-details).
 
 ## .isBrowserSupported()
 

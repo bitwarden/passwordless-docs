@@ -6,7 +6,7 @@ Passwordless.dev is a software toolkit that empowers web developers to build app
 This guide will skip over some conceptual basics in order to get you started as quickly as possible. Check out [Concepts](concepts) for in-depth discussion of the ideas used by Passwordless.dev.
 :::
 
-In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend) and [Frontend Framework Examples](frontend).
+In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend.md) and [Frontend Framework Examples](frontend.md).
 
 ## Sign up
 
@@ -21,7 +21,7 @@ When you sign up you'll land on the [admin console](admin-console), your primary
 
 ## Create an application
 
-Select the **Create Application** button and give your new application an **Application name** and **Description**. For each application, a set of [API keys](concepts.html#api-keys) will be generated. You'll use these API keys for authentication with the Passwordless.dev API. Save your public key and private secret somewhere safe, like [Bitwarden Secrets Manager](https://bitwarden.com/help/secrets-manager-overview).
+Select the **Create Application** button and give your new application an **Application name** and **Description**. For each application, a set of [API keys](concepts.md#api-keys) will be generated. You'll use these API keys for authentication with the Passwordless.dev API. Save your public key and private secret somewhere safe, like [Bitwarden Secrets Manager](https://bitwarden.com/help/secrets-manager-overview).
 
 ![Creating a Passwordless.dev application](../assets/images/guide/get-started_1.png)
 
@@ -106,7 +106,7 @@ In all cases, your frontend must import the library to call the methods used by 
 
 ## Build a registration flow
 
-Next, implement a workflow on your backend and frontend for registering a [passkey](concepts.html#passkey). At a high-level, here's what you'll be doing:
+Next, implement a workflow on your backend and frontend for registering a [passkey](concepts.md#passkeys). At a high-level, here's what you'll be doing:
 </br>
 </br>
 ![Register credential workflow](./register-diagram.png)
@@ -179,15 +179,13 @@ Successful implementation will prompt Passwordless.dev to negotiate creation of 
 
 ## Build a signin flow
 
-Next, implement a workflow on your backend and frontend for signing in with a [passkey](concepts.html#passkey). At a high-level, here's what you'll be doing:
-</br>
-</br>
+Next, implement a workflow on your backend and frontend for signing in with a [passkey](concepts.md#passkeys). At a high-level, here's what you'll be doing:
+
 ![Signin workflow flow](./signin-diagram.png)
-</br>
-</br>
+
 Code that you write must:
 
-1. On your frontend, initiate your sign-in and retrieve a [verification token](concepts.html#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential ([learn more](frontend/javascript.html#signin)), for example:
+1. On your frontend, initiate your sign-in and retrieve a [verification token](concepts.md#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential ([learn more](frontend/javascript.md#signinwith)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -216,7 +214,7 @@ if (verifiedUser.success === true) {
 
 Successful implementation will make a verification token available to the backend. In the above example, the client waits for the backend to return `true` (**step 2**) before proceeding to act on the confirmed sign-in.
 
-2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.html#signin-verify)) with generated token, for example:
+2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.md#signin-verify)) with generated token, for example:
 
 <Badge text="backend" type="warning"/>
 
@@ -273,6 +271,6 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 Congratulations on mastering a basic implementation of Passwordless.dev! Next:
 
-- Check out other [Backend Languages](backend) and [Frontend Frameworks](frontend) to find the best fit for your application.
+- Check out other [Backend Languages](backend.md) and [Frontend Frameworks](frontend.md) to find the best fit for your application.
 - Dig into the functionality offered by the [Admin Console](admin-console).
 - Figure out the [best plan](https://bitwarden.com/products/passwordless/#pricing) to fit the needs of your application or business.

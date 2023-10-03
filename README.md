@@ -6,7 +6,7 @@ Using Passwordless.dev means there's no need to read extensive W3C specification
 
 ## Build and run
 
-After you've cloned the repository, run the following commands: 
+After you've cloned the repository, run the following commands:
 
 - `npm install` to install VuePress & dependencies
 - `npm run dev` to build and run the site on `http://localhost:8080`

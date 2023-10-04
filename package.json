@@ -11,8 +11,8 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
-    "lint": "vuepress check-md src --fix && prettier . --write && eslint **/*.{js,vue} --fix",
-    "lint:check": "vuepress check-md src && prettier . --check && eslint **/*.{js,vue}"
+    "lint": "vuepress check-md src --fix && prettier . --write && eslint \"**/*.{js,vue}\" --fix",
+    "lint:check": "vuepress check-md src && prettier . --check && eslint \"**/*.{js,vue}\""
   },
   "dependencies": {
     "vuepress-plugin-code-switcher": "^1.1.0"

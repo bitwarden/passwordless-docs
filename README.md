@@ -13,6 +13,9 @@ After you've cloned the repository, run the following commands:
 
 If you're making changes, make sure to run `yarn run lint` before committing to ensure your code is formatted correctly.
 
+> **Note**:
+> If you are using Node 18+, you may need to set the `NODE_OPTIONS` environment variable to `--openssl-legacy-provider` to avoid errors like `error:0308010C:digital envelope routines::unsupported`.
+
 ## Contribute
 
 We encourage all contributions to docs.passwordless.dev, whether that's opening issues to request edits or additions, or adding them yourself in PRs. We recommend checking out the [VuePress documentation](https://vuepress.vuejs.org/guide/getting-started.html) for help writing correctly formatted Markdown.

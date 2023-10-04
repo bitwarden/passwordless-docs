@@ -25,7 +25,8 @@ module.exports = {
     [
       'script',
       { 'src': 'https://plausible.io/js/script.js', 'data-domain': 'docs.passwordless.dev' }
-    ]
+    ],
+    ['script', { src: '/scripts/hashScrollFix.js' }]
   ],
 
   /**

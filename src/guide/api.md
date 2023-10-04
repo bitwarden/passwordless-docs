@@ -2,7 +2,7 @@
 
 The **Passwordless.dev private API** is used by your backend to initiate key registrations, verify sign-ins, retrieve keys for end-users, and more.
 
-All requests made to this API **require** your API [private secret](concepts.md#api-keys) in the header for authentication. Requests made to the public API, which are facilitated by methods in the [JavaScript client](frontend/javascript), will instead require your API [public key](concepts.md#api-keys).
+All requests made to this API **require** your API [private secret](concepts.md#api-keys) in the header for authentication. Requests made to the public API, which are facilitated by methods in the [JavaScript client](frontend/javascript.md), will instead require your API [public key](concepts.md#api-keys).
 
 ## /register/token
 
@@ -315,7 +315,7 @@ HTTP API errors will have the following response body:
 
 The API returns HTTP Status codes for each request.
 
-In case you receive an error, you will also receive a JSON serialized summary of the error in the form of [problem details](errors/#problem-details). For more information, see the [Errors page](errors).
+In case you receive an error, you will also receive a JSON serialized summary of the error in the form of [problem details](errors/#problem-details). For more information, see the [Errors page](errors.md).
 
 | HTTP Code | Message                                | Status |
 | --------- | -------------------------------------- | ------ |

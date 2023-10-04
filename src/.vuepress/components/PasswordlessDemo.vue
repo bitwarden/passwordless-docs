@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Passwordless from '@passwordless/client';
 import { generateName } from './RandomName';
 
 // Passwordless integration
@@ -23,6 +24,7 @@ async function Register(alias) {
   await p.register(myToken);
   console.log('Register succeded');
 }
+
 async function Signin(alias) {
   const token = await p.signinWithAlias(alias);
   const user = await fetch(backendUrl + '/verify-signin?token=' + token).then((r) => r.json());

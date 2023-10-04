@@ -46,9 +46,9 @@ FIDO2 authenticators can be one of two types:
 
 Architecturally, Passwordless.dev consists of three key parts:
 
-- An [open-source client side library](frontend/javascript), used by your frontend to make requests to end-users browsers' WebAuthn API and requests to the Passwordless.dev APIs.
+- An [open-source client side library](frontend/javascript.md), used by your frontend to make requests to end-users browsers' WebAuthn API and requests to the Passwordless.dev APIs.
 - A public RESTful API, used by your frontend to complete FIDO2 WebAuthn cryptographic exchanges with the browser.
-- A [private RESTful API](api), used by your backend to initiate key registrations, verify sign-ins, and retrieve keys for end-users.
+- A [private RESTful API](api.md), used by your backend to initiate key registrations, verify sign-ins, and retrieve keys for end-users.
 
 ### API keys
 

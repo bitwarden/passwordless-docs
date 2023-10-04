@@ -300,5 +300,5 @@ public record AuthenticatedUserModel(string Username, string Email);
 
 If you find yourself requiring greater flexibility, we invite you to explore our JavaScript client library and .NET SDK. This option is particularly suitable if you seek more granular control over the [ASP.NET Identity](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity) framework or aspire to undertake a fully customized implementation.
 
-- [JavaScript client](javascript)
-- [.NET](../backend/dotnet)
+- [JavaScript client](javascript.md)
+- [.NET](../backend/dotnet.md)

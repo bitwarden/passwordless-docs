@@ -7,7 +7,7 @@
     "name": "Anders Åberg",
     "email": "anders@passwordless.dev"
   },
-  "repository": "/passwordless-docs",
+  "repository": "https://github.com/passwordless/docs",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
@@ -24,7 +24,7 @@
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "vuepress": "^1.5.3",
+    "vuepress": "^1.9.10",
     "vuepress-plugin-check-md": "^0.0.3"
   }
 }

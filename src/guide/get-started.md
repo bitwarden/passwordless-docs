@@ -1,12 +1,12 @@
 # Get Started
 
-Passwordless.dev is a software toolkit that empowers web developers to build applications that easily authenticate end-users using [FIDO2 WebAuthn passkeys](concepts). In this guide, we'll chart the quickest path to implementing Passwordless.dev for your website.
+Passwordless.dev is a software toolkit that empowers web developers to build applications that easily authenticate end-users using [FIDO2 WebAuthn passkeys](concepts.md). In this guide, we'll chart the quickest path to implementing Passwordless.dev for your website.
 
 ::: tip
-This guide will skip over some conceptual basics in order to get you started as quickly as possible. Check out [Concepts](concepts) for in-depth discussion of the ideas used by Passwordless.dev.
+This guide will skip over some conceptual basics in order to get you started as quickly as possible. Check out [Concepts](concepts.md) for in-depth discussion of the ideas used by Passwordless.dev.
 :::
 
-In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend.md) and [Frontend Framework Examples](frontend.md).
+In this guide we'll provide JavaScript examples, however you can check out sample code, guidelines, and tips for other toolkits in [Backend Language Examples](backend/index.md) and [Frontend Framework Examples](frontend/index.md).
 
 ## Sign up
 
@@ -35,7 +35,7 @@ It's important to download your API keys to a safe place, as they will be remove
 
 ## Install the library
 
-Next, install the [Passwordless.dev JavaScript client library](frontend/javascript), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
+Next, install the [Passwordless.dev JavaScript client library](frontend/javascript.md), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
 
 <CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
 <template v-slot:bash1>
@@ -114,7 +114,7 @@ Next, implement a workflow on your backend and frontend for registering a [passk
 </br>
 Let's break down these steps:
 
-1. On your backend, generate a [registration token](api#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts/#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:
+1. On your backend, generate a [registration token](api.md#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts.md/#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:
 
 <Badge text="backend" type="warning"/>
 
@@ -146,10 +146,10 @@ Successful implementation will create a registration token that is returned as a
 ```
 
 ::: tip
-Should your API request fail, you will receive a error response with `json`-formatted [problem details](errors).
+Should your API request fail, you will receive a error response with `json`-formatted [problem details](errors.md).
 :::
 
-2. On your frontend, initiate the WebAuthn process to create and store a passkey using the generated registration token ([learn more](frontend/javascript)), for example:
+2. On your frontend, initiate the WebAuthn process to create and store a passkey using the generated registration token ([learn more](frontend/javascript.md)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -271,6 +271,6 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 Congratulations on mastering a basic implementation of Passwordless.dev! Next:
 
-- Check out other [Backend Languages](backend.md) and [Frontend Frameworks](frontend.md) to find the best fit for your application.
-- Dig into the functionality offered by the [Admin Console](admin-console).
+- Check out other [Backend Languages](backend/index.md) and [Frontend Frameworks](frontend/index.md) to find the best fit for your application.
+- Dig into the functionality offered by the [Admin Console](admin-console.md).
 - Figure out the [best plan](https://bitwarden.com/products/passwordless/#pricing) to fit the needs of your application or business.

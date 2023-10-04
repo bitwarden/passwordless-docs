@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Passwordless from '@passwordless/client';
+import Passwordless from '@passwordlessdev/passwordless-client';
 import { generateName } from './RandomName';
 
 // Passwordless integration

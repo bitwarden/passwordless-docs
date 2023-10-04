@@ -1,0 +1,17 @@
+{
+  "extends": ["eslint:recommended", "plugin:vue/recommended", "prettier"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    // By default, ESLint ignores files or directories that start with a dot,
+    // so we need to explicitly un-ignore the Vuepress directory.
+    "!src/.vuepress/"
+  ],
+  "rules": {
+    "no-unused-vars": "warn"
+  }
+}

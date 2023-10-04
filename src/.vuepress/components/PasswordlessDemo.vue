@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="platform">
-      <button class="button" @click="fire" :disabled="loading">
+      <button class="button" :disabled="loading" @click="fire">
         Try: Sign in using passwordless
       </button>
       <span>{{ message }}</span>
@@ -9,22 +9,8 @@
   </div>
 </template>
 
-<style scoped>
-.button {
-  padding: 16px 28px;
-  background: #0f207b;
-  color: #a4d7f0;
-  border: none;
-  border-radius: 100px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background: #1b33b3;
-}
-</style>
-
 <script>
+import Passwordless from '@passwordlessdev/passwordless-client';
 import { generateName } from './RandomName';
 
 // Passwordless integration
@@ -38,6 +24,7 @@ async function Register(alias) {
   await p.register(myToken);
   console.log('Register succeded');
 }
+
 async function Signin(alias) {
   const token = await p.signinWithAlias(alias);
   const user = await fetch(backendUrl + '/verify-signin?token=' + token).then((r) => r.json());
@@ -52,6 +39,12 @@ export default {
       message: '',
       platform: false
     };
+  },
+  mounted() {
+    const cached = localStorage.getItem('isPlatformSupported');
+    if (cached) {
+      this.platform = true;
+    }
   },
   methods: {
     async scriptload() {
@@ -81,12 +74,21 @@ export default {
         this.loading = false;
       }
     }
-  },
-  mounted() {
-    const cached = localStorage.getItem('isPlatformSupporterd');
-    if (cached) {
-      this.platform = true;
-    }
   }
 };
 </script>
+
+<style scoped>
+.button {
+  padding: 16px 28px;
+  background: #0f207b;
+  color: #a4d7f0;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1b33b3;
+}
+</style>

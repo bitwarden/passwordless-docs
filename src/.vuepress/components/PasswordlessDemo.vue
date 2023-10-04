@@ -1,11 +1,7 @@
 <template>
   <div>
     <div v-if="platform">
-      <button
-        class="button"
-        :disabled="loading"
-        @click="fire"
-      >
+      <button class="button" :disabled="loading" @click="fire">
         Try: Sign in using passwordless
       </button>
       <span>{{ message }}</span>

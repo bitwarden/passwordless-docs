@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint:recommended", "plugin:vue/recommended"],
+  "extends": ["eslint:recommended", "plugin:vue/recommended", "prettier"],
   "env": {
     "browser": true,
     "es6": true,

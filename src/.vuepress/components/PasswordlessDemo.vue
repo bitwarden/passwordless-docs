@@ -41,7 +41,7 @@ export default {
     };
   },
   mounted() {
-    const cached = localStorage.getItem('isPlatformSupporterd');
+    const cached = localStorage.getItem('isPlatformSupported');
     if (cached) {
       this.platform = true;
     }

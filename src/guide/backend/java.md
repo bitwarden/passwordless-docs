@@ -1,74 +1,140 @@
 # Java 1.8+
 
+## Getting Started
+
+1. Add to your `pom.xml` the repository where our package is hosted:
+```xml
+<repositories>
+    <repository>
+        <id>ossrh</id>
+        <url>https://s01.oss.sonatype.org/content/repositories/releases</url>
+    </repository>
+</repositories> 
+```
+
+2. Add to your `pom.xml` the dependency to our package:
+```xml
+<dependency>
+    <groupId>com.bitwarden</groupId>
+    <artifactId>passwordless</artifactId>
+    <version>1.0.5</version>
+    <classifier>javadoc</classifier>
+</dependency>
+```
+
+## Example
+
 This Java implementation is compatible with Java 1.8 and above. A [register](../api#register-token) function might look something like:
 
+### Create `PasswordlessClient` instance:
+
 ```java
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
+import com.bitwarden.passwordless.*;
 
-public class CreateToken {
+import java.io.*;
 
-    // Define the API secret key used for authentication with the remote server
-    private static final String API_SECRET = "YOUR_API_SECRET";
+public class PasswordlessJavaSdkExample implements Closeable {
 
-    public static void main(String[] args) throws IOException {
-        // Get the alias from the command-line argument
-        String alias = args[0];
+    private final PasswordlessClient client;
 
-        // Create a URL object with the target URL
-        URL url = new URL("https://v4.passwordless.dev/register/token");
-        // Open an HTTP connection to the specified URL
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        // Set the request method to POST
-        connection.setRequestMethod("POST");
-        // Set the request headers for the API secret and content type
-        connection.setRequestProperty("ApiSecret", API_SECRET);
-        connection.setRequestProperty("Content-Type", "application/json");
+    public PasswordlessClientExample() {
+        PasswordlessOptions options = PasswordlessOptions.builder()
+                .apiSecret("your_api_secret")
+                .build();
 
-        // Build the JSON payload for the request as a string
-        String payload = "{" +
-                "  \"userId\": " + getRandomInt() + "," +
-                "  \"username\": \"" + alias + "\", " +
-                "  \"aliases\": [\"" + alias + "\"]" +
-                "}";
-
-        // Enable output for the connection to allow writing data
-        connection.setDoOutput(true);
-        // Write the payload to the connection's output stream using a PrintWriter
-        try (PrintWriter writer = new PrintWriter(connection.getOutputStream())) {
-            writer.print(payload);
-        }
-
-        // Get the response code and response message from the connection
-        int responseCode = connection.getResponseCode();
-        String responseMessage = connection.getResponseMessage();
-        // Get the response content as an input stream
-        InputStream responseInputStream = connection.getInputStream();
-
-        // Read the response content using a Scanner
-        Scanner scanner = new Scanner(responseInputStream);
-        String responseData = scanner.nextLine();
-
-        // Print the response code, message, and data
-        System.out.println("passwordless api response: " + responseCode + " " + responseMessage + " " + responseData);
-
-        // Check if the response code is 200 (Success) and print the received token
-        if (responseCode == 200) {
-            System.out.println("received token: " + responseData);
-        } else {
-            // Handle or log any API error
-            // Add error handling or logging code here if needed
-        }
+        client = PasswordlessClientBuilder.create(options)
+                .build();
     }
 
-    // Function to generate a random integer value
-    private static int getRandomInt() {
-        // Multiply a random float (0 to 1) by 1e9 (one billion) and return the integer value
-        return (int) (1e9 * Math.random());
+    @Override
+    public void close() throws IOException {
+        client.close();
     }
 }
 ```
+
+**Note:** You need to close the underlying http client resources when you are done
+using `PasswordlessClient` with `close` method.
+
+### Register a passkey
+
+```java
+import com.bitwarden.passwordless.*;
+import com.bitwarden.passwordless.error.*;
+import com.bitwarden.passwordless.model.*;
+
+import java.io.*;
+import java.util.*;
+
+public class PasswordlessJavaSdkExample {
+
+    private final PasswordlessClient client;
+
+    // Constructor
+
+    public String getRegisterToken(String alias) throws PasswordlessApiException, IOException {
+
+        // Get existing userid from session or create a new user.
+        String userId = UUID.randomUUID().toString();
+
+        // Options to give the Api
+        RegisterToken registerToken = RegisterToken.builder()
+                // your user id
+                .userId(userId)
+                // e.g. user email, is shown in browser ui
+                .username(alias)
+                // Optional: Link this userid to an alias (e.g. email)
+                .aliases(Arrays.asList(alias))
+                .build();
+
+        RegisteredToken response = client.registerToken(registerToken);
+
+        // return this token
+        return response.getToken();
+    }
+}
+```
+
+### Verify user
+
+```java
+import com.bitwarden.passwordless.*;
+import com.bitwarden.passwordless.error.*;
+import com.bitwarden.passwordless.model.*;
+
+import java.io.*;
+
+public class PasswordlessJavaSdkExample {
+
+    private final PasswordlessClient client;
+
+    // Constructor
+
+    public VerifiedUser verifySignInToken(String token) throws PasswordlessApiException, IOException {
+
+        VerifySignIn signInVerify = VerifySignIn.builder()
+                .token(token)
+                .build();
+
+        // Sign the user in, set a cookie, etc,
+        return client.signIn(signInVerify);
+    }
+}
+```
+
+### Customization
+
+Customize `PasswordlessOptions` by providing `apiSecret` with your Application's Private API Key.
+You can also change the `apiUrl` if you prefer to self-host.
+
+Customize `PasswordlessClientBuilder` by providing `httpClient` [CloseableHttpClient][apache-http-client] instance
+and `objectMapper` [ObjectMapper][fasterxml-jackson-databind].
+
+### Examples
+
+See [Passwordless Java Example](https://github.com/passwordless/passwordless-java-example) for Spring Boot 3 application
+using this library.
+
+
+[apache-http-client]:https://hc.apache.org/httpcomponents-client-5.2.x/index.html
+[fasterxml-jackson-databind]:https://github.com/FasterXML/jackson-databind

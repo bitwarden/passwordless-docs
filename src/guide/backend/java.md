@@ -3,16 +3,18 @@
 ## Getting Started
 
 1. Add to your `pom.xml` the repository where our package is hosted:
+
 ```xml
 <repositories>
     <repository>
         <id>ossrh</id>
         <url>https://s01.oss.sonatype.org/content/repositories/releases</url>
     </repository>
-</repositories> 
+</repositories>
 ```
 
 2. Add to your `pom.xml` the dependency to our package:
+
 ```xml
 <dependency>
     <groupId>com.bitwarden</groupId>
@@ -135,6 +137,5 @@ and `objectMapper` [ObjectMapper][fasterxml-jackson-databind].
 See [Passwordless Java Example](https://github.com/passwordless/passwordless-java-example) for Spring Boot 3 application
 using this library.
 
-
-[apache-http-client]:https://hc.apache.org/httpcomponents-client-5.2.x/index.html
-[fasterxml-jackson-databind]:https://github.com/FasterXML/jackson-databind
+[apache-http-client]: https://hc.apache.org/httpcomponents-client-5.2.x/index.html
+[fasterxml-jackson-databind]: https://github.com/FasterXML/jackson-databind

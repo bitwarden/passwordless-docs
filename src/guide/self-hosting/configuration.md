@@ -47,7 +47,6 @@ By default, the container will use Sqlite if nothing else is specified. The data
 
 | Key                   | Default   | Required | Description                                                                                                                                           |
 |-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| BWP_ENABLE_ADMIN      | true      | N        | [true/false]                                                                                                                                          |
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
 | BWP_PORT              | 5701      | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |

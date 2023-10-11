@@ -20,7 +20,6 @@
     <groupId>com.bitwarden</groupId>
     <artifactId>passwordless</artifactId>
     <version>1.0.5</version>
-    <classifier>javadoc</classifier>
 </dependency>
 ```
 

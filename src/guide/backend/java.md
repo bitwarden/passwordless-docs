@@ -2,18 +2,7 @@
 
 ## Getting Started
 
-1. Add to your `pom.xml` the repository where our package is hosted:
-
-```xml
-<repositories>
-    <repository>
-        <id>ossrh</id>
-        <url>https://s01.oss.sonatype.org/content/repositories/releases</url>
-    </repository>
-</repositories>
-```
-
-2. Add to your `pom.xml` the dependency to our package:
+Add to your `pom.xml` the dependency to our package:
 
 ```xml
 <dependency>

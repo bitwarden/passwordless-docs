@@ -1,4 +1,4 @@
-# Java 1.8+
+# Java
 
 ## Getting Started
 
@@ -14,7 +14,7 @@ Add to your `pom.xml` the dependency to our package:
 
 ## Example
 
-This Java implementation is compatible with Java 1.8 and above. A [register](../api#register-token) function might look something like:
+This Java implementation is compatible with Java 8 and above. A [register](../api#register-token) function might look something like:
 
 ### Create `PasswordlessClient` instance:
 

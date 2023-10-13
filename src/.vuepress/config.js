@@ -71,7 +71,7 @@ module.exports = {
               collapsable: true,
               children: [
                 ['/guide/backend/dotnet', '.NET'],
-                ['/guide/backend/java', 'Java 1.8+'],
+                ['/guide/backend/java', 'Java'],
                 ['/guide/backend/nodejs', 'Node.js'],
                 ['/guide/backend/php', 'PHP'],
                 ['/guide/backend/python2', 'Python 2'],

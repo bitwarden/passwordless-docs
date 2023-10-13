@@ -1,19 +1,8 @@
-# Java 1.8+
+# Java
 
 ## Getting Started
 
-1. Add to your `pom.xml` the repository where our package is hosted:
-
-```xml
-<repositories>
-    <repository>
-        <id>ossrh</id>
-        <url>https://s01.oss.sonatype.org/content/repositories/releases</url>
-    </repository>
-</repositories>
-```
-
-2. Add to your `pom.xml` the dependency to our package:
+Add to your `pom.xml` the dependency to our package:
 
 ```xml
 <dependency>
@@ -25,7 +14,7 @@
 
 ## Example
 
-This Java implementation is compatible with Java 1.8 and above. A [register](../api#register-token) function might look something like:
+This Java implementation is compatible with Java 8 and above. A [register](../api#register-token) function might look something like:
 
 ### Create `PasswordlessClient` instance:
 

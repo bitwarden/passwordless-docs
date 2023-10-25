@@ -1,6 +1,6 @@
 # Python 3+
 
-## Getting Started 
+## Getting Started
 
 Install with `python -m pip install passwordless`.
 

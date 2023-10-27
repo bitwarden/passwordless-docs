@@ -23,7 +23,7 @@ In all cases, your frontend must import the library to call the methods in this 
 
 ```js
 import { Client } from '@passwordlessdev/passwordless-client';
-const p = new Client({ apiKey: '' });
+const p = new Client({ apiKey: '', rpName: 'My App' });
 ```
 
 </template>
@@ -37,7 +37,7 @@ In all cases, your frontend must import the library to call the methods in this 
 
 ```js
 import { Client } from '@passwordlessdev/passwordless-client';
-const p = new Client({ apiKey: '' });
+const p = new Client({ apiKey: '', rpName: 'My App' });
 ```
 
 </template>
@@ -48,7 +48,7 @@ In all cases, your frontend must import the library to call the methods in this 
 ```html
 <script type="module">
   import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
-  const p = new Client({ apiKey: '' });
+  const p = new Client({ apiKey: '', rpName: 'My App' });
 </script>
 ```
 
@@ -81,7 +81,8 @@ Call the `.register()` method to fetch a [registration token](../concepts.md#tok
 ```js
 // Instantiate a passwordless client using your API public key.
 const p = new Passwordless.Client({
-  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8'
+  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8', 
+  rpName: 'My App'
 });
 
 // Fetch the registration token from the backend.
@@ -110,7 +111,8 @@ Call the `.signin` methods to generate a [verification token](../concepts.md#tok
 ```js
 // Instantiate a passwordless client using your API public key.
 const p = new Passwordless.Client({
-  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8'
+  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8',
+  rpName: 'My App', // Required, human readable name of your app
 });
 
 // Generate a verification token for the user.

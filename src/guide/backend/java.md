@@ -122,7 +122,7 @@ and `objectMapper` [ObjectMapper][fasterxml-jackson-databind].
 
 ### Examples
 
-See [Passwordless Java Example](https://github.com/passwordless/passwordless-java-example) for Spring Boot 3 application
+See [Passwordless Java Example](https://github.com/passwordless/passwordless-java/tree/main/examples/spring-boot-3-jdk-17) for Spring Boot 3 application
 using this library.
 
 [apache-http-client]: https://hc.apache.org/httpcomponents-client-5.2.x/index.html

@@ -91,4 +91,4 @@ public async Task<IActionResult> VerifySignInToken(string token)
 
 ## References
 
-- [ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet-example).
+- [ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet/tree/main/examples/Passwordless.Example).

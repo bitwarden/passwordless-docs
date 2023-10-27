@@ -81,7 +81,7 @@ Call the `.register()` method to fetch a [registration token](../concepts.md#tok
 ```js
 // Instantiate a passwordless client using your API public key.
 const p = new Passwordless.Client({
-  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8', 
+  apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8',
   rpName: 'My App'
 });
 
@@ -112,7 +112,7 @@ Call the `.signin` methods to generate a [verification token](../concepts.md#tok
 // Instantiate a passwordless client using your API public key.
 const p = new Passwordless.Client({
   apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8',
-  rpName: 'My App', // Required, human readable name of your app
+  rpName: 'My App' // Required, human readable name of your app
 });
 
 // Generate a verification token for the user.

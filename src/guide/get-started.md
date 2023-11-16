@@ -114,7 +114,7 @@ Next, implement a workflow on your backend and frontend for registering a [passk
 </br>
 Let's break down these steps:
 
-1. On your backend, generate a [registration token](api.md#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts.md/#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:
+1. On your backend, generate a [registration token](api.md#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts.md#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:
 
 <Badge text="backend" type="warning"/>
 

@@ -58,15 +58,15 @@ Calling `POST /passwordless-register` will create our `IdentityUser` and return 
 @using Passwordless.AspNetCore
 @model RegisterModel
 @inject IOptions<PasswordlessAspNetCoreOptions> PasswordlessOptions;
-    
-@{ 
-    ViewData["Title"] = "Register"; 
+
+@{
+    ViewData["Title"] = "Register";
 }
-    
+
 <h1>@ViewData["Title"]</h1>
 
-@{ 
-    var canAddPasskeys = ViewData["CanAddPasskeys"] is true; 
+@{
+    var canAddPasskeys = ViewData["CanAddPasskeys"] is true;
 }
 
 <div class="row">

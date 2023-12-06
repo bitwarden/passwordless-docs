@@ -2,8 +2,8 @@
 
 We have added some health-check endpoints to the API, so that you can monitor the status of both the AdminConsole and the API.
 
-
 ## API
+
 ### Simple
 
 The simple health-check endpoint does not check any dependencies, and only validates that the given endpoint is reachable. You can use it to check whether your container is still running, or to validate your port mapping or DNS configuration.
@@ -32,20 +32,20 @@ For a successful response, like the one below you may find the following keys un
 
 ```json
 {
-    "status": "Healthy",
-    "elapsedMilliseconds": 72.8363,
-    "results": {
-        "orm": {
-            "status": "Healthy",
-            "elapsedMilliseconds": 72.3092,
-            "data": {}
-        },
-        "sqlite": {
-            "status": "Healthy",
-            "elapsedMilliseconds": 12.8241,
-            "data": {}
-        }
+  "status": "Healthy",
+  "elapsedMilliseconds": 72.8363,
+  "results": {
+    "orm": {
+      "status": "Healthy",
+      "elapsedMilliseconds": 72.3092,
+      "data": {}
+    },
+    "sqlite": {
+      "status": "Healthy",
+      "elapsedMilliseconds": 12.8241,
+      "data": {}
     }
+  }
 }
 ```
 
@@ -65,9 +65,9 @@ You can spot this by looking at the `results` key, which will contain the follow
 
 ```json
 {
-    "status": "Healthy",
-    "elapsedMilliseconds": 1.8225,
-    "results": {}
+  "status": "Healthy",
+  "elapsedMilliseconds": 1.8225,
+  "results": {}
 }
 ```
 
@@ -77,15 +77,15 @@ A valid `smtp` configuration, would return a response like below:
 
 ```json
 {
-    "status": "Healthy",
-    "elapsedMilliseconds": 1.8225,
-    "results": {
-        "smtp": {
-            "status": "Healthy",
-            "elapsedMilliseconds": 1.4473,
-            "data": {}
-        }
+  "status": "Healthy",
+  "elapsedMilliseconds": 1.8225,
+  "results": {
+    "smtp": {
+      "status": "Healthy",
+      "elapsedMilliseconds": 1.4473,
+      "data": {}
     }
+  }
 }
 ```
 

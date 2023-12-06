@@ -2,8 +2,8 @@
 
 ## Simple example #1
 
-* Admin console is accessible on `http://localhost:5042/`
-* No permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be lost.
+- Admin console is accessible on `http://localhost:5042/`
+- No permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be lost.
 
 ```bash
 docker pull bitwarden/passwordless
@@ -15,8 +15,8 @@ docker run \
 
 ## Simple example #2
 
-* Admin console is accessible on `http://localhost:5042/`
-* Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
+- Admin console is accessible on `http://localhost:5042/`
+- Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
 docker pull bitwarden/passwordless
@@ -29,8 +29,8 @@ docker run \
 
 ## Example with SSL
 
-* Admin console is accessible on `https://localhost:5042/`
-* Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
+- Admin console is accessible on `https://localhost:5042/`
+- Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
 docker pull bitwarden/passwordless

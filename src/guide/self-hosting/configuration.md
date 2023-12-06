@@ -12,9 +12,10 @@ You will want to mount persistent storage for your running Docker container. It 
 
 :::warning
 Failure to mount persistent storage, will:
+
 - Result in loss of configuration if you're dependent on `/etc/bitwarden_passwordless/config.json`.
 - Result in loss of data only when using Sqlite.
-:::
+  :::
 
 ```bash
 $ docker run -d \
@@ -28,13 +29,14 @@ $ docker run -d \
 ### Sqlite
 
 By default, the container will use Sqlite if nothing else is specified. The data will be stored in the following locations:
+
 - /etc/bitwarden_passwordless/api.db
 - /etc/bitwarden_passwordless/admin.db
 
 ### Microsoft SQL Server
 
 | Key                   | Default | Required | Description                                                                               |
-|-----------------------|---------|----------|-------------------------------------------------------------------------------------------|
+| --------------------- | ------- | -------- | ----------------------------------------------------------------------------------------- |
 | BWP_DB_PROVIDER       |         | Y        | [sqlserver/mssql] Both values will allow you to use Microsoft SQL Server.                 |
 | BWP_DB_SERVER         |         | Y        | Hostname, for example 'localhost' or 'db.example.com'.                                    |
 | BWP_DB_PORT           | 1433    | N        | [0-65536]                                                                                 |
@@ -46,7 +48,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 ## Environment variables
 
 | Key                   | Default   | Required | Description                                                                                                                                           |
-|-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
 | BWP_PORT              | 5701      | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |
@@ -67,13 +69,14 @@ Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/T
 ## E-mail
 
 By default, all e-mail communication happens to a file:
-* `/app/Admin/mail.md`
-* `/app/Api/mail.md`.
+
+- `/app/Admin/mail.md`
+- `/app/Api/mail.md`.
 
 It's recommended you configure the SMTP parameters below:
 
 | Key                  | Default | Required | Description                                                                             |
-|----------------------|---------|----------|-----------------------------------------------------------------------------------------|
+| -------------------- | ------- | -------- | --------------------------------------------------------------------------------------- |
 | BWP_SMTP_FROM        |         | Y        | Use your sender e-mail.                                                                 |
 | BWP_SMTP_USERNAME    |         | Y        |                                                                                         |
 | BWP_SMTP_PASSWORD    |         | Y        |                                                                                         |
@@ -85,9 +88,10 @@ It's recommended you configure the SMTP parameters below:
 
 :::warning
 To verify e-mailing is working correctly:
-* Create an admin with a new organization.
-* Invite an admin to an existing organization.
-:::
+
+- Create an admin with a new organization.
+- Invite an admin to an existing organization.
+  :::
 
 ### SendGrid example with SSL
 
@@ -122,3 +126,4 @@ If the following keys do not exist, they will be generated automatically:
 - SALT_KEY
 
 It is recommended that you have them generated automatically, the first time you run `bitwarden/passwordless`.
+```

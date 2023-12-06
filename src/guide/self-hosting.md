@@ -11,12 +11,13 @@ docker run --publish 8080:5701 --volume /Users/username/passwordless_cache:/etc/
 ```
 
 You should now be able to access your own `Passwordless.dev` instance at:
-* Admin Console: `http://localhost:8080`
-* API: `http://localhost:8080/api`
+
+- Admin Console: `http://localhost:8080`
+- API: `http://localhost:8080/api`
 
 ## More Information
 
-* [Configuration](self-hosting/configuration)
-* [Running Locally](self-hosting/running-locally) <Badge text="example" type="warning"/>
-* [Advanced](self-hosting/advanced)
-* [Health-checks](self-hosting/health-checks)
+- [Configuration](self-hosting/configuration)
+- [Running Locally](self-hosting/running-locally) <Badge text="example" type="warning"/>
+- [Advanced](self-hosting/advanced)
+- [Health-checks](self-hosting/health-checks)

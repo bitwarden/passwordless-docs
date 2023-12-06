@@ -1,56 +1,91 @@
 # Python 3+
 
-This Python 3.8+ implementation is done in only a few lines of code. A [register](https://docs.passwordless.dev/guide/api/#register-token) function might look something like:
+## Getting Started
+
+Install with `python -m pip install passwordless`.
+
+### Example
+
+This Python 3 implementation is compatible with Python 3.8+ and above. A [register](../api#register-token) function might look something like:
+
+### Create `PasswordlessClient` instance:
 
 ```python
-import requests  # Import the requests library for making HTTP requests
-import json      # Import the json library for working with JSON data
-import random    # Import the random library to generate random numbers
+from passwordless import (
+    PasswordlessClient,
+    PasswordlessClientBuilder,
+    PasswordlessOptions
+)
 
-# Define the API secret key used for authentication with the remote server
-API_SECRET = "YOUR_API_SECRET"
 
-# Function to generate a random integer value
-def get_random_int():
-  # Multiply a random float (0 to 1) by 1e9 (one billion) and return the integer value
-  return int(1e9 * random.random())
+class PasswordlessPythonSdkExample:
+    client: PasswordlessClient
 
-# Function to create a token using the given alias
-def create_token(alias):
-  # Prepare the payload for the API request, including the user ID, username, and aliases
-  payload = {
-    "userId": get_random_int(),
-    "username": alias,
-    "aliases": [alias]
-  }
+    def __init__(self):
+        options = PasswordlessOptions("your_api_secret")
 
-  # Make a POST request to the specified URL, sending the payload as JSON, and including headers for the API secret and content type
-  response = requests.post("https://v4.passwordless.dev/register/token", json=payload, headers={"ApiSecret": API_SECRET, "Content-Type": "application/json"})
+        self.client = PasswordlessClientBuilder(options).build()
 
-  # Decode the JSON response into a Python dictionary
-  response_data = response.json()
-
-  # Print the response status code, text, and data
-  print("passwordless api response", response.status_code, response.text, response_data)
-
-  # Check if the response status code is 200 (Success) and print the received token
-  if response.status_code == 200:
-    print("received token: ", response_data["token"])
-  else:
-    # Handle or log any API error
-    # Add error handling or logging code here if needed
-    pass
-
-  # Return the response data
-  return response_data
-
-# Check if the script is being run as the main module
-if __name__ == "__main__":
-  # Call the create_token function with the alias "alias" and store the response
-  response_data = create_token("alias")
 ```
 
-## References
+### Register a passkey
 
-* [Open the example Python 3.8+ application using Flask on GitHub
-](https://github.com/passwordless/sdk-collection/tree/main/Python%203.8-Flask)
+```python
+import uuid
+from passwordless import (
+    PasswordlessClient,
+    RegisterToken,
+    RegisteredToken
+)
+
+
+class PasswordlessPythonSdkExample:
+    client: PasswordlessClient
+
+    def get_register_token(self, alias: str) -> str:
+        # Get existing userid from session or create a new user.
+        user_id = str(uuid.uuid4())
+
+        # Options to give the Api
+        register_token = RegisterToken(
+            user_id=user_id,  # your user id
+            username=alias,  # e.g. user email, is shown in browser ui
+            aliases=[alias]  # Optional: Link this userid to an alias (e.g. email)
+        )
+
+        response: RegisteredToken = self.client.register_token(register_token)
+
+        # return this token
+        return response.token
+```
+
+### Verify user
+
+```python
+from passwordless import (
+    PasswordlessClient,
+    VerifySignIn,
+    VerifiedUser
+)
+
+
+class PasswordlessPythonSdkExample:
+    client: PasswordlessClient
+
+    def verify_sign_in_token(self, token: str) -> VerifiedUser:
+        verify_sign_in = VerifySignIn(token)
+
+        # Sign the user in, set a cookie, etc,
+        return self.client.sign_in(verify_sign_in)
+```
+
+### Customization
+
+Customize `PasswordlessOptions` by providing `api_secret` with your Application's Api Secret.
+You can also change the `api_url` if you prefer to self-host.
+
+Customize `PasswordlessClientBuilder` by providing `session` [requests Session](https://requests.readthedocs.io/en/latest/) instance.
+
+### Examples
+
+See [Passwordless Python Example](https://github.com/passwordless/passwordless-python/tree/main/examples/flask) for Flash Web application.

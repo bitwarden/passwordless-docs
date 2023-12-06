@@ -6,7 +6,7 @@ Install NuGet packages:
 dotnet add package Passwordless
 ```
 
-This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](api/#register-token) function might look something like:
+This ASP.NET Core implementation uses .NET 7 and some JavaScript for a simple passwordless.dev implementation. A [register](../api.md#register-token) function might look something like:
 
 The `Startup` class is responsible for configuring and setting up various services, middleware, and components that the application will use during its lifetime.
 
@@ -17,7 +17,7 @@ public class Startup
     {
         Configuration = configuration;
     }
-    
+
     private IConfiguration Configuration { get; }
 
     ...
@@ -28,7 +28,7 @@ public class Startup
     {
         // add support for routing to controllers
         services.AddControllers();
-        
+
         // Inject the Passwordless SDK
         services.Configure<PasswordlessOptions>(Configuration.GetRequiredSection("Passwordless"));
         services.AddPasswordlessSdk(options =>
@@ -38,7 +38,7 @@ public class Startup
     }
 ```
 
- Newer templates might not have this, in which case you will need to configure this in your `Program` class instead. In this case you can  access `Services` and `Configuration` properties on `WebApplicationBuilder`.
+Newer templates might not have this, in which case you will need to configure this in your `Program` class instead. In this case you can access `Services` and `Configuration` properties on `WebApplicationBuilder`.
 
 It would then be as simple to inject `IPasswordlessClient` in the class where you want to use it. Using the SDK for registering a token would then look like:
 
@@ -90,4 +90,5 @@ public async Task<IActionResult> VerifySignInToken(string token)
 ```
 
 ## References
-* [ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet-example).
+
+- [ASP.NET example on Github](https://github.com/passwordless/passwordless-dotnet/tree/main/examples/Passwordless.Example).

@@ -1,6 +1,6 @@
 # PHP
 
-This PHP implementation is compatible with PHP 5.6 and above. However, it is important to note that the curl library may not be available in older versions of PHP. Therefore, you may need to update your PHP installation if you are using an older version. A [register](https://docs.passwordless.dev/guide/api/#register-token) function might look something like:
+This PHP implementation is compatible with PHP 5.6 and above. However, it is important to note that the curl library may not be available in older versions of PHP. Therefore, you may need to update your PHP installation if you are using an older version. A [register](../api#register-token) function might look something like:
 
 ```php
 <?php

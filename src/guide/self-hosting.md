@@ -1,4 +1,4 @@
-# Self-hosting <Badge text="BETA" type="warning"/>
+# Self-hosting <Badge text="Beta" type="warning"/>
 
 The option to self-host is an enterprise feature. This is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
 DO NOT use this in production environments.

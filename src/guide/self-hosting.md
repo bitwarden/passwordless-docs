@@ -1,9 +1,9 @@
 # Self-hosting <Badge text="Beta" type="warning"/>
 
-> ⚠️
-> The option to self-host is an enterprise feature and is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
-> All features and configuration could change in the future. DO NOT use this in production environments.
-> ⚠️
+::: warning
+The option to self-host is an enterprise feature and is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
+All features and configuration could change in the future. DO NOT use this in production environments.
+:::
 
 The Docker image will allow you to set up your self-hosted instances in less than 5 minutes.
 

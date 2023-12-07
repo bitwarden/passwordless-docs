@@ -1,5 +1,6 @@
 # Self-hosting (BETA)
-The option to self-host is an enterprise feature.  This is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
+
+The option to self-host is an enterprise feature. This is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
 DO NOT use this in production environments.
 
 The Docker image will allow you to setup your self-hosted instances in less than 5 minutes.

@@ -2,14 +2,14 @@
 
 ## Simple example #1
 
-- Admin console is accessible on `http://localhost:5042/`
+- Admin console is accessible on `https://localhost:5042/`
 - No permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be lost.
 
 ```bash
 docker pull bitwarden/passwordless
 docker run \
   --publish 5042:5701 \
-  --env BWP_PORT=5042 \
+  --env BWP_ENABLE_SSL=true \
   bitwarden/passwordless
 ```
 

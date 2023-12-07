@@ -95,8 +95,8 @@ module.exports = {
               children: [
                 ['/guide/self-hosting/configuration', 'Configuration'],
                 ['/guide/self-hosting/running-locally', 'Running Locally'],
-                ['/guide/self-hosting/advanced', 'Advanced'],
-                ['/guide/self-hosting/health-checks', 'Health-checks']
+                ['/guide/self-hosting/health-checks', 'Health-checks'],
+                ['/guide/self-hosting/advanced', 'Advanced']
               ]
             },
             'errors',

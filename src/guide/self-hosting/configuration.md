@@ -63,15 +63,32 @@ By default, the container will use Sqlite if nothing else is specified. The data
 :::warning
 Setting SSL with `BWP_ENABLE_SSL` is required in [insecure contexts](https://w3c.github.io/webappsec-secure-contexts/#secure-contexts). Running the container locally on 'localhost' is considered a secure context.
 
-Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/TR/webauthn-2/#web-authentication-api)'.
+Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/TR/webauthn-2/#web-authentication-api).
 :::
 
 ## E-mail
 
-By default, all e-mail communication happens to a file:
+The primary use of e-mail from within Passwordless Admin Console is for notifying administrators for changes to the organization.
+This is specifically useful for verifying administrators when first signing up.
+
+By default, all e-mail communication is written to a file for each application.
 
 - `/app/Admin/mail.md`
-- `/app/Api/mail.md`.
+- `/app/Api/mail.md`
+
+When using the default configuration, the following commands will output the contents of each file.
+
+For Admin Console:
+
+```bash
+docker exec -it {name-of-container} cat /app/AdminConsole/mail.md
+```
+
+For Api:
+
+```bash
+docker exec -it {name-of-container} cat /app/Api/mail.md
+```
 
 It's recommended you configure the SMTP parameters below:
 

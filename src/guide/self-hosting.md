@@ -3,24 +3,37 @@
 The option to self-host is an enterprise feature. This is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
 DO NOT use this in production environments.
 
-The Docker image will allow you to setup your self-hosted instances in less than 5 minutes.
+The Docker image will allow you to set up your self-hosted instances in less than 5 minutes.
 
 ## Getting Started
 
-The following `Docker` command will pull the container locally.
+In order to retain settings and data from self-hosting Passwordless, it is recommended that you set up a directory for
+storing the generated configuration file and database. Otherwise, the database and configuration file will be deleted when with the container.
+
+### Installation and running
+
+To get up and running, execute the lines below.
 
 ```bash
-docker run --publish 8080:5701 --volume /Users/username/passwordless_cache:/etc/bitwarden_passwordless --env BWP_DOMAIN_API_PORT=8080 bitwarden/passwordless
+docker pull bitwarden/passwordless
+docker run \
+  --publish 5701:5701 \
+  --volume {your-host-directory}:/etc/bitwarden_passwordless \
+  bitwarden/passwordless
 ```
 
 You should now be able to access your own `Passwordless.dev` instance at:
 
-- Admin Console: `http://localhost:8080`
-- API: `http://localhost:8080/api`
+- Admin Console: `https://localhost:5701`
+- API: `https://localhost:5701/api`
+
+From here, you can continue to the [Get started](get-started.md) in order to set up your organization and application.
 
 ## More Information
 
+For further configuration options, please see the pages below.
+
 - [Configuration](self-hosting/configuration.md)
-- [Running Locally](self-hosting/running-locally.md) <Badge text="example" type="warning"/>
-- [Advanced](self-hosting/advanced.md)
+- [Running Locally](self-hosting/running-locally.md) <Badge text="examples" type="warning"/>
 - [Health-checks](self-hosting/health-checks.md)
+- [Advanced](self-hosting/advanced.md)

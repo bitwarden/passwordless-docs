@@ -1,6 +1,6 @@
 # Self-hosting <Badge text="Beta" type="warning"/>
 
-::: warning
+::: danger Important
 The option to self-host is an enterprise feature and is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
 All features and configuration could change in the future. DO NOT use this in production environments.
 :::
@@ -41,6 +41,27 @@ docker exec -it {name-of-container} tail /var/log/bitwarden_passwordless/api.log
 
 ```bash
 docker exec -it {name-of-container} tail /var/log/bitwarden_passwordless/admin.log
+```
+
+### Communication
+
+By default, a file will be used for an email that the system would send. The body of the email will be appended to the file instead of being
+sent out.  This is important for creating an organization and inviting administrators to the Admin Console.  To configure your own
+mail provider, please see the [e-mail](self-hosting/configuration.md#e-mail) section of the [configuration](self-hosting/configuration.md) docs.
+
+The default file location for the `mail.md` files are below:
+- `/app/Admin/mail.md`
+- `/app/Api/mail.md`
+
+For access to these files, either execute into the running container or use the two commands to print the files' contents.
+
+For Admin Console:
+```bash
+docker exec -it {name-of-container} cat /app/AdminConsole/mail.md
+```
+For Api:
+```bash
+docker exec -it {name-of-container} cat /app/Api/mail.md
 ```
 
 ## Known Issues

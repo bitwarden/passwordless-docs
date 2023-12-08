@@ -46,20 +46,24 @@ docker exec -it {name-of-container} tail /var/log/bitwarden_passwordless/admin.l
 ### Communication
 
 By default, a file will be used for an email that the system would send. The body of the email will be appended to the file instead of being
-sent out.  This is important for creating an organization and inviting administrators to the Admin Console.  To configure your own
+sent out. This is important for creating an organization and inviting administrators to the Admin Console. To configure your own
 mail provider, please see the [e-mail](self-hosting/configuration.md#e-mail) section of the [configuration](self-hosting/configuration.md) docs.
 
 The default file location for the `mail.md` files are below:
+
 - `/app/Admin/mail.md`
 - `/app/Api/mail.md`
 
 For access to these files, either execute into the running container or use the two commands to print the files' contents.
 
 For Admin Console:
+
 ```bash
 docker exec -it {name-of-container} cat /app/AdminConsole/mail.md
 ```
+
 For Api:
+
 ```bash
 docker exec -it {name-of-container} cat /app/Api/mail.md
 ```

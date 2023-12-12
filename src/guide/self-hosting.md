@@ -17,11 +17,11 @@ storing the generated configuration file and database. Otherwise, the database a
 To get up and running, execute the lines below.
 
 ```bash
-docker pull bitwarden/passwordless
+docker pull ghcr.io/passwordless/passwordless-self-host
 docker run \
   --publish 5701:5701 \
   --volume {your-host-directory}:/etc/bitwarden_passwordless \
-  bitwarden/passwordless
+  ghcr.io/passwordless/passwordless-self-host
 ```
 
 You should now be able to access your own `Passwordless.dev` instance at:

@@ -88,6 +88,17 @@ module.exports = {
                 ['/guide/frontend/react', 'React']
               ]
             },
+            {
+              title: 'Self-hosting',
+              path: '/guide/self-hosting',
+              collapsable: true,
+              children: [
+                ['/guide/self-hosting/configuration', 'Configuration'],
+                ['/guide/self-hosting/running-locally', 'Running Locally'],
+                ['/guide/self-hosting/health-checks', 'Health-checks'],
+                ['/guide/self-hosting/advanced', 'Advanced']
+              ]
+            },
             'errors',
             'admin-console',
             'concepts'

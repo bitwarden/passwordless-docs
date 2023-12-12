@@ -51,7 +51,7 @@ When we click the `Register` button, `OnPostAsync` will be called. When the form
 
 Calling `POST /passwordless-register` will create our `IdentityUser` and return a registration token in its response. We will then be able to use that token to create our passkeys.
 
-```
+```razor
 @page
 @using Passwordless.Net
 @using Microsoft.Extensions.Options
@@ -172,7 +172,7 @@ With the "Passwordless ASP.NET Identity SDK," you can streamline this process by
 
 Upon a successful authentication, our sample application will automatically redirect you to the /Authorized/HelloWorld page, which requires you to be logged in to access.
 
-```
+```razor
 @page
 @model LoginModel
 @using Microsoft.Extensions.Options

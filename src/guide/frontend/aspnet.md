@@ -51,86 +51,94 @@ When we click the `Register` button, `OnPostAsync` will be called. When the form
 
 Calling `POST /passwordless-register` will create our `IdentityUser` and return a registration token in its response. We will then be able to use that token to create our passkeys.
 
-```html
-@page @using Passwordless.Net @using Microsoft.Extensions.Options @using Passwordless.AspNetCore
-@model RegisterModel @inject IOptions<PasswordlessAspNetCoreOptions>
-  PasswordlessOptions; @{ ViewData["Title"] = "Register"; }
-  <h1>@ViewData["Title"]</h1>
+```razor
+@page
+@using Passwordless.Net
+@using Microsoft.Extensions.Options
+@using Passwordless.AspNetCore
+@model RegisterModel
+@inject IOptions<PasswordlessAspNetCoreOptions> PasswordlessOptions;
 
-  @{ var canAddPasskeys = ViewData["CanAddPasskeys"] is true; }
+@{
+    ViewData["Title"] = "Register";
+}
 
-  <div class="row">
+<h1>@ViewData["Title"]</h1>
+
+@{
+    var canAddPasskeys = ViewData["CanAddPasskeys"] is true;
+}
+
+<div class="row">
     <div class="col-12">
-      <form class="needs-validation" action="" method="POST">
-        <div class="mb-3">
-          <label asp-for="Form.Username" class="form-label">Username</label>
-          <input
-            placeholder="Jane Doe"
-            type="text"
-            asp-for="Form.Username"
-            class="form-control"
-            id="username"
-          />
-          <span class="text-danger" asp-validation-for="Form.Username"></span>
-        </div>
-        <div class="mb-3">
-          <label asp-for="Form.Email" class="form-label">Email</label>
-          <input
-            placeholder="janedoe@example.org"
-            type="text"
-            asp-for="Form.Email"
-            class="form-control"
-            id="email"
-          />
-          <span class="text-danger" asp-validation-for="Form.Email"></span>
-        </div>
-        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-        <div>
-          <button type="submit" class="btn-primary">Register</button>
-        </div>
-      </form>
+        <form class="needs-validation" action="" method="POST">
+            <div class="mb-3">
+                <label asp-for="Form.Username" class="form-label">Username</label>
+                <input
+                        placeholder="Jane Doe"
+                        type="text"
+                        asp-for="Form.Username"
+                        class="form-control"
+                        id="username"/>
+                <span class="text-danger" asp-validation-for="Form.Username"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Form.Email" class="form-label">Email</label>
+                <input
+                        placeholder="janedoe@example.org"
+                        type="text"
+                        asp-for="Form.Email"
+                        class="form-control"
+                        id="email"/>
+                <span class="text-danger" asp-validation-for="Form.Email"></span>
+            </div>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <button type="submit" class="btn-primary">Register</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 
-  @if (canAddPasskeys) {
-  <script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
-  <script>
+@if (canAddPasskeys)
+{
+<script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
+<script>
     async function register() {
-      const username = document.getElementById('username').value;
-      const email = document.getElementById('email').value;
-      const registrationRequest = {
-        email: email,
-        username: username,
-        displayName: username,
-        aliases: [email]
-      };
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const registrationRequest = {
+            email: email,
+            username: username,
+            displayName: username,
+            aliases: [email]
+        };
 
-      const registrationResponse = await fetch('/passwordless-register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(registrationRequest)
-      });
-
-      // If no error then deserialize and use returned token to create now our passkeys
-      if (registrationResponse.ok) {
-        const registrationResponseJson = await registrationResponse.json();
-        const token = registrationResponseJson.token;
-
-        // We need to use Client from https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js which is imported above.
-        const p = new Passwordless.Client({
-          apiKey: '@PasswordlessOptions.Value.ApiKey',
-          apiUrl: '@PasswordlessOptions.Value.ApiUrl'
+        const registrationResponse = await fetch('/passwordless-register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(registrationRequest)
         });
-        const registeredPasskeyResponse = await p.register(token, email);
-      }
+
+        // If no error then deserialize and use returned token to create now our passkeys
+        if (registrationResponse.ok) {
+            const registrationResponseJson = await registrationResponse.json();
+            const token = registrationResponseJson.token;
+
+            // We need to use Client from https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js which is imported above.
+            const p = new Passwordless.Client({
+                apiKey: '@PasswordlessOptions.Value.ApiKey',
+                apiUrl: '@PasswordlessOptions.Value.ApiUrl'
+            });
+            const registeredPasskeyResponse = await p.register(token, email);
+        }
     }
 
     register();
-  </script>
-  }</PasswordlessAspNetCoreOptions
->
+</script>
+}
 ```
 
 ```csharp
@@ -164,72 +172,79 @@ With the "Passwordless ASP.NET Identity SDK," you can streamline this process by
 
 Upon a successful authentication, our sample application will automatically redirect you to the /Authorized/HelloWorld page, which requires you to be logged in to access.
 
-```html
-@page @model LoginModel @using Microsoft.Extensions.Options @using Passwordless.AspNetCore @inject
-IOptions<PasswordlessAspNetCoreOptions>
-  PasswordlessOptions; @{ ViewData["Title"] = "Login"; }
-  <h1>@ViewData["Title"]</h1>
+```razor
+@page
+@model LoginModel
+@using Microsoft.Extensions.Options
+@using Passwordless.AspNetCore
+@inject IOptions<PasswordlessAspNetCoreOptions> PasswordlessOptions;
+@{
+    ViewData["Title"] = "Login";
+}
 
-  @{ var canLogin = ViewData["CanLogin"] != null && (bool)ViewData["CanLogin"]; }
+<h1>@ViewData["Title"]</h1>
 
-  <div class="row">
+@{
+    var canLogin = ViewData["CanLogin"] != null && (bool)ViewData["CanLogin"];
+}
+
+<div class="row">
     <div class="col-12">
-      <form class="needs-validation" action="" method="POST">
-        <div class="mb-3">
-          <label asp-for="Form.Email" class="form-label">Email</label>
-          <input
-            placeholder="janedoe@example.org"
-            type="text"
-            asp-for="Form.Email"
-            class="form-control"
-            id="email"
-          />
-          <span class="text-danger" asp-validation-for="Form.Email"></span>
-        </div>
-        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-        <div>
-          <button type="submit" class="btn-primary">Login</button>
-        </div>
-      </form>
+        <form class="needs-validation" action="" method="POST">
+            <div class="mb-3">
+                <label asp-for="Form.Email" class="form-label">Email</label>
+                <input
+                        placeholder="janedoe@example.org"
+                        type="text"
+                        asp-for="Form.Email"
+                        class="form-control"
+                        id="email"/>
+                <span class="text-danger" asp-validation-for="Form.Email"></span>
+            </div>
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <button type="submit" class="btn-primary">Login</button>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
 
-  @if (canLogin) {
-  <script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
-  <script>
+@if (canLogin)
+{
+<script src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.js"></script>
+<script>
     async function login() {
-      const alias = document.getElementById('email').value;
-      const p = new Passwordless.Client({
-        apiKey: '@PasswordlessOptions.Value.ApiKey',
-        apiUrl: '@PasswordlessOptions.Value.ApiUrl'
-      });
-      const loginPasskeyResponse = await p.signinWithAlias(alias);
-      if (!loginPasskeyResponse) {
-        return;
-      }
-      const loginRequest = {
-        token: loginPasskeyResponse.token
-      };
-      const loginResponse = await fetch('/passwordless-login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(loginRequest)
-      });
+        const alias = document.getElementById('email').value;
+        const p = new Passwordless.Client({
+            apiKey: '@PasswordlessOptions.Value.ApiKey',
+            apiUrl: '@PasswordlessOptions.Value.ApiUrl'
+        });
+        const loginPasskeyResponse = await p.signinWithAlias(alias);
+        if (!loginPasskeyResponse) {
+            return;
+        }
+        const loginRequest = {
+            token: loginPasskeyResponse.token
+        };
+        const loginResponse = await fetch('/passwordless-login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginRequest)
+        });
 
-      if (loginResponse.ok) {
-        console.log('login successful: ' + (await loginResponse.text()));
+        if (loginResponse.ok) {
+            console.log('login successful: ' + (await loginResponse.text()));
 
-        // Redirect to authorized page /Authorized/HelloWorld
-        window.location.href = '/Authorized/HelloWorld';
-      }
+            // Redirect to authorized page /Authorized/HelloWorld
+            window.location.href = '/Authorized/HelloWorld';
+        }
     }
 
     login();
-  </script>
-  }</PasswordlessAspNetCoreOptions
->
+</script>
+}
 ```
 
 If we visit the login page when we're already authenticated, we do want to redirect elsewhere.

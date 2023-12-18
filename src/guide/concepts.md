@@ -91,6 +91,7 @@ In the regular course of business, Passwordless.dev uses two important types of 
 
 - A **registration token**, created by the private API from requests to the `/register/token` endpoint ([learn more](api.md#register-token)). Your frontend will register this token with the end-user's device for use in sign-in operations.
 - A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.md#signinwith)). Your backend will verify this token to complete a sign-in operation
+  - A **verification token** may also be generated manually, outside of the regular authentication flow. Such tokens are called **trusted verification tokens** and can be used to facilitate account recovery through magic links, or other use cases where a user may not be able to complete a sign-in operation.
 
 ## More terms
 

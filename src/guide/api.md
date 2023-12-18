@@ -152,10 +152,9 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 ### Request
 
-`POST` requests made to the `/signin/generate-token` endpoint create a valid [verification token](concepts.md#tokens) for a user, side-stepping the usual signin process (i.e. the `.signinWith*()` methods).
-The resulting token can then be verified using the `/signin/verify` endpoint.
+`POST` requests made to the `/signin/generate-token` endpoint create a [trusted verification token](concepts.md#tokens) for a user, side-stepping the usual signin process (i.e. the `.signinWith*()` methods). The resulting token can then be verified using the `/signin/verify` endpoint and used the same way a regular verification token would be used.
 
-You can use this endpoint to perform user authentication without requiring the user to sign in, which can be useful, for example, for generating magic links.
+You can use this endpoint to create a trusted session for a user, which can be useful for account recovery.
 
 <CodeSwitcher :languages="{http:'HTTP',js:'JavaScript'}">
 <template v-slot:http>

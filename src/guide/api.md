@@ -69,7 +69,7 @@ The request body may include additional parameters besides those required, all o
 | `discoverable`      | If `true`, creates a client-side Discoverable Credential that allows sign in without needing a username.                                                                                                                                             | `true` (default)                         |
 | `userVerification`  | Allows choosing preference for requiring User Verification (biometrics, pin code etc) when authenticating Can be `"preferred"` (default), `"required"` or `"discouraged"`.                                                                           | `"preferred"`                            |
 | `expiresAt`         | Timestamp (UTC) when the registration token should expire. By default, current time + 120 seconds.                                                                                                                                                   | `"3023-08-01T14:43:03Z"`                 |
-| `aliases`           | A array of aliases for the userId, such as an email or username. Used to initiate a signin on the client side with the `signinWithAlias()` method. An alias must be unique to the userId. Defaults to an empty array `[]`.                           | `["pjfry@passwordless.dev"]`             |
+| `aliases`           | A array of aliases for the userId, such as an email or username. Used to initiate a sign-in on the client side with the `signinWithAlias()` method. An alias must be unique to the userId. Defaults to an empty array `[]`.                          | `["pjfry@passwordless.dev"]`             |
 | `aliasHashing`      | Whether aliases should be hashed before being stored. Defaults to `true`.                                                                                                                                                                            | `true`                                   |
 
 ### Response
@@ -152,7 +152,7 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 ### Request
 
-`POST` requests made to the `/signin/generate-token` endpoint create a [manually generated verification token](concepts.md#tokens) for a user, side-stepping the regular signin flow (i.e. the `.signinWith*()` methods). The resulting token can then be verified through the `/signin/verify` endpoint and used just like a regular verification token.
+`POST` requests made to the `/signin/generate-token` endpoint create a [manually generated verification token](concepts.md#tokens) for a user, side-stepping the regular sign-in flow (i.e. the `.signinWith*()` methods). The resulting token can then be verified through the `/signin/verify` endpoint and used just like a regular verification token.
 
 <CodeSwitcher :languages="{http:'HTTP',js:'JavaScript'}">
 <template v-slot:http>

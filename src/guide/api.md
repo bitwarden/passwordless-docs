@@ -152,7 +152,7 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 ### Request
 
-`POST` requests made to the `/signin/generate-token` endpoint create a [manually generated verification token](concepts.md#tokens) for a user, side-stepping the usual signin process (i.e. the `.signinWith*()` methods). The resulting token can then be verified through the `/signin/verify` endpoint and used just like a regular verification token.
+`POST` requests made to the `/signin/generate-token` endpoint create a [manually generated verification token](concepts.md#tokens) for a user, side-stepping the regular signin flow (i.e. the `.signinWith*()` methods). The resulting token can then be verified through the `/signin/verify` endpoint and used just like a regular verification token.
 
 <CodeSwitcher :languages="{http:'HTTP',js:'JavaScript'}">
 <template v-slot:http>

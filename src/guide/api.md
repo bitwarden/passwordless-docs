@@ -305,27 +305,26 @@ const credentials = await fetch(apiUrl + '/credentials/list', {
 
 If successful, the `/credentials/list` endpoint will return an array of `.json` objects where each object represents a [registered credential](concepts.md#credential):
 
-```json
+```jsonc
 [
-    {
-        "descriptor": {
-            "type": "public-key",
-            "id": "2mgrJ6LPItfxbnVc2UgFPHowNGKaYBm3Pf4so1bsXSk"
-        },
-        "publicKey": "pQECAyYgASFYIPi4M0A+ZFeyOHEC9iMe6dVhFnmOZdgac3MRmfqVpZ0AIlggWZ+l6+5rOGckXAsJ8i+mvPm4YuRQYDTHiJhIauagX4Q=",
-        "userHandle": "YzhhMzJlNWItNDZkMy00ODA4LWFlMTAtMTZkM2UyNmZmNmY5",
-        "signatureCounter": 0,
-        "createdAt": "2023-04-21T13:33:50.0764103",
-        "aaGuid": "adce0002-35bc-c60a-648b-0b25f1f05503",
-        "lastUsedAt": "2023-04-21T13:33:50.0764103",
-        "rpid": "myapp.example.com",
-        "origin": "https://myapp.example.com",
-        "country": "US",
-        "device": "Chrome, Mac OS X 10",
-        "nickname": "Fred's Macbook Pro 2",
-        "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
+  {
+    "descriptor": {
+      "type": "public-key",
+      "id": "2mgrJ6LPItfxbnVc2UgFPHowNGKaYBm3Pf4so1bsXSk"
     },
-    ...
+    "publicKey": "pQECAyYgASFYIPi4M0A+ZFeyOHEC9iMe6dVhFnmOZdgac3MRmfqVpZ0AIlggWZ+l6+5rOGckXAsJ8i+mvPm4YuRQYDTHiJhIauagX4Q=",
+    "userHandle": "YzhhMzJlNWItNDZkMy00ODA4LWFlMTAtMTZkM2UyNmZmNmY5",
+    "signatureCounter": 0,
+    "createdAt": "2023-04-21T13:33:50.0764103",
+    "aaGuid": "adce0002-35bc-c60a-648b-0b25f1f05503",
+    "lastUsedAt": "2023-04-21T13:33:50.0764103",
+    "rpid": "myapp.example.com",
+    "origin": "https://myapp.example.com",
+    "country": "US",
+    "device": "Chrome, Mac OS X 10",
+    "nickname": "Fred's Macbook Pro 2",
+    "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
+  } //, ...
 ]
 ```
 

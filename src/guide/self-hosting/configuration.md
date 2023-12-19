@@ -21,7 +21,7 @@ Failure to mount persistent storage, will:
 $ docker run -d \
   --name passwordless \
   --mount source=/your/persistent/storage,target=/etc/bitwarden_passwordless \
-  bitwarden/passwordless-self-host:latest
+  bitwarden/passwordless-self-host:stable
 ```
 
 ## Database

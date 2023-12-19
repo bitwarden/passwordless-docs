@@ -17,11 +17,11 @@ storing the generated configuration file and database. Otherwise, the database a
 To get up and running, execute the lines below.
 
 ```bash
-docker pull bitwarden/passwordless-self-host
+docker pull bitwarden/passwordless-self-host:stable
 docker run \
   --publish 5701:5701 \
   --volume {your-host-directory}:/etc/bitwarden_passwordless \
-  bitwarden/passwordless-self-host
+  bitwarden/passwordless-self-host:stable
 ```
 
 You should now be able to access your own `Passwordless.dev` instance at:
@@ -67,6 +67,14 @@ For Api:
 ```bash
 docker exec -it {name-of-container} cat /app/Api/mail.md
 ```
+
+## Available Tags
+
+- `stable` - built from the latest stable version release (recommended)
+- `1.0.55` - built from a specific stable version release
+- `latest` - built from the current state of the `main` branch
+
+For more information, please see the [Docker Hub](https://hub.docker.com/r/bitwarden/passwordless-self-host/tags) page.
 
 ## Known Issues
 

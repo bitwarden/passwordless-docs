@@ -108,12 +108,12 @@ Content-Type: application/json
 const apiUrl = 'https://v4.passwordless.dev';
 
 // Fetch the verification token from your frontend.
-const token = { token: req.query.token };
+const payload = { token: req.query.token };
 
 // POST the verification token to the Passwordless.dev API using your API private secret.
 const response = await fetch(apiUrl + '/signin/verify', {
   method: 'POST',
-  body: JSON.stringify({ token }),
+  body: JSON.stringify(payload),
   headers: {
     'ApiSecret': 'myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4',
     'Content-Type': 'application/json'
@@ -179,7 +179,7 @@ const payload = { userId: '123' };
 // POST the user ID to the Passwordless.dev API using your API private secret.
 const response = await fetch(apiUrl + '/signin/generate-token', {
   method: 'POST',
-  body: JSON.stringify({ token }),
+  body: JSON.stringify(payload),
   headers: {
     'ApiSecret': 'myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4',
     'Content-Type': 'application/json'

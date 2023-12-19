@@ -174,7 +174,9 @@ Content-Type: application/json
 const apiUrl = 'https://v4.passwordless.dev';
 
 // Generate a verification token, side-stepping the usual signin process.
-const payload = { userId: '123' };
+const payload = {
+  userId: '107fb578-9559-4540-a0e2-f82ad78852f7'
+};
 
 // POST the user ID to the Passwordless.dev API using your API private secret.
 const response = await fetch(apiUrl + '/signin/generate-token', {

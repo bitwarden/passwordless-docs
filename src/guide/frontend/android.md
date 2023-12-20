@@ -117,11 +117,14 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 
 2. The default password for the debug keystore is `android`. For your production keystore, enter your chosen password.
 
-3. This command will output BASE64, for example: `POIplOLeHuvl+XAQckH0DwY4Yb1ydnnKcmhn+jibZbk`.
+3. This command will output BASE64:
+   `POIplOLeHuvl+XAQckH0DwY4Yb1ydnnKcmhn+jibZbk`
 
-4. You need to convert this to BASE64URL format: `POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`.
+4. You need to convert this to BASE64URL format:
+   `POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
-5. Now append it to `android:apk-key-hash:` to get the Facet ID: `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`.
+5. Now append it to `android:apk-key-hash:` to get the Facet ID:
+   `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
 ## Usage
 

@@ -104,7 +104,9 @@ In your application's `res/xml/assetlinks.xml`, you will then need to add the fo
 
 #### Facet ID
 
-To obtain the Facet ID which looks like `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`, follow the instructions below.
+To obtain the Facet ID continue the steps below, the facet id typically looks like:
+
+`android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
 1. Execute the following command in your terminal:
 

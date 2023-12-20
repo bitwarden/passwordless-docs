@@ -29,6 +29,27 @@ To obtain the Facet ID which looks like `android:apk-key-hash:POIplOLeHuvl-XAQck
 
 5. Now append it to `android:apk-key-hash:` to get the Facet ID: `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`.
 
+## Configuration
+
+```kotlin
+data class PasswordlessOptions(
+   # Your public API key
+   val apiKey: String,
+   
+   # Identifier for your server, for example 'example.com' if your backend is hosted at https://example.com.
+   val rpId: String,
+   
+   # This is where your Facet ID goes
+   val origin: String,
+   
+   # Where your backend is hosted
+   val backendUrl:String,
+   
+   # Passwordless.dev server, change for self-hosting
+   val apiUrl: String = "https://v4.passwordless.dev"
+)
+```
+
 ## References
 
 - [Google Android: Client Auth](https://developers.google.com/android/guides/client-auth)

@@ -305,7 +305,7 @@ const credentials = await fetch(apiUrl + '/credentials/list', {
 
 If successful, the `/credentials/list` endpoint will return an array of `.json` objects where each object represents a [registered credential](concepts.md#credential):
 
-```jsonc
+```json
 [
   {
     "descriptor": {

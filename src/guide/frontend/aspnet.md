@@ -166,7 +166,7 @@ Regarding the login page, `/Account/Login`, clicking the 'Login' button will onc
 
 There are two approaches you can take. You can either request an "alias" to verify which passkeys correspond to the alias, or if you have discoverable credentials, an input form may not be necessary.
 
-The process of logging in differs from registration. During login, you will request valid passkeys from your authenticator to obtain a verification token. Subsequently, this verification token will be transmitted to your backend to initiate the session.
+The process of logging in differs from registration. During login, you will request valid passkeys from your authenticator to obtain an authentication token. Subsequently, this authentication token will be transmitted to your backend to initiate the session.
 
 With the "Passwordless ASP.NET Identity SDK," you can streamline this process by making a simple call to POST /passwordless-login, and the SDK will handle all the necessary steps for you.
 

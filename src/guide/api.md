@@ -218,7 +218,12 @@ POST https://v4.passwordless.dev/alias HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
-{ "userId": "107fb578-9559-4540-a0e2-f82ad78852f7", "aliases": ["pjfry@passwordless.dev", "benderrules@passwordless.dev"], "hashing": true }
+{
+  "userId": "107fb578-9559-4540-a0e2-f82ad78852f7",
+  "aliases": ["pjfry@passwordless.dev",
+  "benderrules@passwordless.dev"],
+  "hashing": true
+}
 ```
 
 </template>
@@ -342,7 +347,7 @@ ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
-    "credentialId":"qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w"
+  "credentialId":"qgB2ZetBhi0rIcaQK8_HrLQzXXfwKia46_PNjUC2L_w"
 }
 ```
 

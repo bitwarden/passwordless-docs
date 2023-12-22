@@ -185,7 +185,7 @@ Next, implement a workflow on your backend and frontend for signing in with a [p
 
 Code that you write must:
 
-1. On your frontend, initiate your sign-in and retrieve a [verification token](concepts.md#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential ([learn more](frontend/javascript.md#signinwith)), for example:
+1. On your frontend, initiate your sign-in and retrieve an [authentication token](concepts.md#tokens) that will be checked by your backend to complete a sign-in. To initiate the sign-in, you can use an alias, userId, or Discoverable Credential ([learn more](frontend/javascript.md#signinwith)), for example:
 
 <Badge text="frontend" type="tip"/>
 
@@ -200,7 +200,7 @@ const p = new Client({
 // Allow the user to specify a username or alias.
 const alias = 'pjfry@passwordless.dev';
 
-// Generate a verification token for the user.
+// Generate an authentication token for the user.
 const { token, error } = await p.signinWithAlias(alias);
 // Tip: You can also try p.signinWithDiscoverable();
 
@@ -212,19 +212,19 @@ if (verifiedUser.success === true) {
 }
 ```
 
-Successful implementation will make a verification token available to the backend. In the above example, the client waits for the backend to return `true` (**step 2**) before proceeding to act on the confirmed sign-in.
+Successful implementation will make an authentication token available to the backend. In the above example, the client waits for the backend to return `true` (**step 2**) before proceeding to act on the confirmed sign-in.
 
-2. Validate the verification token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.md#signin-verify)) with generated token, for example:
+2. Validate the authentication token by calling the Passwordless.dev API's `/signin/verify` endpoint ([learn more](api.md#signin-verify)) with generated token, for example:
 
 <Badge text="backend" type="warning"/>
 
 ```js
 // Code written for this step should run on your backend.
 
-// Fetch the verification token from your frontend.
+// Fetch the authentication token from your frontend.
 const token = { token: req.query.token };
 
-// POST the verification token to the Passwordless.dev API using your API private secret.
+// POST the authentication token to the Passwordless.dev API using your API private secret.
 const apiUrl = 'https://v4.passwordless.dev';
 const response = await fetch(apiurl + '/signin/verify', {
   method: 'POST',

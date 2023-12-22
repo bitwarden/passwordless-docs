@@ -21,7 +21,7 @@ Failure to mount persistent storage, will:
 $ docker run -d \
   --name passwordless \
   --mount source=/your/persistent/storage,target=/etc/bitwarden_passwordless \
-  ghcr.io/passwordless/passwordless-self-host:latest
+  bitwarden/passwordless-self-host:stable
 ```
 
 ## Database
@@ -142,5 +142,5 @@ If the following keys do not exist, they will be generated automatically:
 - PasswordlessManagement::ManagementKey
 - SALT_KEY
 
-It is recommended that you have them generated automatically, the first time you run `ghcr.io/passwordless/passwordless-self-host`.
+It is recommended that you have them generated automatically, the first time you run `bitwarden/passwordless-self-host`.
 ```

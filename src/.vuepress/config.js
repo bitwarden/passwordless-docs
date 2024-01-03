@@ -76,7 +76,7 @@ module.exports = {
                 ['/guide/backend/php', 'PHP'],
                 ['/guide/backend/python2', 'Python 2'],
                 ['/guide/backend/python3', 'Python 3'],
-                ['/guide/backend/create-a-sdk', 'Create a SDK'],
+                ['/guide/backend/create-a-sdk', 'Create a SDK']
               ]
             },
             {

@@ -4,7 +4,7 @@ This document provides guidelines for creating an official or community SDK for 
 
 ## General recommendations
 
-1. Choose an open source license like [Apache 2.0](./LICENSE)
+1. Choose an open source license like [Apache 2.0](https://choosealicense.com/licenses/apache-2.0/)
 2. Host your code on GitHub or GitLab
 3. Name it `passwordless-{language/framework}` (e.g. `passwordless-dotnet`)
 4. Add documentation and examples (see below)

@@ -10,7 +10,7 @@ All methods **require** your API [public key](../concepts.md#api-keys) for authe
 
 ## Installation
 
-TODO
+TODO: Pending publishing of SDK
 
 ## Configuration
 
@@ -102,6 +102,27 @@ In your application's `res/xml/assetlinks.xml`, you will then need to add the fo
 </resources>
 ```
 
+#### Generating SHA-256 Certificate Fingerprints
+
+This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
+
+- Option 1:
+  - MacOS & Linux:
+    ```bash
+    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+    ```
+  - Windows:
+    ```powershell
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ```
+- Option 2:
+  Go to the root directory of the project from the terminal and run the below command
+  ```bash
+  ./gradlew signingReport
+  ```
+  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
+  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
+
 #### Facet ID
 
 To obtain the Facet ID continue the steps below, the facet id typically looks like:
@@ -110,10 +131,32 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 
 1. Execute the following command in your terminal:
 
-   ```bash
-   # Linux, Mac OS, Git Bash, ...
-   keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | openssl base64 | sed 's/=//g'
-   ```
+   - MacOS & Linux:
+     ```bash
+     # Linux, Mac OS, Git Bash, ...
+     keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | openssl base64 | sed 's/=//g'
+     ```
+   - Windows:
+
+     ```powershell
+     # Run keytool command and extract SHA256 hash
+     $keytoolOutput = keytool -list -v -keystore $HOME\.android\debug.keystore
+     $sha256Hash = ($keytoolOutput | Select-String "SHA256: ").ToString().Split(" ")[2]
+
+     # Remove any non-hex characters from the hash
+     $hexHash = $sha256Hash -replace "[^0-9A-Fa-f]"
+
+     # Convert the hexadecimal string to a byte array
+     $byteArray = [byte[]]@()
+     for ($i = 0; $i -lt $hexHash.Length; $i += 2) {
+       $byteArray += [byte]([Convert]::ToUInt32($hexHash.Substring($i, 2), 16))
+     }
+
+     # Convert the byte array to a base64 string
+     $base64String = [Convert]::ToBase64String($byteArray)
+
+     Write-Output $base64String
+     ```
 
 2. The default password for the debug keystore is `android`. For your production keystore, enter your chosen password.
 
@@ -126,15 +169,89 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 5. Now append it to `android:apk-key-hash:` to get the Facet ID:
    `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
-## Usage
+## Getting Started
+
+Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.html).
+
+### Creating a `PasswordlessClient` instance
+
+You would then use the PasswordlessClient as:
+
+Declare PasswordlessClient: Establish a singleton PasswordlessClient object using the PasswordlessOptions class. Utilize the values from DemoPasswordlessOptions:
+
+```kotlin
+@Provides
+@Singleton
+fun providePasswordlessClient(): PasswordlessClient {
+    val options = PasswordlessOptions(
+        DemoPasswordlessOptions.API_KEY,
+        DemoPasswordlessOptions.RP_ID,
+        DemoPasswordlessOptions.ORIGIN,
+        DemoPasswordlessOptions.API_URL
+    )
+    return PasswordlessClient(options)
+}
+```
+
+**Set the Context of PasswordlessClient**: Ensure the context is set to the current `Activity`.
+
+```kotlin
+/** Context needs to be set according to current activity
+ * If there are different activity handling register and signin,
+ * then call this on every activity
+*/
+_passwordless.setContext(this)
+```
+
+**Set Coroutine Scope**: Set the coroutine scope, passing lifecycleScope of the current fragment.
+
+```kotlin
+_passwordless.setCoroutineScope(lifecycleScope)
+```
 
 ### Registration
 
-TODO
+1. **Call Your Backend with User Details**:Make a call to your backend with user details (e.g., username, alias) and retrieve the registration token.
+2. **Call Passwordless Register Function**
 
-### Signing in
+```kotlin
+_passwordless.register(
+    token =responseToken,
+    nickname = nickname
+) { success, exception, result ->
+        if (success) {
+            Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(
+            context,
+            "Exception: " + getPasskeyFailureMessage(exception as Exception),
+        Toast.LENGTH_SHORT
+        ).show()
+    }
+}
+```
 
-TODO
+### Logging in
+
+1. **Take Alias as Input**: Gather the alias as input from the user.
+2. **Call Passwordless Login**: Initiate the login process with the alias and response callback.
+
+```kotlin
+_passwordless.login(alias) { success, exception, result ->
+    if (success) {
+        lifecycleScope.launch {
+             val clientDataResponse =
+                httpClient.login(UserLoginRequest(result?.token!!))
+            if (clientDataResponse.isSuccessful) {
+                val data = clientDataResponse.body()
+                showText(data.toString())
+            }
+        }
+    } else {
+        showException(exception)
+    }
+}
+```
 
 ## References
 

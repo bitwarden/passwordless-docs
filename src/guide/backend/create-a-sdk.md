@@ -55,10 +55,10 @@ We encourage different flavors of SDKs and integrations as described here:
 - Framework SDK: integrates the Language SDK into an opinionated framework, e.g. ASP.NET, Flask, Rails, Nuxt, or Laravel
 - Plugin: integrates Passwordless.dev as a Plugin to a existing system, e.g. Wordpress, Umbraco, etc.
 
-[passwordless-dotnet]: https://github.com/passwordless/passwordless-dotnet
-[passwordless-nodejs]: https://github.com/passwordless/passwordless-nodejs
-[passwordless-dotnet-example]: https://github.com/passwordless/passwordless-dotnet-example
-[passwordless-nodejs-example]: https://github.com/passwordless/passwordless-nodejs-example
+[passwordless-dotnet]: https://github.com/bitwarden/passwordless-dotnet
+[passwordless-nodejs]: https://github.com/bitwarden/passwordless-nodejs
+[passwordless-dotnet-example]: https://github.com/bitwarden/passwordless-dotnet/tree/main/examples
+[passwordless-nodejs-example]: https://github.com/bitwarden/passwordless-nodejs/tree/main/examples
 
 ## Support
 

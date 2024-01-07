@@ -6,11 +6,11 @@
 - No permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be lost.
 
 ```bash
-docker pull ghcr.io/passwordless/passwordless-self-host
+docker pull bitwarden/passwordless-self-host:stable
 docker run \
   --publish 5042:5701 \
   --env BWP_ENABLE_SSL=true \
-  ghcr.io/passwordless/passwordless-self-host
+  bitwarden/passwordless-self-host:stable
 ```
 
 ## Simple example #2
@@ -19,12 +19,12 @@ docker run \
 - Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
-docker pull ghcr.io/passwordless/passwordless-self-host
+docker pull bitwarden/passwordless-self-host:stable
 docker run \
   --publish 5042:5701 \
   --volume /your/directory:/etc/bitwarden_passwordless \
   --env BWP_PORT=5042 \
-  ghcr.io/passwordless/passwordless-self-host
+  bitwarden/passwordless-self-host:stable
 ```
 
 ## Example with SSL
@@ -33,13 +33,13 @@ docker run \
 - Permanent storage: In this example, the generated `config.json` and `Sqlite databases` will be retained on the host in directory `/your/directory`.
 
 ```bash
-docker pull ghcr.io/passwordless/passwordless-self-host
+docker pull bitwarden/passwordless-self-host:stable
 docker run \
   --publish 5042:5701 \
   --volume /your/directory:/etc/bitwarden_passwordless \
   --env BWP_PORT=5042 \
   --env BWP_ENABLE_SSL=true \
-  ghcr.io/passwordless/passwordless-self-host
+  bitwarden/passwordless-self-host:stable
 ```
 
 :::warning

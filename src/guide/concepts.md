@@ -90,7 +90,11 @@ A credential represents a FIDO2 authenticator that is registered by Passwordless
 In the regular course of business, Passwordless.dev uses two important types of ephemeral tokens:
 
 - A **registration token**, created by the private API from requests to the `/register/token` endpoint ([learn more](api.md#register-token)). Your frontend will register this token with the end-user's device for use in sign-in operations.
-- A **verification token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.md#signinwith)). Your backend will verify this token to complete a sign-in operation
+- An **authentication token**, created by the public API from calls to the `.signin()` method ([learn more](frontend/javascript.md#signinwith)). Your backend will verify this token to complete a sign-in operation (via the `/signin/verify` endpoint).
+
+Additionally, Passwordless.dev uses other types of tokens for special purposes:
+
+- A **manually generated authentication token**, created by the private API from requests to the `/signin/generate-token` endpoint. This token carries the same weight as a regular authentication token, but is generated manually, side-stepping the usual authentication flow. It's primarily used to facilitate account recovery and sign-in via magic links.
 
 ## More terms
 

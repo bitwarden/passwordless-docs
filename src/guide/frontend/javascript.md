@@ -98,7 +98,7 @@ Successful implementation will prompt Passwordless.dev to negotiate creation of 
 
 ## .signinWith()
 
-Call the `.signin` methods to generate a [verification token](../concepts.md#tokens) that will be checked by your backend to complete a sign-in. There are a few different `.signinWith*()` methods available:
+Call the `.signin` methods to generate an [authentication token](../concepts.md#tokens) that will be checked by your backend to complete a sign-in. There are a few different `.signinWith*()` methods available:
 
 | Method                      | Description                                                                | Example                                            |
 | --------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------- |
@@ -113,7 +113,7 @@ const p = new Passwordless.Client({
   apiKey: 'myapplication:public:4364b1a49a404b38b843fe3697b803c8'
 });
 
-// Generate a verification token for the user.
+// Generate an authentication token for the user.
 
 // Option 1: Enable browsers to suggest passkeys for any input that has autofill="webauthn" (only works with discoverable passkeys).
 const { token, error } = await p.signinWithAutofill();

@@ -96,6 +96,23 @@ Additionally, Passwordless.dev uses other types of tokens for special purposes:
 
 - A **manually generated authentication token**, created by the private API from requests to the `/signin/generate-token` endpoint. This token carries the same weight as a regular authentication token, but is generated manually, side-stepping the usual authentication flow. It's primarily used to facilitate account recovery and sign-in via magic links.
 
+### Attestation
+
+::: warning Important
+Attestation is only supported in our 'Enterprise' plan. Read more about our plans [here](https://bitwarden.com/products/passwordless/#pricing).
+:::
+
+In essence, attestation enhances the security of the WebAuthn registration process by allowing the relying party to receive and verify information about the authenticator, ensuring a more secure and trustworthy authentication experience.
+
+| Types        | Plans      | Description                                                                                                                                                                                                                                                                                                              |
+|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `none`       | All        | The authenticator provides its attestation information, but without a meaningful cryptographic signature. This is less secure compared to other attestation types and is generally used when a relying party doesn't need strong proof of the authenticator's characteristics.                                           |
+| `direct`     | Enterprise | The authenticator provides its attestation information directly to the relying party. However, it's important to note that "direct" attestation is essentially synonymous with "self-attestation." The authenticator makes a statement about its own properties without involving a third-party attestation certificate. |
+| `indirect`   | Enterprise | The authenticator includes a signed attestation statement from an Attestation Certificate Authority (AttCA). The attestation statement from the AttCA provides a cryptographic proof of the authenticator's characteristics, enhancing the security of the attestation process.                                          |
+| `enterprise` | n/a        | Gives enterprises the ability to uniquely identify authenticators to determine if they have been approved for use in a protected environment.                                                                                                                                                                            |
+
+The relying party can use the attestation information to make informed decisions about whether to trust the authenticator and to assess the level of security provided by the user's device. It's important to note that while attestation enhances security, it is not mandatory for the basic operation of WebAuthn. WebAuthn can still work without attestation, but its use is recommended for stronger security practices.
+
 ## More terms
 
 ### Relying party

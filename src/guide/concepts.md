@@ -102,7 +102,7 @@ Additionally, Passwordless.dev uses other types of tokens for special purposes:
 Attestation is only supported in our 'Enterprise' plan. Read more about our plans [here](https://bitwarden.com/products/passwordless/#pricing).
 :::
 
-In essence, attestation enhances the security of the WebAuthn registration process by allowing the relying party to receive and verify information about the authenticator, ensuring a more secure and trustworthy authentication experience.
+While WebAuthn is very secure, attestation enhances the security of the WebAuthn registration process by allowing the relying party to receive and verify information about the authenticator.
 
 | Types        | Plans      | Description                                                                                                                                                                                                                                                                                                              |
 |--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

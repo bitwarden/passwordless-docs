@@ -112,7 +112,7 @@ Currently, Passwordless.dev only supports attestation format `"none"`, `"direct"
 
 ### attestation_not_supported_on_plan
 
-You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it.
+You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it. Learn more [here](https://bitwarden.com/products/passwordless/#pricing)
 
 #### Solution
 

@@ -28,6 +28,17 @@ if (error) {
 
 ## List of error codes
 
+### api_key_locked
+
+You'll receive this error when you call an endpoint with an API key that has been locked.
+
+This could happen due to several reasons:
+
+- Either you've locked the API keys yourself.
+- Your application was marked for deletion, which causes the API keys to be locked automatically.
+
+If this was unintentional, you can unlock the API key in the [admin console](admin-console/applications.md#api-key-management).
+
 ### invalid_token
 
 The token that was submitted did not contain the expected value. This error often occurs when something goes wrong earlier in the process and the error message is sent instead of a valid token.

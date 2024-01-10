@@ -100,7 +100,16 @@ module.exports = {
               ]
             },
             'errors',
-            'admin-console',
+            {
+              title: 'Admin Console',
+              path: '/guide/admin-console',
+              collapsable: true,
+              children: [
+                ['/guide/admin-console/applications', 'Applications'],
+                ['/guide/admin-console/billing', 'Billing'],
+                ['/guide/admin-console/admins', 'Admins']
+              ]
+            },
             'concepts'
           ]
         }

@@ -37,7 +37,7 @@ This could happen due to several reasons:
 - Either you've locked the API keys yourself.
 - Your application was marked for deletion, which causes the API keys to be locked automatically.
 
-If this was unintentional, you can unlock the API key in the [admin console](admin-console.md).
+If this was unintentional, you can unlock the API key in the [admin console](admin-console/applications.md#api-key-management).
 
 ### invalid_token
 

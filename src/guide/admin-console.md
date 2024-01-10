@@ -34,6 +34,17 @@ Aliases registered to teach user are listed, however aliases that are hashed can
 
 The **Settings** page will offer some options for configuring your application, including what [plan](https://bitwarden.com/products/passwordless/#pricing) your application is on. More to come.
 
+#### Api key management
+
+There are several operations you can perform on your API keys:
+
+| Operation | Condition           | Reversible | Description                                                                                                                           |
+| --------- | ------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Lock      | API key is unlocked | Yes        | Locking an API key will prevent it from being used. You will typically receive a 403 HTTP status code.                                |
+| Unlock    | API key is locked   | Yes        | Unlocking an API key will allow it to be used again.                                                                                  |
+| Create    |                     | Yes        | Creating an API key will allow you to interact with the Passwordless.dev API. You are allowed to create as many API keys as you like. |
+| Delete    | Api key is locked   | No         | Deleting an API key will permanently remove it.                                                                                       |
+
 ### Playground
 
 The **Playground** page gives access to a simple passwordless demo you can use for testing devices.

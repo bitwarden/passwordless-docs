@@ -215,7 +215,7 @@ Or you can set the Context of PasswordlessClient manually: Ensure the context is
 _passwordless.setContext(this)
 ```
 
-**Set Coroutine Scope**: Set the coroutine scope, passing lifecycleScope of the current fragment.
+Set the coroutine scope, passing lifecycleScope of the current fragment, only necessary if you again do not use Dagger Hilt.
 
 ```kotlin
 _passwordless.setCoroutineScope(lifecycleScope)

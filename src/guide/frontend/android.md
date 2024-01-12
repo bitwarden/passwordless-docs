@@ -175,7 +175,7 @@ Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.h
 
 ### Creating a `PasswordlessClient` instance
 
-You can either set the `ActivityContext` manually in your activity using `setContext(context: Context)`, or inject it with Dagger Hilt as follows:
+You can either set the `ActivityContext` by injecting it with Dagger Hilt as follows:
 
 ```kotlin
 @Module
@@ -195,7 +195,7 @@ class PasswordlessModule {
 }
 ```
 
-**Set the Context of PasswordlessClient**: Ensure the context is set to the current `Activity`.
+Or you can set the Context of PasswordlessClient manually: Ensure the context is set to the current `Activity`.
 
 ```kotlin
 /** Context needs to be set according to current activity

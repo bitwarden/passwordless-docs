@@ -175,21 +175,23 @@ Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.h
 
 ### Creating a `PasswordlessClient` instance
 
-You would then use the PasswordlessClient as:
-
-Declare PasswordlessClient: Establish a singleton PasswordlessClient object using the PasswordlessOptions class. Utilize the values from DemoPasswordlessOptions:
+You can either set the `ActivityContext` manually in your activity using `setContext(context: Context)`, or inject it with Dagger Hilt as follows:
 
 ```kotlin
-@Provides
-@Singleton
-fun providePasswordlessClient(): PasswordlessClient {
-    val options = PasswordlessOptions(
-        DemoPasswordlessOptions.API_KEY,
-        DemoPasswordlessOptions.RP_ID,
-        DemoPasswordlessOptions.ORIGIN,
-        DemoPasswordlessOptions.API_URL
-    )
-    return PasswordlessClient(options)
+@Module
+@InstallIn(ActivityComponent::class)
+class PasswordlessModule {
+    @Provides
+    @ActivityScoped
+    fun providePasswordlessClient(@ActivityContext activity: Context): PasswordlessClient {
+        val options = PasswordlessOptions(
+            DemoPasswordlessOptions.API_KEY,
+            DemoPasswordlessOptions.RP_ID,
+            DemoPasswordlessOptions.ORIGIN,
+            DemoPasswordlessOptions.API_URL
+        )
+        return PasswordlessClient(options, activity)
+    }
 }
 ```
 

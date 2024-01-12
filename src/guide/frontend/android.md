@@ -16,6 +16,29 @@ TODO: Pending publishing of SDK
 
 ### Your backend
 
+#### Generating SHA-256 Certificate Fingerprints
+
+To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
+
+This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
+
+- Option 1:
+  - MacOS & Linux:
+    ```bash
+    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+    ```
+  - Windows:
+    ```powershell
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ```
+- Option 2:
+  Go to the root directory of the project from the terminal and run the below command
+  ```bash
+  ./gradlew signingReport
+  ```
+  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
+  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
+
 #### Host ~/.well-known/assetlinks.json
 
 You will need store the following file at `https://<your-domain>/.well-known/assetlinks.json`. To generate the SHA256 hash, read the links below the snippet.
@@ -102,28 +125,9 @@ In your application's `res/xml/assetlinks.xml`, you will then need to add the fo
 </resources>
 ```
 
-#### Generating SHA-256 Certificate Fingerprints
-
-This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
-
-- Option 1:
-  - MacOS & Linux:
-    ```bash
-    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-    ```
-  - Windows:
-    ```powershell
-    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-    ```
-- Option 2:
-  Go to the root directory of the project from the terminal and run the below command
-  ```bash
-  ./gradlew signingReport
-  ```
-  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
-  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
-
 #### Facet ID
+
+The `Facet ID` will be used at a later point in this guide to use as the `origin`.
 
 To obtain the Facet ID continue the steps below, the facet id typically looks like:
 
@@ -185,10 +189,10 @@ class PasswordlessModule {
     @ActivityScoped
     fun providePasswordlessClient(@ActivityContext activity: Context): PasswordlessClient {
         val options = PasswordlessOptions(
-            DemoPasswordlessOptions.API_KEY,
-            DemoPasswordlessOptions.RP_ID,
-            DemoPasswordlessOptions.ORIGIN,
-            DemoPasswordlessOptions.API_URL
+            DemoPasswordlessOptions.API_KEY, // Your secret key
+            DemoPasswordlessOptions.RP_ID, // yourbackend.com
+            DemoPasswordlessOptions.ORIGIN, // This is your Facet ID
+            DemoPasswordlessOptions.API_URL // https://v4.passwordless.dev
         )
         return PasswordlessClient(options, activity)
     }

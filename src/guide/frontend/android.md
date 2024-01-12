@@ -179,22 +179,28 @@ Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.h
 
 ### Creating a `PasswordlessClient` instance
 
-You can either set the `ActivityContext` by injecting it with Dagger Hilt as follows:
+You can either set the `ActivityContext` and `CoroutineScope` by injecting it with Dagger Hilt as follows:
 
 ```kotlin
 @Module
 @InstallIn(ActivityComponent::class)
 class PasswordlessModule {
     @Provides
+    fun provideLifecycleCoroutineScope(activity: Activity): LifecycleCoroutineScope =
+        (activity as AppCompatActivity).lifecycleScope
+
+    @Provides
     @ActivityScoped
-    fun providePasswordlessClient(@ActivityContext activity: Context): PasswordlessClient {
+    fun providePasswordlessClient(
+        @ActivityContext activity: Context, scope: LifecycleCoroutineScope): PasswordlessClient {
         val options = PasswordlessOptions(
-            DemoPasswordlessOptions.API_KEY, // Your secret key
-            DemoPasswordlessOptions.RP_ID, // yourbackend.com
-            DemoPasswordlessOptions.ORIGIN, // This is your Facet ID
-            DemoPasswordlessOptions.API_URL // https://v4.passwordless.dev
+            DemoPasswordlessOptions.API_KEY,
+            DemoPasswordlessOptions.RP_ID,
+            DemoPasswordlessOptions.ORIGIN,
+            DemoPasswordlessOptions.API_URL
         )
-        return PasswordlessClient(options, activity)
+
+        return PasswordlessClient(options, activity, scope)
     }
 }
 ```

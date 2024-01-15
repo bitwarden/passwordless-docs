@@ -121,9 +121,13 @@ Also see [invalid_token](#invalid-token).
 
 ### invalid_attestation
 
-You'll receive these error if you're trying to use an attestation format other than `"none"` while calling `/register/token`.
+You'll receive these error if you're trying to use an attestation format other than `"none"`, `"direct"`, `"indirect"` while calling `/register/token`.
 
-Currently, Passwordless.dev only supports attestation format `"none"`. While this is suitable for most applications, please contact support our support at [support@passwordless.dev](mailto:support@passwordless.dev) to discuss possibilities should you have a requirement that forces you to use `"direct"` or `"indirect"` attestation.
+Currently, Passwordless.dev only supports attestation format `"none"`, `"direct"`, `"indirect"`. While this is suitable for most applications, please contact support our support at [support@passwordless.dev](mailto:support@passwordless.dev) to discuss possibilities should you have a requirement that forces you to use `"enterprise"` attestation.
+
+### attestation_not_supported_on_plan
+
+You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it. Learn more [here](https://bitwarden.com/products/passwordless/#pricing)
 
 #### Solution
 

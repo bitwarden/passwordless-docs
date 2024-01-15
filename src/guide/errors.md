@@ -69,6 +69,10 @@ You'll receive this error when you call `p.signinWith*()` but the passkey that w
 
 Remove the passkey from the user device. This can be done in the browser's settings or on the operating system's credential manager.
 
+### forbidden
+
+You'll receive this error when you call an endpoint with an API key that does not have permission to access the endpoint. Please check the [API key permissions](admin-console/applications.md#api-key-management) in the admin console.
+
 ### missing_userid
 
 You'll receive this error when you call the `/register/token` endpoint but fail to supply a userId in the `json` payload.

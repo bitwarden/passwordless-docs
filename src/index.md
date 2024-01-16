@@ -2,8 +2,10 @@
 home: true
 heroImage: ./bumper.png
 tagline: Simplify passkey development and create frictionless authentication experiences.
-actionText: Get Started
-actionLink: /guide/
+actions:
+  - text: Get Started
+    link: /guide/
+    type: primary
 features:
   - title: Standard-based, and phish-proof
     details: Use open source and modern browser standards to create FIDO2 WebAuthn applications such as Face ID, fingerprint, and Windows Hello for your customers, end-users, and teams.

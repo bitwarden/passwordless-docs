@@ -180,6 +180,7 @@ export default {
       appId: 'H4XQ4LY5NY'
     }),
     mdEnhancePlugin({
+      breaks: true,
       codetabs: true
     }),
     mediumZoomPlugin(),

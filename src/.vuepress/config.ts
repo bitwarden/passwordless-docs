@@ -181,12 +181,14 @@ export default {
     }),
     mdEnhancePlugin({
       breaks: true,
+      checkLinks: {
+        status: 'dev'
+      },
       codetabs: true
     }),
     mediumZoomPlugin(),
     palettePlugin({
       preset: 'sass'
-    }),
-    'check-md'
+    })
   ]
 };

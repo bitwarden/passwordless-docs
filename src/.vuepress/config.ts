@@ -41,6 +41,9 @@ export default {
   ],
 
   theme: defaultTheme({
+    colorMode: 'light',
+    colorModeSwitch: false,
+    contributors: false,
     docsBranch: 'main',
     docsDir: 'src',
     docsRepo: 'passwordless/docs',

@@ -37,34 +37,21 @@ It's important to download your API keys to a safe place, as they will be remove
 
 Next, install the [Passwordless.dev JavaScript client library](frontend/javascript.md), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
 
-<CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
-<template v-slot:bash1>
+::: code-tabs#install
+
+@tab yarn
 
 ```bash
 yarn add @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-```
-
-</template>
-<template v-slot:bash2>
+@tab npm
 
 ```bash
 npm install @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-```
-
-</template>
-<template v-slot:es6>
+@tab es6
 
 ```html
 <script
@@ -74,35 +61,51 @@ import { Client } from '@passwordlessdev/passwordless-client';
 ></script>
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```html
-<script type="module">
-  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
-</script>
-```
-
-</template>
-<template v-slot:html>
+@tab html
 
 ```html
 <script
-  src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.min.js"
-  crossorigin="anonymous"
+        src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.min.js"
+        crossorigin="anonymous"
 ></script>
 ```
 
+:::
+
 In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
 
+::: code-tabs#install
+
+@tab yarn
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab npm
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab es6
+
 ```html
-<script>
-  const Client = Passwordless.Client;
-  const p = new Client({});
+<script type="module">
+    import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
 </script>
 ```
 
-</template>
-</CodeSwitcher>
+@tab html
+
+```html
+<script>
+    const Client = Passwordless.Client;
+    const p = new Client({});
+</script>
+```
+
+:::
 
 ## Build a registration flow
 

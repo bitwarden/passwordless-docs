@@ -1,4 +1,8 @@
 import { defaultTheme } from 'vuepress';
+import {backToTopPlugin} from "@vuepress/plugin-back-to-top";
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
+import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
+import {palettePlugin} from "@vuepress/plugin-palette";
 
 const { description } = require('../../package');
 
@@ -184,13 +188,15 @@ export default {
     ]
   }),
 
-  /**
-   * Apply plugins，ref：https://v1.vuepress.vuejs.org/zh/plugin/
-   */
   plugins: [
-    '@vuepress/plugin-back-to-top',
-    '@vuepress/plugin-medium-zoom',
-    'code-switcher',
+    backToTopPlugin(),
+    mdEnhancePlugin({
+      codetabs: true
+    }),
+    mediumZoomPlugin(),
+    palettePlugin({
+      preset: 'sass'
+    }),
     'check-md'
   ]
 };

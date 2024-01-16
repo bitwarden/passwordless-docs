@@ -13,11 +13,11 @@ In this guide we'll provide JavaScript examples, however you can check out sampl
 [Sign up](https://admin.passwordless.dev/signup) for a free Passwordless.dev account. Bitwarden offers a free Passwordless.dev account, or [paid plans](https://bitwarden.com/products/passwordless/#pricing) that unlock certain tiers of usage and features.
 
 When you sign up you'll land on the [admin console](admin-console.md), your primary GUI for creating and configuring applications, monitoring application usage, and managing billing:
-</br>
-</br>
+<br>
+<br>
 ![Admin console](./admin-console.png)
-</br>
-</br>
+<br>
+<br>
 
 ## Create an application
 
@@ -107,11 +107,11 @@ In all cases, your frontend must import the library to call the methods used by 
 ## Build a registration flow
 
 Next, implement a workflow on your backend and frontend for registering a [passkey](concepts.md#passkeys). At a high-level, here's what you'll be doing:
-</br>
-</br>
+<br>
+<br>
 ![Register credential workflow](./register-diagram.png)
-</br>
-</br>
+<br>
+<br>
 Let's break down these steps:
 
 1. On your backend, generate a [registration token](api.md#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts.md#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:

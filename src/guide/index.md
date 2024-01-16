@@ -5,11 +5,11 @@ Bitwarden Passwordless.dev is a software toolkit that helps developers build [FI
 Using Passwordless.dev means there's no need to read extensive W3C specification documentation, determine what cryptography to implement, or worry about managing stored public keys. The team behind Bitwarden will take care of that for you.
 
 Passwordless.dev wraps passkey authentication for your website in easy-to-use tools, designed to make it faster for web developers to adopt, and meet the challenges of an ever-shifting cybersecurity landscape.
-</br>
-</br>
+<br>
+<br>
 ![Passwordless.dev operation flow](./diagram.png)
-</br>
-</br>
+<br>
+<br>
 The Passwordless.dev architecture consists of three key parts:
 
 - A [client side library](frontend/javascript.md), used by your frontend to make requests to end-users browsers' WebAuthn API and requests to the Passwordless.dev APIs.

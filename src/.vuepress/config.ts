@@ -3,35 +3,16 @@ import {backToTopPlugin} from "@vuepress/plugin-back-to-top";
 import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
 import {palettePlugin} from "@vuepress/plugin-palette";
+import {docsearchPlugin} from "@vuepress/plugin-docsearch";
 
 const { description } = require('../../package');
 
 export default {
-  algolia: {
-    apiKey: '76fc9fe901fe62268368f74e492ccbd0',
-    indexName: 'passwordless',
-    appId: 'H4XQ4LY5NY'
-  },
-
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#title
-   */
   title: 'Passwordless.dev Documentation',
-
   base: '/',
-  /**
-   * Ref：https://v1.vuepress.vuejs.org/config/#description
-   */
   description: description,
-
-  /**
-   * Extra tags to be injected to the page HTML `<head>`
-   *
-   * ref：https://v1.vuepress.vuejs.org/config/#head
-   */
   head: [
     ['link', { rel: 'icon', href: '/icon.svg' }],
-    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     [
@@ -193,6 +174,11 @@ export default {
 
   plugins: [
     backToTopPlugin(),
+    docsearchPlugin({
+      apiKey: '76fc9fe901fe62268368f74e492ccbd0',
+      indexName: 'passwordless',
+      appId: 'H4XQ4LY5NY'
+    }),
     mdEnhancePlugin({
       codetabs: true
     }),

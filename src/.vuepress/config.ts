@@ -1,9 +1,9 @@
 import { defaultTheme } from 'vuepress';
-import {backToTopPlugin} from "@vuepress/plugin-back-to-top";
-import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
-import {mediumZoomPlugin} from "@vuepress/plugin-medium-zoom";
-import {palettePlugin} from "@vuepress/plugin-palette";
-import {docsearchPlugin} from "@vuepress/plugin-docsearch";
+import { backToTopPlugin } from '@vuepress/plugin-back-to-top';
+import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom';
+import { palettePlugin } from '@vuepress/plugin-palette';
+import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 
 const { description } = require('../../package');
 

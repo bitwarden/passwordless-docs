@@ -65,8 +65,8 @@ npm install @passwordlessdev/passwordless-client
 
 ```html
 <script
-        src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.min.js"
-        crossorigin="anonymous"
+  src="https://cdn.passwordless.dev/dist/1.1.0/umd/passwordless.umd.min.js"
+  crossorigin="anonymous"
 ></script>
 ```
 
@@ -92,7 +92,7 @@ import { Client } from '@passwordlessdev/passwordless-client';
 
 ```html
 <script type="module">
-    import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
+  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
 </script>
 ```
 
@@ -100,8 +100,8 @@ import { Client } from '@passwordlessdev/passwordless-client';
 
 ```html
 <script>
-    const Client = Passwordless.Client;
-    const p = new Client({});
+  const Client = Passwordless.Client;
+  const p = new Client({});
 </script>
 ```
 

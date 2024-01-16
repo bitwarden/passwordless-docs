@@ -16,16 +16,17 @@
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "^1.1.2",
+    "@vuepress/plugin-docsearch": "^2.0.0-rc.0",
     "vuepress-plugin-code-switcher": "^1.1.0"
   },
   "devDependencies": {
+    "check-md": "^1.0.2",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-vue": "^9.17.0",
     "prettier": "^3.0.3",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "vuepress": "^1.9.10",
-    "vuepress-plugin-check-md": "^0.0.3",
-    "check-md": "^1.0.2"
+    "vuepress": "^2.0.0-rc.0",
+    "vuepress-plugin-check-md": "^0.0.3"
   }
 }

@@ -1,8 +1,5 @@
 import { defaultTheme } from 'vuepress';
-import { backToTopPlugin } from '@vuepress/plugin-back-to-top';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
-import { mediumZoomPlugin } from '@vuepress/plugin-medium-zoom';
-import { palettePlugin } from '@vuepress/plugin-palette';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 
 const { description } = require('../../package');
@@ -33,6 +30,10 @@ export default {
     lastUpdated: true,
     navbar: [
       {
+        text: 'Home',
+        link: 'https://www.passwordless.dev/',
+      },
+      {
         text: 'Documentation',
         link: '/guide/'
       },
@@ -41,8 +42,8 @@ export default {
         link: 'https://admin.passwordless.dev/signup'
       },
       {
-        text: 'Home',
-        link: 'https://www.passwordless.dev/'
+        text: 'Login',
+        link: 'https://admin.passwordless.dev/account/login'
       }
     ],
     repo: '',
@@ -173,7 +174,6 @@ export default {
   }),
 
   plugins: [
-    backToTopPlugin(),
     docsearchPlugin({
       apiKey: '76fc9fe901fe62268368f74e492ccbd0',
       indexName: 'passwordless',
@@ -185,10 +185,6 @@ export default {
         status: 'dev'
       },
       codetabs: true
-    }),
-    mediumZoomPlugin(),
-    palettePlugin({
-      preset: 'sass'
     })
   ]
 };

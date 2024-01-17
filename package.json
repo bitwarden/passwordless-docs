@@ -18,9 +18,7 @@
     "@passwordlessdev/passwordless-client": "^1.1.2"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^2.0.0-rc.0",
     "@vuepress/plugin-docsearch": "^2.0.0-rc.0",
-    "@vuepress/plugin-palette": "^2.0.0-rc.0",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-vue": "^9.17.0",

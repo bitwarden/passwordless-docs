@@ -13,11 +13,8 @@ In this guide we'll provide JavaScript examples, however you can check out sampl
 [Sign up](https://admin.passwordless.dev/signup) for a free Passwordless.dev account. Bitwarden offers a free Passwordless.dev account, or [paid plans](https://bitwarden.com/products/passwordless/#pricing) that unlock certain tiers of usage and features.
 
 When you sign up you'll land on the [admin console](admin-console.md), your primary GUI for creating and configuring applications, monitoring application usage, and managing billing:
-</br>
-</br>
+
 ![Admin console](./admin-console.png)
-</br>
-</br>
 
 ## Create an application
 
@@ -37,34 +34,21 @@ It's important to download your API keys to a safe place, as they will be remove
 
 Next, install the [Passwordless.dev JavaScript client library](frontend/javascript.md), either globally or as a module within your application. This library will allow your application to interact with the Passwordless.dev API and with browsers' WebAuthn API. To install the library:
 
-<CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
-<template v-slot:bash1>
+::: code-tabs#install
+
+@tab yarn
 
 ```bash
 yarn add @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-```
-
-</template>
-<template v-slot:bash2>
+@tab npm
 
 ```bash
 npm install @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-```
-
-</template>
-<template v-slot:es6>
+@tab es6
 
 ```html
 <script
@@ -74,16 +58,7 @@ import { Client } from '@passwordlessdev/passwordless-client';
 ></script>
 ```
 
-In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
-
-```html
-<script type="module">
-  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
-</script>
-```
-
-</template>
-<template v-slot:html>
+@tab html
 
 ```html
 <script
@@ -92,7 +67,33 @@ In all cases, your frontend must import the library to call the methods used by 
 ></script>
 ```
 
+:::
+
 In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
+
+::: code-tabs#install
+
+@tab yarn
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab npm
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab es6
+
+```html
+<script type="module">
+  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
+</script>
+```
+
+@tab html
 
 ```html
 <script>
@@ -101,17 +102,14 @@ In all cases, your frontend must import the library to call the methods used by 
 </script>
 ```
 
-</template>
-</CodeSwitcher>
+:::
 
 ## Build a registration flow
 
 Next, implement a workflow on your backend and frontend for registering a [passkey](concepts.md#passkeys). At a high-level, here's what you'll be doing:
-</br>
-</br>
+
 ![Register credential workflow](./register-diagram.png)
-</br>
-</br>
+
 Let's break down these steps:
 
 1. On your backend, generate a [registration token](api.md#register-token) by calling the passwordless.dev API's `/register/token` endpoint ([What is a token?](concepts.md#tokens)). While you can send in a number of options, the minimum arguments are `userId` and `username`, for example:

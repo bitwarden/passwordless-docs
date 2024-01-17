@@ -12,3 +12,6 @@ config.local.js
 basement_dist
 .vscode
 .idea
+
+src/.vuepress/.cache
+src/.vuepress/.temp

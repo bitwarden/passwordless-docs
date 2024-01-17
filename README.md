@@ -21,7 +21,7 @@ When contributing PRs, please do your best to follow these guidelines:
 
 - Use present tense and active voice.
 - Use sentence case in headers and other titles (e.g. "**C**reate **a**n **a**pplication").
-- If you're adding a **new** article, add it to the `sidebar` object in `/src/.vuepress/config.js`.
+- If you're adding a **new** article, add it to the `sidebar` object in `/src/.vuepress/config.ts`.
 - If you're adding **code examples**, please include comments to explain what each function, section of code, etc. is achieving.
 - Keep punctuation to the minimum necessary.
 - Always capitalize "Passwordless.dev" and "Bitwarden".

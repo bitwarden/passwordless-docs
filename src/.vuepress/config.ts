@@ -31,7 +31,7 @@ export default {
     navbar: [
       {
         text: 'Home',
-        link: 'https://www.passwordless.dev/',
+        link: 'https://www.passwordless.dev/'
       },
       {
         text: 'Documentation',

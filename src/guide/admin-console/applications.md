@@ -20,9 +20,9 @@ The **Users** page allows you to monitor the end-users with passkeys registered 
 
 Credentials registered to each user are listed. [Learn what data is stored for each credential](../concepts.md#credential).
 
-### Aliases,
+### Aliases
 
-Aliases registered to teach user are listed, however aliases that are hashed cannot be viewed here ([learn more](../api.md#alias)).
+Aliases registered to each user are listed, however aliases that are hashed cannot be viewed here ([learn more](../api.md#alias)).
 
 ## Settings
 

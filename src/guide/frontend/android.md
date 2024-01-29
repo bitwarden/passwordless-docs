@@ -265,6 +265,29 @@ _passwordless.login(alias) { success, exception, result ->
 }
 ```
 
+## Sample
+
+You can find the same application [here](https://www.github.com/bitwarden/passwordless-android).
+
+::: tabs
+
+@tab Registration 1
+![Registration #1](../../assets/images/guide/frontend/android/register_1.png =300x)
+
+@tab Registration 2
+![Registration #2](../../assets/images/guide/frontend/android/register_2.png =300x)
+
+@tab Login 1
+![Login #1](../../assets/images/guide/frontend/android/login_1.png =300x)
+
+@tab Login 2
+![Login #2](../../assets/images/guide/frontend/android/login_2.png =300x)
+
+@tab Login 3
+![Login #3](../../assets/images/guide/frontend/android/login_3.png =300x)
+
+:::
+
 ## References
 
 - [Google Android: Client Auth](https://developers.google.com/android/guides/client-auth)

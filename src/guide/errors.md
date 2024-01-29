@@ -28,6 +28,17 @@ if (error) {
 
 ## List of error codes
 
+### api_key_locked
+
+You'll receive this error when you call an endpoint with an API key that has been locked.
+
+This could happen due to several reasons:
+
+- Either you've locked the API keys yourself.
+- Your application was marked for deletion, which causes the API keys to be locked automatically.
+
+If this was unintentional, you can unlock the API key in the [admin console](admin-console/applications.md#api-key-management).
+
 ### invalid_token
 
 The token that was submitted did not contain the expected value. This error often occurs when something goes wrong earlier in the process and the error message is sent instead of a valid token.
@@ -57,6 +68,10 @@ You'll receive this error when you call `p.signinWith*()` but the passkey that w
 #### Solution
 
 Remove the passkey from the user device. This can be done in the browser's settings or on the operating system's credential manager.
+
+### forbidden
+
+You'll receive this error when you call an endpoint with an API key that does not have permission to access the endpoint. Please check the [API key permissions](admin-console/applications.md#api-key-management) in the admin console.
 
 ### missing_userid
 
@@ -106,9 +121,13 @@ Also see [invalid_token](#invalid-token).
 
 ### invalid_attestation
 
-You'll receive these error if you're trying to use an attestation format other than `"none"` while calling `/register/token`.
+You'll receive these error if you're trying to use an attestation format other than `"none"`, `"direct"`, `"indirect"` while calling `/register/token`.
 
-Currently, Passwordless.dev only supports attestation format `"none"`. While this is suitable for most applications, please contact support our support at [support@passwordless.dev](mailto:support@passwordless.dev) to discuss possibilities should you have a requirement that forces you to use `"direct"` or `"indirect"` attestation.
+Currently, Passwordless.dev only supports attestation format `"none"`, `"direct"`, `"indirect"`. While this is suitable for most applications, please contact support our support at [support@passwordless.dev](mailto:support@passwordless.dev) to discuss possibilities should you have a requirement that forces you to use `"enterprise"` attestation.
+
+### attestation_not_supported_on_plan
+
+You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it. Learn more [here](https://bitwarden.com/products/passwordless/#pricing)
 
 #### Solution
 

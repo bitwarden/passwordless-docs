@@ -12,48 +12,31 @@ All methods **require** your API [public key](../concepts.md#api-keys) for authe
 
 To install the Passwordless.dev JavaScript client:
 
-<CodeSwitcher :languages="{bash1:'yarn',bash2:'npm',es6:'ES6',html:'html'}">
-<template v-slot:bash1>
+::: code-tabs#install
+
+@tab yarn
 
 ```bash
 yarn add @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods in this document:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-const p = new Client({ apiKey: '' });
-```
-
-</template>
-<template v-slot:bash2>
+@tab npm
 
 ```bash
 npm install @passwordlessdev/passwordless-client
 ```
 
-In all cases, your frontend must import the library to call the methods in this document:
-
-```js
-import { Client } from '@passwordlessdev/passwordless-client';
-const p = new Client({ apiKey: '' });
-```
-
-</template>
-<template v-slot:es6>
-
-In all cases, your frontend must import the library to call the methods in this document:
+@tab es6
 
 ```html
-<script type="module">
-  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
-  const p = new Client({ apiKey: '' });
-</script>
+<script
+  src="https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs"
+  type="module"
+  crossorigin="anonymous"
+></script>
 ```
 
-</template>
-<template v-slot:html>
+@tab html
 
 ```html
 <script
@@ -62,7 +45,33 @@ In all cases, your frontend must import the library to call the methods in this 
 ></script>
 ```
 
+:::
+
 In all cases, your frontend must import the library to call the methods used by Passwordless.dev:
+
+::: code-tabs#install
+
+@tab yarn
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab npm
+
+```js
+import { Client } from '@passwordlessdev/passwordless-client';
+```
+
+@tab es6
+
+```html
+<script type="module">
+  import { Client } from 'https://cdn.passwordless.dev/dist/1.1.0/esm/passwordless.min.mjs';
+</script>
+```
+
+@tab html
 
 ```html
 <script>
@@ -71,8 +80,7 @@ In all cases, your frontend must import the library to call the methods used by 
 </script>
 ```
 
-</template>
-</CodeSwitcher>
+:::
 
 ## .register()
 

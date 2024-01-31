@@ -293,7 +293,7 @@ _passwordless.login(alias) { success, exception, result ->
 
 ## Sample
 
-You can find the same application [here](https://www.github.com/bitwarden/passwordless-android).
+You can find the source code for a sample application [here](https://github.com/bitwarden/passwordless-android/tree/main/app).
 
 ::: tabs
 

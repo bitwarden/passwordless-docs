@@ -203,6 +203,9 @@ Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.h
 
 ### Creating a `PasswordlessClient` instance
 
+
+#### Using Dagger Hilt
+
 You can either set the `ActivityContext` and `CoroutineScope` by injecting it with Dagger Hilt as follows:
 
 ```kotlin
@@ -228,6 +231,8 @@ class PasswordlessModule {
     }
 }
 ```
+
+#### Without Dagger Hilt
 
 Or you can set the Context of PasswordlessClient manually: Ensure the context is set to the current `Activity`.
 

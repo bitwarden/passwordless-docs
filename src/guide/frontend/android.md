@@ -10,7 +10,31 @@ All methods **require** your API [public key](../concepts.md#api-keys) for authe
 
 ## Installation
 
-TODO: Pending publishing of SDK
+::: tabs
+
+@tab Apache Maven
+
+```xml
+<dependency>
+  <groupId>com.bitwarden</groupId>
+  <artifactId>passwordless-android</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+
+@tab Gradle Kotlin DSL
+
+```kotlin
+implementation("com.bitwarden:passwordless-android:1.0.0")
+```
+
+@tab Gradle Groovy DSL
+
+```groovy
+implementation 'com.bitwarden:passwordless-android:1.0.0'
+```
+
+:::
 
 ## Configuration
 

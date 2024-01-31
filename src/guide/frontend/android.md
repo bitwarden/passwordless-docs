@@ -54,19 +54,19 @@ In your `AndroidManifest.xml`, you will need to add the following permissions:
 
 ```kotlin
 data class PasswordlessOptions(
-   # Your public API key
+   // Your public API key
    val apiKey: String,
 
-   # Identifier for your server, for example 'example.com' if your backend is hosted at https://example.com.
+   // Identifier for your server, for example 'example.com' if your backend is hosted at https://example.com.
    val rpId: String,
 
-   # This is where your Facet ID goes
+   // This is where your Facet ID goes
    val origin: String,
 
-   # Where your backend is hosted
+   // Where your backend is hosted
    val backendUrl:String,
 
-   # Passwordless.dev server, change for self-hosting
+   // Passwordless.dev server, change for self-hosting
    val apiUrl: String = "https://v4.passwordless.dev"
 )
 ```

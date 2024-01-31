@@ -8,7 +8,15 @@ The Passwordless.dev JavaScript client is used by your frontend to complete FIDO
 
 All methods **require** your API [public key](../concepts.md#api-keys) for authentication. Requests made to the [private API](../api.md) will instead require your API [private secret](../concepts.md#api-keys).
 
-## Installation
+## Creating your first Android application
+
+### Requirements
+
+- Android 7.0 (API level 24) or higher
+- Java 8 or higher
+- [Completed 'Get started' guide](../get-started.md).
+
+### Installation
 
 ::: tabs
 
@@ -36,72 +44,15 @@ implementation 'com.bitwarden:passwordless-android:1.0.0'
 
 :::
 
-## Configuration
+### Permissions
 
-### Your backend
+In your `AndroidManifest.xml`, you will need to add the following permissions:
 
-#### Generating SHA-256 Certificate Fingerprints
-
-To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
-
-This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
-
-- Option 1:
-  - MacOS & Linux:
-    ```bash
-    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-    ```
-  - Windows:
-    ```powershell
-    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-    ```
-- Option 2:
-  Go to the root directory of the project from the terminal and run the below command
-  ```bash
-  ./gradlew signingReport
-  ```
-  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
-  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
-
-#### Host ~/.well-known/assetlinks.json
-
-You will need store the following file at `https://<your-domain>/.well-known/assetlinks.json`. To generate the SHA256 hash, read the links below the snippet.
-
-You may also have to change the 'target::namespace' and 'target::package_name' properties to match your application's.
-
-```json
-[
-  {
-    "relation": [
-      "delegate_permission/common.handle_all_urls",
-      "delegate_permission/common.get_login_creds"
-    ],
-    "target": {
-      "namespace": "web"
-    }
-  },
-  {
-    "relation": [
-      "delegate_permission/common.handle_all_urls",
-      "delegate_permission/common.get_login_creds"
-    ],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.example.myapplication",
-      "sha256_cert_fingerprints": [
-        "3C:E2:29:94:E2:DE:1E:EB:E5:F9:70:10:72:41:F4:0F:06:38:61:BD:72:76:79:CA:72:68:67:FA:38:9B:65:B9"
-      ]
-    }
-  }
-]
+```xml
+<uses-permission android:name="android.permission.INTERNET" />
 ```
 
-- [Associate apps & sites - Google](https://developers.google.com/identity/smartlock-passwords/android/associate-apps-and-sites)
-- [Passkeys - Google](https://developer.android.com/training/sign-in/passkeys)
-
-### Application
-
-#### General
+### Configuration (Android application)
 
 ```kotlin
 data class PasswordlessOptions(
@@ -122,15 +73,7 @@ data class PasswordlessOptions(
 )
 ```
 
-#### Permissions
-
-In your `AndroidManifest.xml`, you will need to add the following permissions:
-
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-```
-
-#### Use the hosted .well-known/assetlinks.json
+#### .well-known/assetlinks.json
 
 In your application's `AndroidManifest.xml`, you will then need to add the tag below under `manifest::application`:
 
@@ -197,13 +140,70 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 5. Now append it to `android:apk-key-hash:` to get the Facet ID:
    `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
-## Getting Started
+### Configuration (Your back-end)
 
-Follow the [Get started guide](https://docs.passwordless.dev/guide/get-started.html).
+#### Generating SHA-256 Certificate Fingerprints
 
-### Creating a `PasswordlessClient` instance
+To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
 
-#### Using Dagger Hilt
+This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
+
+- Option 1:
+  - MacOS & Linux:
+    ```bash
+    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+    ```
+  - Windows:
+    ```powershell
+    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+    ```
+- Option 2:
+  Go to the root directory of the project from the terminal and run the below command
+  ```bash
+  ./gradlew signingReport
+  ```
+  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
+  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
+
+#### Host ~/.well-known/assetlinks.json
+
+You will need store the following file at `https://<your-domain>/.well-known/assetlinks.json`. To generate the SHA256 hash, read the links below the snippet.
+
+You may also have to change the 'target::namespace' and 'target::package_name' properties to match your application's.
+
+```json
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "web"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.myapplication",
+      "sha256_cert_fingerprints": [
+        "3C:E2:29:94:E2:DE:1E:EB:E5:F9:70:10:72:41:F4:0F:06:38:61:BD:72:76:79:CA:72:68:67:FA:38:9B:65:B9"
+      ]
+    }
+  }
+]
+```
+
+- [Associate apps & sites - Google](https://developers.google.com/identity/smartlock-passwords/android/associate-apps-and-sites)
+- [Passkeys - Google](https://developer.android.com/training/sign-in/passkeys)
+
+### Using the PasswordlessClient
+
+#### With Dagger Hilt
 
 You can either set the `ActivityContext` and `CoroutineScope` by injecting it with Dagger Hilt as follows:
 
@@ -318,4 +318,8 @@ You can find the same application [here](https://www.github.com/bitwarden/passwo
 
 ## References
 
-- [Google Android: Client Auth](https://developers.google.com/android/guides/client-auth)
+- [Get Started - Passwordless.dev](../get-started.md/)
+- [Integration with your backend - Passwordless.dev](../backend/index.md)
+- [Client Auth - Google](https://developers.google.com/android/guides/client-auth)
+- [Associate apps & sites - Google](https://developers.google.com/identity/smartlock-passwords/android/associate-apps-and-sites)
+- [Passkeys - Google](https://developer.android.com/training/sign-in/passkeys)

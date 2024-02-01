@@ -141,7 +141,7 @@ Write-Output $base64urlString
 
 ## Configuration (Your back-end)
 
-### Generating SHA-256 Certificate Fingerprints
+### Obtaining the SHA-256 Certificate Fingerprints
 
 To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
 

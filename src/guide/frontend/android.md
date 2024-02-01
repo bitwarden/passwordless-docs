@@ -261,8 +261,12 @@ _passwordless.setCoroutineScope(lifecycleScope)
 
 ## Registration
 
-1. **Call Your Backend with User Details**:Make a call to your backend with user details (e.g., username, alias) and retrieve the registration token.
-2. **Call `PasswordlessClient.register()`**
+1. **UI**:
+   - (Optional) Take the alias as input from the user if it's a non-discoverable credential.
+   - (Required) Specify the username for the credential.
+2. **Call `POST /register/token` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a registration token.
+   - See (API documentation)[https://docs.passwordless.dev/guide/api.html#register-token]
+3. **Call `PasswordlessClient.register()`**
 
 ```kotlin
 // Pass the registration token to PasswordlessClient.register()
@@ -280,8 +284,10 @@ _passwordless.register(
 
 ## Logging in
 
-1. **Take Alias as Input**: Gather the alias as input from the user.
-2. **Call `PasswordlessClient.login()`**: Initiate the login process with the alias and response callback.
+1. **UI**: Optionally, take the alias as input from the user if it's a non-discoverable credential.
+2. **Call `PasswordlessClient.login()`**: Initiate the login process with the (optional) alias and response callback.
+3. **Call `POST /signin/verify` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a login token.
+   - See (API documentation)[https://docs.passwordless.dev/guide/api.html#signin-verify]
 
 ```kotlin
 // Call PasswordlessClient.login() with the alias

@@ -6,7 +6,6 @@ title: Android Client SDK
 
 The Passwordless.dev Android client SDK gives users the ability to leverage their device’s built-in fingerprint sensor and/or FIDO security keys for secure passwordless access to websites and native applications that support the FIDO2 protocols
 
-
 ## Requirements
 
 - Android 9.0 (API level 28) or higher
@@ -76,8 +75,8 @@ In your application's `AndroidManifest.xml`, you will then need to add the tag b
 
 ```xml
 <meta-data
-            android:name="asset_statements"
-            android:resource="@xml/assetlinks" />
+  android:name="asset_statements"
+  android:resource="@xml/assetlinks" />
 ```
 
 In your application's `res/xml/assetlinks.xml`, you will then need to add the following content. This will tell our Android application where our `.well-known/assetlinks.json` file is hosted.

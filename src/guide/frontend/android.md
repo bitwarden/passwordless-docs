@@ -262,21 +262,18 @@ _passwordless.setCoroutineScope(lifecycleScope)
 ## Registration
 
 1. **Call Your Backend with User Details**:Make a call to your backend with user details (e.g., username, alias) and retrieve the registration token.
-2. **Call Passwordless Register Function**
+2. **Call `PasswordlessClient.register()`**
 
 ```kotlin
+// Pass the registration token to PasswordlessClient.register()
 _passwordless.register(
-    token =responseToken,
+    token = responseToken,
     nickname = nickname
 ) { success, exception, result ->
-        if (success) {
-            Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(
-            context,
-            "Exception: " + getPasskeyFailureMessage(exception as Exception),
-        Toast.LENGTH_SHORT
-        ).show()
+    if (success) {
+        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show()
+    } else {
+        Toast.makeText(context, "Exception: " + getPasskeyFailureMessage(exception as Exception), Toast.LENGTH_SHORT).show()
     }
 }
 ```
@@ -284,15 +281,17 @@ _passwordless.register(
 ## Logging in
 
 1. **Take Alias as Input**: Gather the alias as input from the user.
-2. **Call Passwordless Login**: Initiate the login process with the alias and response callback.
+2. **Call `PasswordlessClient.login()`**: Initiate the login process with the alias and response callback.
 
 ```kotlin
+// Call PasswordlessClient.login() with the alias
 _passwordless.login(alias) { success, exception, result ->
     if (success) {
         lifecycleScope.launch {
-             val clientDataResponse =
-                httpClient.login(UserLoginRequest(result?.token!!))
+            // When successful, call your backend to verify the token, which could for example return a JWT token.
+            val clientDataResponse = httpClient.login(UserLoginRequest(result?.token!!))
             if (clientDataResponse.isSuccessful) {
+                // Login successful. Parse the response or JWT token and proceed.
                 val data = clientDataResponse.body()
                 showText(data.toString())
             }

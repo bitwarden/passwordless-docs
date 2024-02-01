@@ -375,7 +375,8 @@ In case you receive an error, you will also receive a JSON serialized summary of
 | HTTP Code | Message                                | Status |
 | --------- | -------------------------------------- | ------ |
 | 200       | Everything is OK.                      | ✅     |
-| 201       | Everything is OK but empty.            | ✅     |
+| 201       | Everything is OK, resource created.    | ✅     |
+| 204       | Everything is OK, response is empty.   | ✅     |
 | 400       | Bad request.                           | 🔴     |
 | 401       | You did not identify yourself.         | 🔴     |
 | 409       | Conflict (alias is already in use).    | 🔴     |

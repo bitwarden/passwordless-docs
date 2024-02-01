@@ -102,7 +102,7 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
    - MacOS & Linux:
      ```bash
      # Linux, Mac OS, Git Bash, ...
-     keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | openssl base64 | sed 's/=//g'
+     keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | basenc --base64url | sed 's/=//g'
      ```
    - Windows:
 
@@ -123,18 +123,15 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
      # Convert the byte array to a base64 string
      $base64String = [Convert]::ToBase64String($byteArray)
 
-     Write-Output $base64String
+     # Convert the base64 string to a base64url string
+     $base64urlString = $base64String -replace '\+', '-' -replace '/', '_' -replace '=+$', ''
+
+     Write-Output $base64urlString
      ```
 
 2. The default password for the debug keystore is `android`. For your production keystore, enter your chosen password.
 
-3. This command will output BASE64:
-   `POIplOLeHuvl+XAQckH0DwY4Yb1ydnnKcmhn+jibZbk`
-
-4. You need to convert this to BASE64URL format:
-   `POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
-
-5. Now append it to `android:apk-key-hash:` to get the Facet ID:
+3. Now append the result to `android:apk-key-hash:` to get the Facet ID:
    `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
 ## Configuration (Your back-end)

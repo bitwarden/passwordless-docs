@@ -10,7 +10,7 @@ The Passwordless.dev Android client SDK gives users the ability to leverage thei
 
 ### Requirements
 
-- Android 7.0 (API level 24) or higher
+- Android 9.0 (API level 28) or higher
 - Java 8 or higher
 - [Completed 'Get started' guide](../get-started.md).
 
@@ -24,20 +24,20 @@ The Passwordless.dev Android client SDK gives users the ability to leverage thei
 <dependency>
   <groupId>com.bitwarden</groupId>
   <artifactId>passwordless-android</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
 @tab Gradle Kotlin DSL
 
 ```kotlin
-implementation("com.bitwarden:passwordless-android:1.0.0")
+implementation("com.bitwarden:passwordless-android:1.0.1")
 ```
 
 @tab Gradle Groovy DSL
 
 ```groovy
-implementation 'com.bitwarden:passwordless-android:1.0.0'
+implementation 'com.bitwarden:passwordless-android:1.0.1'
 ```
 
 :::

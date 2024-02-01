@@ -99,35 +99,41 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 
 1. Execute the following command in your terminal:
 
-   - MacOS & Linux:
-     ```bash
-     # Linux, Mac OS, Git Bash, ...
-     keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | basenc --base64url | sed 's/=//g'
-     ```
-   - Windows:
+::: tabs
 
-     ```powershell
-     # Run keytool command and extract SHA256 hash
-     $keytoolOutput = keytool -list -v -keystore $HOME\.android\debug.keystore
-     $sha256Hash = ($keytoolOutput | Select-String "SHA256: ").ToString().Split(" ")[2]
+@tab Bash
 
-     # Remove any non-hex characters from the hash
-     $hexHash = $sha256Hash -replace "[^0-9A-Fa-f]"
+```bash
+# Linux, Mac OS, Git Bash, ...
+keytool -list -v -keystore ~/.android/debug.keystore | grep "SHA256: " | cut -d " " -f 3 | xxd -r -p | basenc --base64url | sed 's/=//g'
+```
 
-     # Convert the hexadecimal string to a byte array
-     $byteArray = [byte[]]@()
-     for ($i = 0; $i -lt $hexHash.Length; $i += 2) {
-       $byteArray += [byte]([Convert]::ToUInt32($hexHash.Substring($i, 2), 16))
-     }
+@tab Powershell
 
-     # Convert the byte array to a base64 string
-     $base64String = [Convert]::ToBase64String($byteArray)
+```powershell
+# Run keytool command and extract SHA256 hash
+$keytoolOutput = keytool -list -v -keystore $HOME\.android\debug.keystore
+$sha256Hash = ($keytoolOutput | Select-String "SHA256: ").ToString().Split(" ")[2]
 
-     # Convert the base64 string to a base64url string
-     $base64urlString = $base64String -replace '\+', '-' -replace '/', '_' -replace '=+$', ''
+# Remove any non-hex characters from the hash
+$hexHash = $sha256Hash -replace "[^0-9A-Fa-f]"
 
-     Write-Output $base64urlString
-     ```
+# Convert the hexadecimal string to a byte array
+$byteArray = [byte[]]@()
+for ($i = 0; $i -lt $hexHash.Length; $i += 2) {
+  $byteArray += [byte]([Convert]::ToUInt32($hexHash.Substring($i, 2), 16))
+}
+
+# Convert the byte array to a base64 string
+$base64String = [Convert]::ToBase64String($byteArray)
+
+# Convert the base64 string to a base64url string
+$base64urlString = $base64String -replace '\+', '-' -replace '/', '_' -replace '=+$', ''
+
+Write-Output $base64urlString
+```
+
+:::
 
 2. The default password for the debug keystore is `android`. For your production keystore, enter your chosen password.
 

@@ -6,15 +6,14 @@ title: Android Client SDK
 
 The Passwordless.dev Android client SDK gives users the ability to leverage their device’s built-in fingerprint sensor and/or FIDO security keys for secure passwordless access to websites and native applications that support the FIDO2 protocols
 
-## Creating your first Android application
 
-### Requirements
+## Requirements
 
 - Android 9.0 (API level 28) or higher
 - Java 8 or higher
-- [Completed 'Get started' guide](../get-started.md).
+- [Having completed the 'Get started' guide](../get-started.md).
 
-### Installation
+## Installation
 
 ::: tabs
 
@@ -42,7 +41,7 @@ implementation 'com.bitwarden:passwordless-android:1.0.1'
 
 :::
 
-### Permissions
+## Permissions
 
 In your `AndroidManifest.xml`, you will need to add the following permissions:
 
@@ -50,7 +49,7 @@ In your `AndroidManifest.xml`, you will need to add the following permissions:
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-### Configuration (Android application)
+## Configuration (Android application)
 
 ```kotlin
 data class PasswordlessOptions(
@@ -71,7 +70,7 @@ data class PasswordlessOptions(
 )
 ```
 
-#### .well-known/assetlinks.json
+### .well-known/assetlinks.json
 
 In your application's `AndroidManifest.xml`, you will then need to add the tag below under `manifest::application`:
 
@@ -90,7 +89,7 @@ In your application's `res/xml/assetlinks.xml`, you will then need to add the fo
 </resources>
 ```
 
-#### Facet ID
+### Facet ID
 
 The `Facet ID` will be used at a later point in this guide to use as the `origin`.
 
@@ -138,9 +137,9 @@ To obtain the Facet ID continue the steps below, the facet id typically looks li
 5. Now append it to `android:apk-key-hash:` to get the Facet ID:
    `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
-### Configuration (Your back-end)
+## Configuration (Your back-end)
 
-#### Generating SHA-256 Certificate Fingerprints
+### Generating SHA-256 Certificate Fingerprints
 
 To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
 
@@ -163,7 +162,7 @@ This command will print detailed information about the keystore entry with the s
   Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
   If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
 
-#### Host ~/.well-known/assetlinks.json
+### Host ~/.well-known/assetlinks.json
 
 You will need store the following file at `https://<your-domain>/.well-known/assetlinks.json`. To generate the SHA256 hash, read the links below the snippet.
 
@@ -196,12 +195,9 @@ You may also have to change the 'target::namespace' and 'target::package_name' p
 ]
 ```
 
-- [Associate apps & sites - Google](https://developers.google.com/identity/smartlock-passwords/android/associate-apps-and-sites)
-- [Passkeys - Google](https://developer.android.com/training/sign-in/passkeys)
+## Using the PasswordlessClient
 
-### Using the PasswordlessClient
-
-#### With Dagger Hilt
+### With Dagger Hilt
 
 You can either set the `ActivityContext` and `CoroutineScope` by injecting it with Dagger Hilt as follows:
 
@@ -229,7 +225,7 @@ class PasswordlessModule {
 }
 ```
 
-#### Without Dagger Hilt
+### Without Dagger Hilt
 
 Or you can set the Context of PasswordlessClient manually: Ensure the context is set to the current `Activity`.
 
@@ -247,7 +243,7 @@ Set the coroutine scope, passing lifecycleScope of the current fragment, only ne
 _passwordless.setCoroutineScope(lifecycleScope)
 ```
 
-### Registration
+## Registration
 
 1. **Call Your Backend with User Details**:Make a call to your backend with user details (e.g., username, alias) and retrieve the registration token.
 2. **Call Passwordless Register Function**
@@ -269,7 +265,7 @@ _passwordless.register(
 }
 ```
 
-### Logging in
+## Logging in
 
 1. **Take Alias as Input**: Gather the alias as input from the user.
 2. **Call Passwordless Login**: Initiate the login process with the alias and response callback.

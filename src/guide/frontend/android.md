@@ -148,22 +148,32 @@ To configure your backend, you'll need to host a `.well-known/assetlinks.json` f
 
 This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
 
-- Option 1:
-  - MacOS & Linux:
-    ```bash
-    keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
-    ```
-  - Windows:
-    ```powershell
-    keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
-    ```
-- Option 2:
-  Go to the root directory of the project from the terminal and run the below command
-  ```bash
-  ./gradlew signingReport
-  ```
-  Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
-  If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
+::: tabs
+
+@tab Gradle
+
+Go to the root directory of the project from the terminal and run the below command
+
+```bash
+./gradlew signingReport
+```
+
+@tab Bash
+
+```bash
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+```
+
+@tab Powershell
+
+```powershell
+keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androiddebugkey -storepass android -keypass android
+```
+
+:::
+
+Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
+If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
 
 ### Host ~/.well-known/assetlinks.json
 
@@ -200,7 +210,9 @@ You may also have to change the 'target::namespace' and 'target::package_name' p
 
 ## Using the PasswordlessClient
 
-### With Dagger Hilt
+::: tabs
+
+@tab With Dagger Hilt
 
 You can either set the `ActivityContext` and `CoroutineScope` by injecting it with Dagger Hilt as follows:
 
@@ -228,7 +240,7 @@ class PasswordlessModule {
 }
 ```
 
-### Without Dagger Hilt
+@tab Without Dagger Hilt
 
 Or you can set the Context of PasswordlessClient manually: Ensure the context is set to the current `Activity`.
 
@@ -245,6 +257,8 @@ Set the coroutine scope, passing lifecycleScope of the current fragment, only ne
 ```kotlin
 _passwordless.setCoroutineScope(lifecycleScope)
 ```
+
+:::
 
 ## Registration
 

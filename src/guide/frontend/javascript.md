@@ -155,7 +155,7 @@ if (verifiedUser.success === true) {
 
 All `.signinWith*()` methods return a object with two properties, commonly destructured as:
 
-```
+```js
 // destructured
 const { token, error } = await p.siginWithId(123)
 

@@ -2,9 +2,9 @@
 title: Android Client SDK
 ---
 
-# Android Client SDK
+# Android Client SDK <span class="badge warning" style=""><!--[-->Beta<!--]--></span>
 
-The Passwordless.dev Android client SDK gives users the ability to leverage their device’s built-in fingerprint sensor and/or FIDO security keys for secure passwordless access to websites and native applications that support the FIDO2 protocols
+The Passwordless.dev Android client SDK gives users the ability to leverage their device’s built-in fingerprint sensor and/or FIDO security keys for secure passwordless access to websites and native applications that support the FIDO2 protocols.
 
 ## Requirements
 
@@ -42,7 +42,7 @@ implementation 'com.bitwarden:passwordless-android:1.0.1'
 
 ## Permissions
 
-In your `AndroidManifest.xml`, you will need to add the following permissions:
+In your `AndroidManifest.xml`, add the following permissions:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -71,7 +71,7 @@ data class PasswordlessOptions(
 
 ### .well-known/assetlinks.json
 
-In your application's `AndroidManifest.xml`, you will then need to add the tag below under `manifest::application`:
+In your application's `AndroidManifest.xml`, add the following tag under `manifest::application`:
 
 ```xml
 <meta-data
@@ -79,7 +79,7 @@ In your application's `AndroidManifest.xml`, you will then need to add the tag b
   android:resource="@xml/assetlinks" />
 ```
 
-In your application's `res/xml/assetlinks.xml`, you will then need to add the following content. This will tell our Android application where our `.well-known/assetlinks.json` file is hosted.
+In your application's `res/xml/assetlinks.xml`, you will then need to add the following content. This will tell our Android application where your `.well-known/assetlinks.json` file is hosted.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -90,9 +90,9 @@ In your application's `res/xml/assetlinks.xml`, you will then need to add the fo
 
 ### Facet ID
 
-The `Facet ID` will be used at a later point in this guide to use as the `origin`.
+The `Facet ID` will be used later in this guide as the `origin`.
 
-To obtain the Facet ID continue the steps below, the facet id typically looks like:
+To obtain the Facet ID continue the steps below, the Facet ID typically looks like:
 
 `android:apk-key-hash:POIplOLeHuvl-XAQckH0DwY4Yb1ydnnKcmhn-jibZbk`
 
@@ -145,13 +145,13 @@ Write-Output $base64urlString
 
 To configure your backend, you'll need to host a `.well-known/assetlinks.json` file at the root of your domain. This file contains a list of SHA-256 certificate fingerprints that are allowed to authenticate with your backend.
 
-This command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
+The following command will print detailed information about the keystore entry with the specified alias, including information about the certificate, its validity, and other details. It's commonly used in Android development to verify the properties of the debug keystore and the associated key used for signing applications during development.
 
 ::: tabs
 
 @tab Gradle
 
-Go to the root directory of the project from the terminal and run the below command
+Go to the root directory of the project from the terminal and run the below command:
 
 ```bash
 ./gradlew signingReport
@@ -171,8 +171,8 @@ keytool -list -v -keystore "%USERPROFILE%\.android\debug.keystore" -alias androi
 
 :::
 
-Put this SHA256 along with your root android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
-If you are using `example-nodejs-backend`. then just put these 2 values in your `.env` file.
+Put this SHA256 along with your root Android package name in your backend to generate `assetlinks.json` for your app at `https://yourexample.com/.well-known/assetlinks.json`.
+If you are using `example-nodejs-backend`, then just put these 2 values in your `.env` file.
 
 ### Host ~/.well-known/assetlinks.json
 
@@ -241,7 +241,7 @@ class PasswordlessModule {
 
 @tab Without Dagger Hilt
 
-Or you can set the Context of PasswordlessClient manually: Ensure the context is set to the current `Activity`.
+Or you can set the Context of PasswordlessClient manually. Ensure the context is set to the current `Activity`.
 
 ```kotlin
 /** Context needs to be set according to current activity
@@ -262,11 +262,11 @@ _passwordless.setCoroutineScope(lifecycleScope)
 ## Registration
 
 1. **UI**:
-   - (Optional) Take the alias as input from the user if it's a non-discoverable credential.
    - (Required) Specify the username for the credential.
-2. **Call `POST /register/token` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a registration token.
-   - See (API documentation)[https://docs.passwordless.dev/guide/api.html#register-token]
-3. **Call `PasswordlessClient.register()`**
+   - (Optional) Take the alias as input from the user if it's a non-discoverable credential.
+3. **Call `POST /register/token` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a registration token.
+   - See [API documentation](https://docs.passwordless.dev/guide/api.html#register-token)
+3. **Call `PasswordlessClient.register()`**:
 
 ```kotlin
 // Pass the registration token to PasswordlessClient.register()
@@ -287,7 +287,7 @@ _passwordless.register(
 1. **UI**: Optionally, take the alias as input from the user if it's a non-discoverable credential.
 2. **Call `PasswordlessClient.login()`**: Initiate the login process with the (optional) alias and response callback.
 3. **Call `POST /signin/verify` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a login token.
-   - See (API documentation)[https://docs.passwordless.dev/guide/api.html#signin-verify]
+   - See [API documentation](https://docs.passwordless.dev/guide/api.html#signin-verify)
 
 ```kotlin
 // Call PasswordlessClient.login() with the alias

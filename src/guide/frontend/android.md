@@ -50,6 +50,8 @@ In your `AndroidManifest.xml`, add the following permissions:
 
 ## Configuration (Android application)
 
+Somewhere in your Android application, configure `PasswordlessOptions`.
+
 ```kotlin
 data class PasswordlessOptions(
    // Your public API key

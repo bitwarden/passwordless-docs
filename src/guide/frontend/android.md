@@ -266,7 +266,7 @@ _passwordless.setCoroutineScope(lifecycleScope)
 1. **UI**:
    - (Required) Specify the username for the credential.
    - (Optional) Take the alias as input from the user if it's a non-discoverable credential.
-3. **Call `POST /register/token` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a registration token.
+2. **Call `POST /register/token` implemented in `your backend`**: Your backend should call the Passwordless.dev API to generate a registration token.
    - See [API documentation](https://docs.passwordless.dev/guide/api.html#register-token)
 3. **Call `PasswordlessClient.register()`**:
 

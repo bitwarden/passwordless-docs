@@ -155,15 +155,14 @@ if (verifiedUser.success === true) {
 
 All `.signinWith*()` methods return a object with two properties, commonly destructured as:
 
-```
+```js
 // destructured
-const { token, error } = await p.siginWithId(123)
+const { token, error } = await p.siginWithId(123);
 
 // plain object
 const signinResponse = await p.signinWithId(123);
-console.log(signinResponse.token) // "verify_xxyyzz"
-console.log(signinResponse.error) // undefined or a problem details object
-
+console.log(signinResponse.token); // "verify_xxyyzz"
+console.log(signinResponse.error); // undefined or a problem details object
 ```
 
 If the signin was successful, the `token` has a string value `"verify_xxyyzz"`. If the sign-in failed, the `error` property contains the [problem details](../errors.md#problem-details).

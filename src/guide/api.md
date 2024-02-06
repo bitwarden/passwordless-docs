@@ -369,9 +369,11 @@ HTTP API errors will have the following response body:
 ## `/magic-links/send`
 
 ### Request
-`POST` requests made to the `/magic-links/send` endpoint emails the address provided with a Magic Link.  This magic link contains a URL, provided by you, that will redirect the recipient to an endpoint in your application. From here, you can send the token Passwordless.dev has embedded in the link to verify the token at `signin/verify`. 
+
+`POST` requests made to the `/magic-links/send` endpoint emails the address provided with a Magic Link. This magic link contains a URL, provided by you, that will redirect the recipient to an endpoint in your application. From here, you can send the token Passwordless.dev has embedded in the link to verify the token at `signin/verify`.
 
 The request must include all three fields.
+
 - `emailAddress`: Recipient of the magic link. Must be a valid email address.
 - `urlTemplate`: This is the URL that users will be directed to when they click the link. It should be a valid URL except for the token template string, `<token>`. We will swap `<token>` with the actual token value before sending the email. In your application, you should parse the token out of the url (most easily done with a query parameter as seen below) and send it to the `signin/verify` endpoint to validate the request.
 - `userId`: The identifier of the user the email is intended for.
@@ -401,7 +403,7 @@ The API returns HTTP Status codes for each request.
 In case you receive an error, you will also receive a JSON serialized summary of the error in the form of [problem details](errors/#problem-details). For more information, see the [Errors page](errors.md).
 
 | HTTP Code | Message                                                                         | Status |
-|-----------|---------------------------------------------------------------------------------| ------ |
+| --------- | ------------------------------------------------------------------------------- | ------ |
 | 200       | Everything is OK.                                                               | ✅     |
 | 201       | Everything is OK, resource created.                                             | ✅     |
 | 204       | Everything is OK, response is empty.                                            | ✅     |
@@ -581,4 +583,3 @@ Response:
   "data": "zDM3wmUMaXjKole4EUKYbw:kSmJNcfcGiAxsHmEb2VPwBPc9hsMlvGg5HJS4zIjmnKbMvRj4oEIy_Ld9vZHoGW7KoGZAL9zDVGuDAQYcO4eiCIvjcGb2Oq-40svSgWWOVClG9UfXw7UaSlwMkBlG5Op"
 }
 ``` -->
-

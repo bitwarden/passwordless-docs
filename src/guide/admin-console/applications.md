@@ -38,3 +38,15 @@ There are several operations you can perform on your API keys:
 | Unlock    | API key is locked   | Yes        | Unlocking an API key will allow it to be used again.                                                                                  |
 | Create    |                     | Yes        | Creating an API key will allow you to interact with the Passwordless.dev API. You are allowed to create as many API keys as you like. |
 | Delete    | Api key is locked   | No         | Deleting an API key will permanently remove it.                                                                                       |
+
+### Manually Generated Authentication Tokens
+
+Manually Generated Authentication Tokens allow you to create a custom sign-in flow specific to your application. This could be incredibly useful in account recovery, identity verification, etc. To enable this feature, go to the **Settings** page, scroll to the **Manually Generated Authentication Tokens** section, check the box, and click Save.
+
+You should now be able to call `https://v4.passwordless.dev/signin/generate-token` to retrieve a manually generated authentication token to be used to sign-in without a passkey. For more information, please refer to the [documentation](../api.md#signin-generate-token).
+
+### Magic Links
+
+Magic Links provides you with a hassle-free way of emailing your users a link that will redirect them to your application without having to configure your own email provider. To enable this feature, go to the **Settings** page, scroll to the **Magic Links** section, check the box, and click Save.   
+
+You should now be able to call `https://v4.passwordless.dev/magic-links/send` to send Magic Link emails to your users.  For more information, please refer to the [documentation](../api.md/magic-links).

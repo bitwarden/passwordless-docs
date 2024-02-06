@@ -4,7 +4,7 @@ The **Passwordless.dev private API** is used by your backend to initiate key reg
 
 All requests made to this API **require** your API [private secret](concepts.md#api-keys) in the header for authentication. Requests made to the public API, which are facilitated by methods in the [JavaScript client](frontend/javascript.md), will instead require your API [public key](concepts.md#api-keys).
 
-## /register/token
+## `/register/token`
 
 ### Request
 
@@ -81,7 +81,7 @@ If successful, the `/register/token` endpoint will create a registration token r
 
 This registration token will will be used by your frontend to negotiate creation of a WebAuth credential.
 
-## /signin/verify
+## `/signin/verify`
 
 ### Request
 
@@ -146,7 +146,7 @@ If successful, the `/signin/verify` endpoint will return a success response obje
 
 Use the `.success` value (`true` or `false`) to determine next actions, i.e. whether to complete the sign-in ([learn more](frontend/javascript.md#signinwith)).
 
-## /signin/generate-token
+## `/signin/generate-token`
 
 ### Request
 
@@ -199,7 +199,7 @@ If successful, the `/signin/generate-token` endpoint will return a response obje
 }
 ```
 
-## /alias
+## `/alias`
 
 ### Request
 
@@ -265,7 +265,7 @@ A few rules to take into consideration when allowing users to create aliases:
 
 Alias are never returned in any API responses, and can be hashed to preserve user privacy (see above). If successful, the `/alias` endpoint will return an HTTP 200 (OK) [status code](#status-codes).
 
-## /credentials/list
+## `/credentials/list`
 
 ### Request
 
@@ -332,7 +332,7 @@ If successful, the `/credentials/list` endpoint will return an array of `.json` 
 
 [Learn more about what these key-value pairs signify](concepts.md#credential).
 
-## /credentials/delete
+## `/credentials/delete`
 
 ### Request
 
@@ -366,21 +366,50 @@ HTTP API errors will have the following response body:
 ```
 -->
 
+## `/magic-links/send`
+
+### Request
+`POST` requests made to the `/magic-links/send` endpoint emails the address provided with a Magic Link.  This magic link contains a URL, provided by you, that will redirect the recipient to an endpoint in your application. From here, you can send the token Passwordless.dev has embedded in the link to verify the token at `signin/verify`. 
+
+The request must include all three fields.
+- `emailAddress`: Recipient of the magic link. Must be a valid email address.
+- `urlTemplate`: This is the URL that users will be directed to when they click the link. It should be a valid URL except for the token template string, `<token>`. We will swap `<token>` with the actual token value before sending the email. In your application, you should parse the token out of the url (most easily done with a query parameter as seen below) and send it to the `signin/verify` endpoint to validate the request.
+- `userId`: The identifier of the user the email is intended for.
+
+```http request
+POST https://v4.passwwordless.dev/magic-links/send HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+Content-Type: application/json
+
+{
+  "emailAddress": "user-email@example.com",
+  "urlTemplate": "https://www.myapp.com?token=<token>"
+  "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
+}
+```
+
+### Response
+
+If successful, the `/magic-links/send` endpoint will return an HTTP 204 (No Content) [status code](#status-codes).
+
+If Magic Links has not been enabled, the `/magic-links/send` endpoint will return an HTTP 403 (Unauthorized) [status code](#status-codes) along with a message about enabling the Magic Links feature.
+
 ### Status codes
 
 The API returns HTTP Status codes for each request.
 
 In case you receive an error, you will also receive a JSON serialized summary of the error in the form of [problem details](errors/#problem-details). For more information, see the [Errors page](errors.md).
 
-| HTTP Code | Message                                | Status |
-| --------- | -------------------------------------- | ------ |
-| 200       | Everything is OK.                      | ✅     |
-| 201       | Everything is OK, resource created.    | ✅     |
-| 204       | Everything is OK, response is empty.   | ✅     |
-| 400       | Bad request.                           | 🔴     |
-| 401       | You did not identify yourself.         | 🔴     |
-| 409       | Conflict (alias is already in use).    | 🔴     |
-| 500       | Something went very wrong on our side. | 🔴     |
+| HTTP Code | Message                                                                         | Status |
+|-----------|---------------------------------------------------------------------------------| ------ |
+| 200       | Everything is OK.                                                               | ✅     |
+| 201       | Everything is OK, resource created.                                             | ✅     |
+| 204       | Everything is OK, response is empty.                                            | ✅     |
+| 400       | Bad request. (see problem details for more info).                               | 🔴     |
+| 401       | You did not identify yourself.                                                  | 🔴     |
+| 403       | You are not allowed to perform the aciton. (see problem details for more info). | 🔴     |
+| 409       | Conflict (see problem details for more info).                                   | 🔴     |
+| 500       | Something went very wrong on our side.                                          | 🔴     |
 
 <!--
 ### Error Codes
@@ -552,3 +581,4 @@ Response:
   "data": "zDM3wmUMaXjKole4EUKYbw:kSmJNcfcGiAxsHmEb2VPwBPc9hsMlvGg5HJS4zIjmnKbMvRj4oEIy_Ld9vZHoGW7KoGZAL9zDVGuDAQYcO4eiCIvjcGb2Oq-40svSgWWOVClG9UfXw7UaSlwMkBlG5Op"
 }
 ``` -->
+

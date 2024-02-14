@@ -109,6 +109,10 @@ export default {
                 text: 'JavaScript Client'
               },
               {
+                link: '/guide/frontend/android',
+                text: 'Android'
+              },
+              {
                 link: '/guide/frontend/aspnet',
                 text: 'ASP.NET'
               },
@@ -181,10 +185,13 @@ export default {
     }),
     mdEnhancePlugin({
       breaks: true,
+      imgMark: true,
+      imgSize: true,
       checkLinks: {
         status: 'dev'
       },
-      codetabs: true
+      codetabs: true,
+      tabs: true
     })
   ]
 };

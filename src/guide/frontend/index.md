@@ -2,6 +2,7 @@
 
 ## Client Libraries
 
+- [Android](android.md) <span class="badge warning" style=""><!--[-->Beta<!--]--></span>
 - [JavaScript client](javascript.md)
 
 ## Framework Examples

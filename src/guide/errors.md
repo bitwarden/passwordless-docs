@@ -129,6 +129,14 @@ Currently, Passwordless.dev only supports attestation format `"none"`, `"direct"
 
 You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it. Learn more [here](https://bitwarden.com/products/passwordless/#pricing)
 
+### magic_link_email_admin_address_only
+
+You'll receive this error when trying to request a magic link email on an application that's been created very recently. As a measure to avoid spam, you'll only be able to request emails to your own (i.e. application admin) email address.
+
+### magic_link_email_quota_exceeded
+
+You'll receive this error when trying to request a magic link email, after your monthly email quota has already been reached. Dispatched emails are counted on a sliding window basis, so you may only need to wait a day or two before you can send emails again. 
+
 #### Solution
 
 When you call the `/register/token` endpoint, either remove the `attestation` property or change the value to be `"none"`.

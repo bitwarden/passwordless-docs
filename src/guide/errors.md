@@ -129,14 +129,6 @@ Currently, Passwordless.dev only supports attestation format `"none"`, `"direct"
 
 You'll receive this error when you're trying to use an attestation format other than `"none"` while calling `/register/token`, but your plan does not support it. Learn more [here](https://bitwarden.com/products/passwordless/#pricing)
 
-### magic_link_email_admin_address_only
-
-You'll receive this error when trying to request a magic link email on an application that's been created very recently. As a measure to avoid spam, you'll only be able to request emails to your own (i.e. application admin) email address.
-
-### magic_link_email_quota_exceeded
-
-You'll receive this error when trying to request a magic link email, after your monthly email quota has already been reached. Dispatched emails are counted on a sliding window basis, so you may only need to wait a day or two before you can send emails again. 
-
 #### Solution
 
 When you call the `/register/token` endpoint, either remove the `attestation` property or change the value to be `"none"`.
@@ -148,3 +140,19 @@ You'll receive this error when you try to create a new user, but have reached th
 An existing user will still be able to add additional credentials.
 
 You can learn more [here](https://bitwarden.com/products/passwordless/).
+
+### magic_link_email_admin_address_only
+
+You'll receive this error when trying to request a magic link email on an application that's been created very recently. As a measure to avoid spam, you'll only be able to request emails to your own (i.e. application admin) email address.
+
+#### Solution
+
+Wait 24 hours until this limitation disappears.
+
+### magic_link_email_quota_exceeded
+
+You'll receive this error when trying to request a magic link email, after your monthly email quota has already been reached. Dispatched emails are counted on a sliding window basis, so you may only need to wait a day or two before you can send emails again.
+
+#### Solution
+
+Wait 24 hours until your remaining quota is recalculated. Long term, consider upgrading to a higher tier plan to support more outgoing emails.

@@ -411,6 +411,7 @@ In case you receive an error, you will also receive a JSON serialized summary of
 | 401       | You did not identify yourself.                                                  | 🔴     |
 | 403       | You are not allowed to perform the aciton. (see problem details for more info). | 🔴     |
 | 409       | Conflict (see problem details for more info).                                   | 🔴     |
+| 429       | Too many requests (see problem details for more info).                          | 🔴     |
 | 500       | Something went very wrong on our side.                                          | 🔴     |
 
 <!--

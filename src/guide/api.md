@@ -16,7 +16,7 @@ The request body **must include** at least a `userId` and `username` for example
 
 @tab http
 
-```http
+```http request
 POST https://v4.passwordless.dev/register/token HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
@@ -91,7 +91,7 @@ This registration token will will be used by your frontend to negotiate creation
 
 @tab http
 
-```http
+```http request
 POST https://v4.passwordless.dev/signin/verify HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
@@ -156,7 +156,7 @@ Use the `.success` value (`true` or `false`) to determine next actions, i.e. whe
 
 @tab http
 
-```http
+```http request
 POST https://v4.passwordless.dev/signin/generate-token HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
@@ -211,7 +211,7 @@ The request body **must include** the user's `userId` and a **complete** array o
 
 @tab http
 
-```http
+```http request
 POST https://v4.passwordless.dev/alias HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
@@ -275,7 +275,7 @@ Alias are never returned in any API responses, and can be hashed to preserve use
 
 @tab http
 
-```http
+```http request
 GET https://v4.passwordless.dev/credentials/list?userId=107fb578-9559-4540-a0e2-f82ad78852f7 HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 ```
@@ -338,7 +338,7 @@ If successful, the `/credentials/list` endpoint will return an array of `.json` 
 
 `POST` requests made to the `/credentials/delete` endpoint delete a specific credential associated with a user, as dictated by a `credentialId`. The request **must include** the `credentialId` in question, for example:
 
-```http
+```http request
 POST https://v4.passwordless.dev/credentials/delete HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
@@ -375,7 +375,7 @@ HTTP API errors will have the following response body:
 The request must include all three fields.
 
 - `emailAddress`: Recipient of the magic link. Must be a valid email address.
-- `urlTemplate`: This is the URL that users will be directed to when they click the link. It should be a valid URL except for the token template string, `<token>`. We will swap `<token>` with the actual token value before sending the email. In your application, you should parse the token out of the url (most easily done with a query parameter as seen below) and send it to the `signin/verify` endpoint to validate the request.
+- `urlTemplate`: This is the URL that users will be directed to when they click the link. It should be a valid URL except for the token template string, `__TOKEN__`. We will swap `<token>` with the actual token value before sending the email. In your application, you should parse the token out of the url (most easily done with a query parameter as seen below) and send it to the `signin/verify` endpoint to validate the request.
 - `userId`: The identifier of the user the email is intended for.
 
 ```http request
@@ -385,7 +385,7 @@ Content-Type: application/json
 
 {
   "emailAddress": "user-email@example.com",
-  "urlTemplate": "https://www.myapp.com?token=<token>"
+  "urlTemplate": "https://www.myapp.com?token=__TOKEN__"
   "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
 }
 ```
@@ -427,7 +427,7 @@ You will receive this error if you call `p.register(registerToken)` without a va
 
 Internal - This API is used by the Passwordless Client JS library
 
-```http
+```http request
 POST https://v4.passwordless.dev/register/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
@@ -480,7 +480,7 @@ Response:
 
 Internal - This API is used by the Passwordless Client JS library
 
-```http
+```http request
 POST https://v4.passwordless.dev/register/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
@@ -508,7 +508,7 @@ Content-Type: application/json
 
 Internal - This API is used by the Passwordless Client JS library
 
-```http
+```http request
 POST https://v4.passwordless.dev/signin/begin HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json
@@ -552,7 +552,7 @@ Response:
 
 Internal - This API is used by the Passwordless Client JS library
 
-```http
+```http request
 POST https://v4.passwordless.dev/signin/complete HTTP/1.1
 ApiKey: demo:public:6b08891222194fd1992465f8668f
 Content-Type: application/json

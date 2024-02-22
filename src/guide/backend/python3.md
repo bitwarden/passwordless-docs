@@ -88,4 +88,4 @@ Customize `PasswordlessClientBuilder` by providing `session` [requests Session](
 
 ### Examples
 
-See [Passwordless Python Example](https://github.com/passwordless/passwordless-python/tree/main/examples/flask) for Flash Web application.
+See [Passwordless Python Example](https://github.com/passwordless/passwordless-python/tree/main/examples/flask) for Flask Web application.

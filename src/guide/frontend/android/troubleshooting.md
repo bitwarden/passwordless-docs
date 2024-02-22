@@ -32,4 +32,5 @@ The error indicates that an error was returned from the framework.
 ```
 
 Solutions:
+
 - Verify Google Play Services is up-to-date & update Google Play Services if necessary.

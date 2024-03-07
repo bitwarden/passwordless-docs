@@ -171,6 +171,10 @@ export default {
           {
             link: '/guide/concepts',
             text: 'Concepts'
+          },
+          {
+            link: '/guide/stepup',
+            text: 'Step-up Authentication'
           }
         ]
       }

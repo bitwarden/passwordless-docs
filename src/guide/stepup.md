@@ -41,6 +41,8 @@ await fetch(backendUrl + '/sensitive-operation', {
 });
 ```
 
+Note that to avoid the user having to re-enter their credentials every time they perform a sensitive operation, you may consider caching the produced step-up token on the client side. This way, you can reuse the token for a certain period of time before requiring the user to re-authenticate.
+
 On the backend, make sure to use the Passwordless SDK for your platform to verify the token to determine whether to allow the user to proceed with what they are trying to do.
 
 ```js

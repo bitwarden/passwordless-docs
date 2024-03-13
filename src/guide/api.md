@@ -372,6 +372,10 @@ HTTP API errors will have the following response body:
 
 `POST` requests made to the `/magic-links/send` endpoint emails the address provided with a Magic Link. This magic link contains a URL, provided by you, that will redirect the recipient to an endpoint in your application. From here, you can send the token Passwordless.dev has embedded in the link to verify the token at `signin/verify`.
 
+::: warning Important
+Passwordless.dev does not store user emails. When integrating Magic Links, you should validate that the email and user id are for the same user. Otherwise, you may introduce a security vulnerability within your application.
+:::
+
 The request must include all three fields.
 
 - `emailAddress`: Recipient of the magic link. Must be a valid email address.

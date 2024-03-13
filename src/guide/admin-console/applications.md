@@ -47,6 +47,6 @@ You should now be able to call `https://v4.passwordless.dev/signin/generate-toke
 
 ### Magic Links
 
-Magic Links provides you with a hassle-free way of emailing your users a link that will redirect them to your application without having to configure your own email provider. To enable this feature, go to the **Settings** page, scroll to the **Magic Links** section, check the box, and click Save.
+Magic Links provides you with the ability to email your users a link that will redirect them to your application without having to configure your own email provider. This feature can be enabled by going to the **Settings** page, scrolling to the **Magic Links** section, checking the box, and clicking Save.
 
 You should now be able to call `https://v4.passwordless.dev/magic-links/send` to send Magic Link emails to your users. For more information, please refer to the [documentation](../api.md/magic-links).

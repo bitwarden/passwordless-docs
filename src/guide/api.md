@@ -381,7 +381,7 @@ The request must include all three fields.
 - `emailAddress`: Recipient of the magic link. Must be a valid email address.
 - `urlTemplate`: This is the URL that users will be directed to when they click the link. It should be a valid URL except for the token template string, `$TOKEN`. We will swap `$TOKEN` with the actual token value before sending the email. In your application, you should parse the token out of the url (most easily done with a query parameter as seen below) and send it to the `signin/verify` endpoint to validate the request.
 - `userId`: The identifier of the user the email is intended for.
-- `timeToLive`: (OPTIONAL) Number of seconds the magic link token should be valid for. If not set, the default value is 900 seconds (15 min).
+- `timeToLive`: (OPTIONAL) Number of seconds the magic link token should be valid for. If not set, the default value is 1 hour.
 
 ```http request
 POST https://v4.passwwordless.dev/magic-links/send HTTP/1.1
@@ -392,7 +392,7 @@ Content-Type: application/json
   "emailAddress": "user-email@example.com",
   "urlTemplate": "https://www.myapp.com?token=$TOKEN"
   "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
-  "timeToLive": 900
+  "timeToLive": 3600
 }
 ```
 

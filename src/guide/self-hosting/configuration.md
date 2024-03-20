@@ -68,8 +68,7 @@ Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/T
 
 ## E-mail
 
-The primary use of e-mail from within Passwordless Admin Console is for notifying administrators for changes to the organization.
-This is specifically useful for verifying administrators when first signing up.
+Email is used by Passwordless Admin Console to notify administrators of changes to their organization. This is specifically useful for verifying administrators when first signing up.
 
 By default, all e-mail communication is written to a file for each application.
 

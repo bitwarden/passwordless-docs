@@ -1,16 +1,14 @@
 # Self-hosting <Badge text="Beta" type="warning"/>
 
-::: danger Important
-The option to self-host is an enterprise feature and is currently in the BETA phase of development. It is meant for experimentation and discovery purposes.
-All features and configuration could change in the future. DO NOT use this in production environments.
+::: tip Important
+The option to self-host is an enterprise feature and is currently in the BETA phase of development. It is meant for experimentation and discovery purposes. All features and configuration could change in the future. DO NOT use this in production environments.
 :::
 
 The Docker image will allow you to set up your self-hosted instances in less than 5 minutes.
 
 ## Getting Started
 
-In order to retain settings and data from self-hosting Passwordless, it is recommended that you set up a directory for
-storing the generated configuration file and database. Otherwise, the database and configuration file will be deleted when with the container.
+In order to retain settings and data from self-hosting Passwordless, it is recommended that you set up a directory for storing the generated configuration file and database. Otherwise, the database and configuration file will be deleted when with the container.
 
 ### Installation and running
 
@@ -45,9 +43,7 @@ docker exec -it {name-of-container} tail /var/log/bitwarden_passwordless/admin.l
 
 ### Communication
 
-By default, a file will be used for an email that the system would send. The body of the email will be appended to the file instead of being
-sent out. This is important for creating an organization and inviting administrators to the Admin Console. To configure your own
-mail provider, please see the [e-mail](self-hosting/configuration.md#e-mail) section of the [configuration](self-hosting/configuration.md) docs.
+By default, a file will be used for an email that the system would send. The body of the email will be appended to the file instead of being sent out. This is important for creating an organization and inviting administrators to the Admin Console. To configure your own mail provider, please see the [e-mail configuration documentation](self-hosting/configuration.md#e-mail).
 
 The default file location for the `mail.md` files are below:
 

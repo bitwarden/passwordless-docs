@@ -340,3 +340,4 @@ You can find the source code for a sample application [here](https://github.com/
 - [Client Auth - Google](https://developers.google.com/android/guides/client-auth)
 - [Associate apps & sites - Google](https://developers.google.com/identity/smartlock-passwords/android/associate-apps-and-sites)
 - [Passkeys - Google](https://developer.android.com/training/sign-in/passkeys)
+- [Troubleshooting - Android Client SDK - Passwordless.dev](android/troubleshooting.md)

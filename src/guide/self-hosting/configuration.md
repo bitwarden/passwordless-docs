@@ -89,6 +89,8 @@ For Api:
 docker exec -it {name-of-container} cat /app/Api/mail.md
 ```
 
+If you provide a directory for the application configuration to be stored in on your machine, the `mail.md` file will be located there.
+
 It's recommended you configure the SMTP parameters below:
 
 | Key                  | Default | Required | Description                                                                             |

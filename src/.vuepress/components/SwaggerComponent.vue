@@ -27,4 +27,8 @@ h2.title,
 .info__contact {
   display: none;
 }
+
+.page .theme-default-content {
+  max-width: 100%;
+}
 </style>

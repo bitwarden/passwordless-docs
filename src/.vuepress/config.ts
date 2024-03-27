@@ -203,4 +203,5 @@ export default {
       componentsDir: path.resolve(__dirname, './components')
     })
   ]
+
 };

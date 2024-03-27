@@ -3,13 +3,12 @@
 </template>
 
 <script>
-import SwaggerUI from 'swagger-ui';
-import 'swagger-ui/dist/swagger-ui.css';
+import {SwaggerUIBundle} from "swagger-ui-dist";
 
 export default {
   mounted() {
-    SwaggerUI({
-      url: 'https://v4.passwordless.dev/swagger/v4/swagger.json',
+    SwaggerUIBundle({
+      url: 'https://localhost:7002/swagger/v4/swagger.json',
       defaultModelsExpandDepth: -1,
       showCommonExtensions: true,
       showExtensions: true,
@@ -20,6 +19,7 @@ export default {
 </script>
 
 <style>
+@import '../../../node_modules/swagger-ui-dist/swagger-ui.css';
 @import '../public/openapi.css';
 
 h2.title,

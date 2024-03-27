@@ -1,5 +1,5 @@
 <template>
-  <div class="swagger" id="swagger"></div>
+  <div id="swagger" class="swagger"></div>
 </template>
 
 <script>
@@ -14,15 +14,17 @@ export default {
       showCommonExtensions: true,
       showExtensions: true,
       dom_id: '#swagger'
-    })
+    });
   }
-}
+};
 </script>
 
 <style>
 @import '../public/openapi.css';
 
-h2.title, .info__tos, .info__contact {
+h2.title,
+.info__tos,
+.info__contact {
   display: none;
 }
 </style>

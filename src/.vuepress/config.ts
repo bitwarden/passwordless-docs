@@ -1,8 +1,8 @@
 import { defaultTheme } from 'vuepress';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
-import {registerComponentsPlugin} from "@vuepress/plugin-register-components";
-import * as path from "path";
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
+import * as path from 'path';
 
 const { description } = require('../../package');
 
@@ -200,7 +200,7 @@ export default {
       tabs: true
     }),
     registerComponentsPlugin({
-      componentsDir: path.resolve(__dirname, './components'),
+      componentsDir: path.resolve(__dirname, './components')
     })
   ]
 };

@@ -15,10 +15,12 @@
     "lint:check": "vuepress check-md src && prettier . --check && eslint \"**/*.{js,vue}\""
   },
   "dependencies": {
-    "@passwordlessdev/passwordless-client": "1.1.2"
+    "@passwordlessdev/passwordless-client": "1.1.2",
+    "swagger-ui": "4.19.1"
   },
   "devDependencies": {
     "@vuepress/plugin-docsearch": "2.0.0-rc.0",
+    "@vuepress/plugin-register-components": "2.0.0-rc.0",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-vue": "9.20.1",

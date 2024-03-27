@@ -8,7 +8,7 @@ import {SwaggerUIBundle} from "swagger-ui-dist";
 export default {
   mounted() {
     SwaggerUIBundle({
-      url: 'https://localhost:7002/swagger/v4/swagger.json',
+      url: 'https://v4.passwordless.dev/swagger/v4/swagger.json',
       defaultModelsExpandDepth: -1,
       showCommonExtensions: true,
       showExtensions: true,

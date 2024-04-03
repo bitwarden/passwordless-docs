@@ -12,7 +12,8 @@ export default {
       defaultModelsExpandDepth: -1,
       showCommonExtensions: true,
       showExtensions: true,
-      dom_id: '#swagger'
+      dom_id: '#swagger',
+      supportedSubmitMethods: []
     });
   }
 };

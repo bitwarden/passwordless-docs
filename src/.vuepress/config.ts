@@ -1,6 +1,8 @@
 import { defaultTheme } from 'vuepress';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
+import * as path from 'path';
 
 const { description } = require('../../package');
 
@@ -63,6 +65,10 @@ export default {
           {
             link: '/guide/api',
             text: 'API'
+          },
+          {
+            link: '/guide/api-documentation',
+            text: 'Open API'
           },
           {
             collapsible: true,
@@ -192,6 +198,9 @@ export default {
       },
       codetabs: true,
       tabs: true
+    }),
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components')
     })
   ]
 };

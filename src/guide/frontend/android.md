@@ -2,7 +2,7 @@
 title: Android Client SDK
 ---
 
-# Android Client SDK <span class="badge warning" style=""><!--[-->Beta<!--]--></span>
+# Android Client SDK
 
 The Passwordless.dev Android client SDK gives users the ability to leverage their device’s built-in fingerprint sensor and/or FIDO security keys for secure passwordless access to websites and native applications that support the FIDO2 protocols.
 

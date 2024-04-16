@@ -108,6 +108,6 @@ signin = async (request: express.Request, response: express.Response) => {
 
 ## References
 
-- [Open the Node.js example on Github](https://github.com/passwordless/passwordless-nodejs-example)
+- [Open the Node.js example on Github](https://github.com/bitwarden/passwordless-nodejs/tree/main/examples/simple-example)
 
 - If you just want to see the Node.js demo run, we host an example at [demo-backend.passwordless.dev](https://demo-backend.passwordless.dev/)

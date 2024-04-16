@@ -263,7 +263,7 @@ A few rules to take into consideration when allowing users to create aliases:
 
 ### Response
 
-Alias are never returned in any API responses, and can be hashed to preserve user privacy (see above). If successful, the `/alias` endpoint will return an HTTP 200 (OK) [status code](#status-codes).
+Alias are never returned in any API responses, and can be hashed to preserve user privacy (see above). If successful, the `/alias` endpoint will return an HTTP 204 (No Content) [status code](#status-codes).
 
 ## `/credentials/list`
 

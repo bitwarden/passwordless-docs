@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-$ npm i @@passwordlessdev/passwordless-nodejs
+$ npm i @passwordlessdev/passwordless-nodejs
 ```
 
 ## Requirements

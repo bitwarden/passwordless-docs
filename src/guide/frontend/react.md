@@ -129,7 +129,9 @@ export default function RegisterPage() {
         apiKey: PASSWORDLESS_API_KEY,
         apiUrl: PASSWORDLESS_API_URL
       });
-      const finalResponse = await p.register(registerToken.token);
+      // credentialNickname is a name you can attach to the passkey - can be any string value
+      const credentialNickname = alias;
+      const finalResponse = await p.register(registerToken.token, credentialNickname);
 
       if (finalResponse) {
         toast(`Registered '${alias}'!`);

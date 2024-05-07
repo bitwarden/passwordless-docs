@@ -129,7 +129,7 @@ export default function RegisterPage() {
         apiKey: PASSWORDLESS_API_KEY,
         apiUrl: PASSWORDLESS_API_URL
       });
-      const finalResponse = await p.register(registerToken.token, alias);
+      const finalResponse = await p.register(registerToken.token);
 
       if (finalResponse) {
         toast(`Registered '${alias}'!`);

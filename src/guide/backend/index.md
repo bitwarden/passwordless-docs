@@ -10,6 +10,7 @@ You can use Passwordless.dev with any programming language by implementing calls
 - [Python 3](python3.md)
 
 Unofficial community SDKs:
+
 - [Rust (by davidzr)](https://github.com/davidzr/passwordless-rust)
 - [Go (by AJAYK-01)](https://github.com/AJAYK-01/passwordless-go)
 - [Java Spring Boot (by sanjanarjn)](https://github.com/sanjanarjn/spring-boot-starter-passwordless)

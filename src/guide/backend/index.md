@@ -11,7 +11,7 @@ You can use Passwordless.dev with any programming language by implementing calls
 
 Unofficial community SDKs:
 
-These SDKs are developed by the community. They are not developed by, supported or audited by Bitwarden.
+These SDKs are developed by the community. They are not developed, supported or audited by Bitwarden.
 
 - [Rust (by davidzr)](https://github.com/davidzr/passwordless-rust)
 - [Go (by AJAYK-01)](https://github.com/AJAYK-01/passwordless-go)

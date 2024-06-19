@@ -105,17 +105,18 @@ To obtain the Facet ID continue the steps below, the Facet ID typically looks li
 @tab Bash
 
 1. Install dependencies:
+
    - MacOS:
      1. Install Homebrew
      2. Execute the following command:
-       ```sh
-       brew install coreutils
-       ``` 
+     ```sh
+     brew install coreutils
+     ```
    - Ubuntu:
-       ```shell
-       sudo apt-get update
-       sudo apt-get install coreutils
-       ```
+     ```shell
+     sudo apt-get update
+     sudo apt-get install coreutils
+     ```
 
 2. Extract the SHA-256 hash:
 

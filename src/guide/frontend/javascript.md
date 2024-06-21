@@ -162,7 +162,7 @@ const { token, error } = await p.siginWithId(123);
 // plain object
 const signinResponse = await p.signinWithId(123);
 console.log(signinResponse.token); // "verify_xxyyzz"
-console.log(signinResponse.error); // undefined or a problem details object
+console.error(response.error); // undefined or a problem details object
 ```
 
 If the signin was successful, the `token` has a string value `"verify_xxyyzz"`. If the sign-in failed, the `error` property contains the [problem details](../errors.md#problem-details).
@@ -192,4 +192,26 @@ Call the static async `.isAutofillSupported()` method to check if the end-user's
 ```js
 if (await Passwordless.isAutofillSupported()) {
 }
+```
+
+## .stepup()
+
+`.stepup()` works similar to the `.signin()` method except it allows for a specific purpose to be passed through.  These purposes are set via the API ([API](../api.md#authentication)/OpenAPI) or through the application's authentication configuration setting in the [Admin Console](../admin-console/applications.md#authentication-configurations).
+
+If the authentication was successful, the `token` has a string value `"verify_xxyyzz"`. This token will have a `Purpose` property of `step-up` by default, whatever was passed in through the `StepUpRequest`.  If the authentication failed, the `error` property contains the [problem details](../errors.md#problem-details).
+```js
+const stepUpRequest = {
+  signinMethod: {
+    userId: 123 // you could also use alias as the signinMethod as well.
+  },
+  purpose: 'step-up'
+};
+
+// destructured
+const { token, error } = await p.stepup(stepUpRequest)
+
+// plain object
+const response = await p.stepup(stepUpRequest);
+console.log(response.token); // verify_xxyyzz
+console.error(response.error); // undefined or a problem details object
 ```

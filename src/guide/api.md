@@ -402,6 +402,132 @@ If successful, the `/magic-links/send` endpoint will return an HTTP 204 (No Cont
 
 If Magic Links has not been enabled, the `/magic-links/send` endpoint will return an HTTP 403 (Unauthorized) [status code](#status-codes) along with a message about enabling the Magic Links feature.
 
+## `/auth-configs/list`
+
+### Request
+
+`GET` requests made to the `/auth-configs/list` endpoint will return a `.json` object containing a list of authentication configurations that can be used by the application. It can be filtered to one specific configuration by passing the purpose name as a query parameter.
+
+```http request
+GET https://v4.passwwordless.dev/auth-configs/list HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+```
+
+```http request
+GET https://v4.passwwordless.dev/auth-configs/list?purpose=step-up HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+```
+
+For more information about Authentication Configurations, please see the [concepts page](concepts.md#authentication-configurations).
+
+### Response
+
+If successful, the `/auth-configs/list` endpoint will return a `.json` object containing a list of authentication configurations:
+
+```json
+{
+  "configurations": [
+    {
+      "purpose": "sign-in",
+      "timeToLive": 120,
+      "userVerificationRequirement": "preferred",
+      "createdBy": "System",
+      "createdOn": null,
+      "editedBy": null,
+      "editedOn": null,
+      "lastUsedOn": null
+    },
+    {
+      "purpose": "step-up",
+      "timeToLive": 180,
+      "userVerificationRequirement": "required",
+      "createdBy": "System",
+      "createdOn": null,
+      "editedBy": null,
+      "editedOn": null,
+      "lastUsedOn": null
+    }
+  ]
+}
+```
+
+## `/auth-configs/add`
+
+### Request
+`POST` requests to `/auth-configs/add` will create an authentication configuration for the authentication process.  There are some restrictions on the request object.
+
+- `purpose`: A-z, 0-9, -, and _ are the allowed characters. Max length of purpose is 255 characters.
+- `timeToLive`: Positive time span value (hh:mm:ss)
+- `userVerificationRequirement`: `preferred`, `required`, `discouraged`
+- `performedBy`: user identifier to track changes to the configuration
+
+```http request
+GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+Content-Type: application/json
+
+{
+  "purpose": "access-secrets-purpose", // identifying string give context to the specific authentication
+  "timeToLive": "00:03:00", // timespan the token is valid for
+  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "performedBy": "user_123" // user identifier to track changes to the configuration
+}
+```
+
+### Response
+
+If successful, the `/auth-configs/add` endpoint will return an HTTP 201 (Created) [status code](#status-codes).
+If unsuccessful, the `/auth-configs/add` endpoint will return an HTTP 400 (Bad Request) [status code](#status-codes) with a [problem details](errors/#problem-details) body.
+
+## `/auth-configs/`
+
+### Request
+`POST` requests to `/auth-configs` will edit an authentication configuration for the authentication process.  There are some restrictions on the request object.
+
+- `purpose`: Must be an existing purpose (If a new purpose is passed here, a 404 will be returned)
+- `timeToLive`: Positive time span value (hh:mm:ss)
+- `userVerificationRequirement`: `preferred`, `required`, `discouraged`
+- `performedBy`: user identifier to track changes to the configuration
+
+```http request
+GET https://v4.passwwordless.dev/auth-configs HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+Content-Type: application/json
+
+{
+  "purpose": "access-secrets-purpose", // existing purpose
+  "timeToLive": "00:03:00", // timespan the token is valid for
+  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "performedBy": "user_123" // user identifier to track changes to the configuration
+}
+```
+### Response
+
+If successful, the `/auth-configs` endpoint will return an HTTP 204 (No Content) [status code](#status-codes).
+If an unknown purpose is passed through, the `/auth-configs` endpoint will return an HTTP 404 (Not Found) [status code](#status-codes).
+
+## `/auth-configs/delete`
+
+### Request
+
+`POST` requests made to the `/auth-configs/delete` endpoint delete a specific authentication configuration, as specified by a `purpose`.
+
+```http request
+GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
+Content-Type: application/json
+
+{
+  "purpose": "access-secrets-purpose", // existing purpose
+  "performedBy": "user_123" // user identifier to track changes to the configuration
+}
+```
+
+### Response
+
+If successful, the `/auth-configs/delete` endpoint will return an HTTP 204 (No Content) [status code](#status-codes).
+If an unknown purpose is passed through, the `/auth-configs/delete` endpoint will return an HTTP 404 (Not Found) [status code](#status-codes).
+
 ### Status codes
 
 The API returns HTTP Status codes for each request.

@@ -3,6 +3,8 @@
 ## Client Libraries
 
 - [Android](android.md)
+- Blazor WebAssembly (TBA August 2024)
+- iOS (TBA July 2024)
 - [JavaScript](javascript.md)
 
 ## Framework Examples
@@ -11,4 +13,3 @@ You can use Passwordless.dev with any frontend framework by implementing calls t
 
 - [ASP.NET](aspnet.md) <Badge text="example" type="warning" />
 - [React](react.md) <Badge text="example" type="warning" />
-- Vue 3 (coming soon)

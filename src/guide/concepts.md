@@ -115,9 +115,9 @@ The relying party can use the attestation information to make informed decisions
 
 ### Authentication Configurations
 
-Authentication configurations allow you to configure your authentication token used in the `signin()` and `stepup()` client methods.  Each method passes parameters into the authenticator accessed by the browser. Authentication Configurations allow for the Time to Live of the authentication token and the User Verification Requirement setting to be set for the given authentication workflow.
+Authentication configurations allow you to configure your authentication token used in the `signin()` and `stepup()` client methods. Each method passes parameters into the authenticator accessed by the browser. Authentication Configurations allow for the Time to Live of the authentication token and the User Verification Requirement setting to be set for the given authentication workflow.
 
-There are two default Authentication Configurations for each application, `step-up` and `sign-in`. They are used in their respective client methods as the `purpose` of the authentication.  They can be edited, and if deleted, they will revert back to their default settings. Authentication Configurations can be accessed via the [API](./api.md#auth-configs) or [Admin Console](./admin-console/applications.md#authentication-configurations).
+There are two default Authentication Configurations for each application, `step-up` and `sign-in`. They are used in their respective client methods as the `purpose` of the authentication. They can be edited, and if deleted, they will revert back to their default settings. Authentication Configurations can be accessed via the [API](./api.md#auth-configs) or [Admin Console](./admin-console/applications.md#authentication-configurations).
 
 ## More terms
 

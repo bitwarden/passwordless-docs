@@ -454,9 +454,10 @@ If successful, the `/auth-configs/list` endpoint will return a `.json` object co
 ## `/auth-configs/add`
 
 ### Request
-`POST` requests to `/auth-configs/add` will create an authentication configuration for the authentication process.  There are some restrictions on the request object.
 
-- `purpose`: A-z, 0-9, -, and _ are the allowed characters. Max length of purpose is 255 characters.
+`POST` requests to `/auth-configs/add` will create an authentication configuration for the authentication process. There are some restrictions on the request object.
+
+- `purpose`: A-z, 0-9, -, and \_ are the allowed characters. Max length of purpose is 255 characters.
 - `timeToLive`: Positive time span value (hh:mm:ss)
 - `userVerificationRequirement`: `preferred`, `required`, `discouraged`
 - `performedBy`: user identifier to track changes to the configuration
@@ -482,7 +483,8 @@ If unsuccessful, the `/auth-configs/add` endpoint will return an HTTP 400 (Bad R
 ## `/auth-configs/`
 
 ### Request
-`POST` requests to `/auth-configs` will edit an authentication configuration for the authentication process.  There are some restrictions on the request object.
+
+`POST` requests to `/auth-configs` will edit an authentication configuration for the authentication process. There are some restrictions on the request object.
 
 - `purpose`: Must be an existing purpose (If a new purpose is passed here, a 404 will be returned)
 - `timeToLive`: Positive time span value (hh:mm:ss)
@@ -501,6 +503,7 @@ Content-Type: application/json
   "performedBy": "user_123" // user identifier to track changes to the configuration
 }
 ```
+
 ### Response
 
 If successful, the `/auth-configs` endpoint will return an HTTP 204 (No Content) [status code](#status-codes).

@@ -196,9 +196,10 @@ if (await Passwordless.isAutofillSupported()) {
 
 ## .stepup()
 
-`.stepup()` works similar to the `.signin()` method except it allows for a specific purpose to be passed through.  These purposes are set via the API ([API](../api.md#authentication)/OpenAPI) or through the application's authentication configuration setting in the [Admin Console](../admin-console/applications.md#authentication-configurations).
+`.stepup()` works similar to the `.signin()` method except it allows for a specific purpose to be passed through. These purposes are set via the API ([API](../api.md#authentication)/OpenAPI) or through the application's authentication configuration setting in the [Admin Console](../admin-console/applications.md#authentication-configurations).
 
-If the authentication was successful, the `token` has a string value `"verify_xxyyzz"`. This token will have a `Purpose` property of `step-up` by default, whatever was passed in through the `StepUpRequest`.  If the authentication failed, the `error` property contains the [problem details](../errors.md#problem-details).
+If the authentication was successful, the `token` has a string value `"verify_xxyyzz"`. This token will have a `Purpose` property of `step-up` by default, whatever was passed in through the `StepUpRequest`. If the authentication failed, the `error` property contains the [problem details](../errors.md#problem-details).
+
 ```js
 const stepUpRequest = {
   signinMethod: {
@@ -208,7 +209,7 @@ const stepUpRequest = {
 };
 
 // destructured
-const { token, error } = await p.stepup(stepUpRequest)
+const { token, error } = await p.stepup(stepUpRequest);
 
 // plain object
 const response = await p.stepup(stepUpRequest);

@@ -50,3 +50,9 @@ You should now be able to call `https://v4.passwordless.dev/signin/generate-toke
 Magic Links provides you with the ability to email your users a link that will redirect them to your application without having to configure your own email provider. This feature can be enabled by going to the **Settings** page, scrolling to the **Magic Links** section, checking the box, and clicking Save.
 
 You should now be able to call `https://v4.passwordless.dev/magic-links/send` to send Magic Link emails to your users. For more information, please refer to the [documentation](../api.md#magic-links-send).
+
+### Authentication Configurations
+
+Authentication Configurations allow you to fine tune the tokens being used through the `signin` or `stepup` client methods. The two default purposes are `sign-in` and `step-up`. You can configure the TTL on each of them and change the User Verification requirement. However, they cannot be deleted.
+
+You can create additional configurations to suit your needs and pass through the purposes through the `stepup()` client method.

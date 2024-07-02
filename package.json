@@ -16,18 +16,18 @@
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "1.1.2",
-    "swagger-ui-dist": "5.12.3"
+    "swagger-ui-dist": "5.17.14"
   },
   "devDependencies": {
     "@vuepress/plugin-docsearch": "2.0.0-rc.0",
-    "@vuepress/plugin-register-components": "2.0.0-rc.0",
-    "eslint": "8.56.0",
+    "@vuepress/plugin-register-components": "2.0.0-rc.37",
+    "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-vue": "9.20.1",
-    "prettier": "3.2.4",
+    "eslint-plugin-vue": "9.27.0",
+    "prettier": "3.3.2",
     "prettier-plugin-organize-imports": "3.2.4",
-    "vuepress": "^2.0.0-rc.0",
-    "vuepress-plugin-code-switcher": "2.0.0",
-    "vuepress-plugin-md-enhance": "2.0.0-rc.12"
+    "vuepress": "^2.0.0-rc",
+    "vuepress-plugin-code-switcher": "2.0.1",
+    "vuepress-plugin-md-enhance": "2.0.0-rc.50"
   }
 }

@@ -119,6 +119,10 @@ export default {
                 text: 'Android'
               },
               {
+                link: '/guide/frontend/ios',
+                text: 'iOS'
+              },
+              {
                 link: '/guide/frontend/aspnet',
                 text: 'ASP.NET'
               },

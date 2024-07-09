@@ -14,6 +14,12 @@ For Passkeys, you need to set up a `webcredentials` section for your app.
 
 ## Getting Started with the iOS SDK
 
+### Requirements
+
+* **Minimum iOS Version:** iOS 16
+* **Additional Capabilities:** 
+  * _Associate Domains_ are needed to add the domain of where the AASA file is hosted.
+
 ### Swift Package Manager
 
 The SDK can be added to your project via [Swift Package Manager](https://www.swift.org/package-manager/). You can then access the SDK functionality using `import Passwordless`.

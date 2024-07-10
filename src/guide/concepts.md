@@ -113,6 +113,12 @@ While WebAuthn is very secure, attestation enhances the security of the WebAuthn
 
 The relying party can use the attestation information to make informed decisions about whether to trust the authenticator and to assess the level of security provided by the user's device. It's important to note that while attestation enhances security, it is not mandatory for the basic operation of WebAuthn. WebAuthn can still work without attestation, but its use is recommended for stronger security practices.
 
+### Authentication Configurations
+
+Authentication configurations allow you to configure your authentication token used in the `signin()` and `stepup()` client methods. Each method passes parameters into the authenticator accessed by the browser. Authentication Configurations allow for the Time to Live of the authentication token and the User Verification Requirement setting to be set for the given authentication workflow.
+
+There are two default Authentication Configurations for each application, `step-up` and `sign-in`. They are used in their respective client methods as the `purpose` of the authentication. They can be edited, and if deleted, they will revert back to their default settings. Authentication Configurations can be accessed via the [API](./api.md#auth-configs) or [Admin Console](./admin-console/applications.md#authentication-configurations).
+
 ## More terms
 
 ### Relying party

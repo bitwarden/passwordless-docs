@@ -52,11 +52,11 @@ let verifyToken = try await passwordlessClient.register(token: registrationToken
 
 3. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Registration Flow](./ios/Registration.gif)
+![Registration Flow](<./ios/Registration.gif>)
 
 ### Sign in
 
-There are two main approaches for passkey sign in: auto fill and manual entry.
+There are two main approaches for passkey sign in: auto fill and alias. Also provided are `signinWithDiscoverable()` and `signIn(userId:)` for more advanced use cases.
 
 #### A. Auto Fill
 This is when the user taps the username field, and the keyboard appears. If the user taps the auto fill options above the keyboard, then this is the auto fill approach. For this to work correctly, you must call `signInWithAutofill` when your view first appears. This way, by the time the keyboard appears, the OS will have results ready to show.
@@ -73,10 +73,9 @@ let verifyToken = try await passwordlessClient.signInWithAutofill()
 
 2. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Auto Fill Sign in Flow](./ios/SignInAutoFill.gif)
+![Auto Fill Sign in Flow](<./ios/SignInAutoFill.gif>)
 
-#### B. Manual Entry
-
+#### B. Alias 
 This is when the user types in a user name, and hits a button within the view to sign in. This will display a different version of the passkey window for the user to select from.
 
 1. Call `signIn(alias:)` with a given alias. Once complete, a verification token will be returned. See [error section](#error-responses) for possible errors that could be thrown.
@@ -87,7 +86,13 @@ let verifyToken = try await passwordlessClient.signIn(alias: username)
 
 2. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Manual Sign in Flow](./ios/SignInManual.gif)
+![Alias Sign in Flow](<./ios/SignInManual.gif>)
+
+#### C. Discoverable
+This is if you would like to show the passkey modal manually without using the keyboard shortcut or having the user type an alias.
+
+#### D. User Id
+This is if you already have a user Id and would like to go through the assertion process.
 
 ### Error Responses
 The PasswordlessClient object can throw the following errors:

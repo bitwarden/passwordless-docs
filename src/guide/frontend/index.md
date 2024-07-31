@@ -3,6 +3,7 @@
 ## Client Libraries
 
 - [Android](android.md)
+- [iOS](ios.md)
 - [JavaScript](javascript.md)
 
 ## Framework Examples

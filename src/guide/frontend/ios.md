@@ -16,9 +16,9 @@ For passkeys, you need to set up a `webcredentials` section for your app.
 
 ### Requirements
 
-* **Minimum iOS Version:** iOS 16
-* **Additional Capabilities:** 
-  * _Associate Domains_ are needed to add the domain of where the AASA file is hosted.
+- **Minimum iOS Version:** iOS 16
+- **Additional Capabilities:**
+  - _Associate Domains_ are needed to add the domain of where the AASA file is hosted.
 
 ### Swift Package Manager
 
@@ -52,20 +52,21 @@ let verifyToken = try await passwordlessClient.register(token: registrationToken
 
 3. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Registration Flow](<./ios/Registration.gif>)
+![Registration Flow](./ios/Registration.gif)
 
 ### Sign in
 
 There are two main approaches for passkey sign in: auto fill and alias. Also provided are `signinWithDiscoverable()` and `signIn(userId:)` for more advanced use cases.
 
 #### A. Auto Fill
+
 This is when the user taps the username field, and the keyboard appears. If the user taps the auto fill options above the keyboard, then this is the auto fill approach. For this to work correctly, you must call `signInWithAutofill` when your view first appears. This way, by the time the keyboard appears, the OS will have results ready to show.
 
 1. Call `signInWithAutofill()` when your view first appears. Once complete, a verification token will be returned.
-    * This function will wait until the user has tapped on an autofill item, it has been canceled in the passkey dialog, or an error has occurred. 
-    * If errors are thrown, your app will need to decide whether or not to restart the auto fill sign in process again. 
-    * If it is not running, then no options will show in the keyboard, so it usually makes sense to restart the process only in the `authorizationCancelled` case. 
-    * Getting an `authorizationError` may be a sign that something is not configured properly within your app, so it may be best to not rerun the auto fill to prevent endless looping errors. See [error section](#error-responses) for possible errors that could be thrown.
+   - This function will wait until the user has tapped on an autofill item, it has been canceled in the passkey dialog, or an error has occurred.
+   - If errors are thrown, your app will need to decide whether or not to restart the auto fill sign in process again.
+   - If it is not running, then no options will show in the keyboard, so it usually makes sense to restart the process only in the `authorizationCancelled` case.
+   - Getting an `authorizationError` may be a sign that something is not configured properly within your app, so it may be best to not rerun the auto fill to prevent endless looping errors. See [error section](#error-responses) for possible errors that could be thrown.
 
 ```swift
 let verifyToken = try await passwordlessClient.signInWithAutofill()
@@ -73,9 +74,10 @@ let verifyToken = try await passwordlessClient.signInWithAutofill()
 
 2. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Auto Fill Sign in Flow](<./ios/SignInAutoFill.gif>)
+![Auto Fill Sign in Flow](./ios/SignInAutoFill.gif)
 
-#### B. Alias 
+#### B. Alias
+
 This is when the user types in a user name, and hits a button within the view to sign in. This will display a different version of the passkey window for the user to select from.
 
 1. Call `signIn(alias:)` with a given alias. Once complete, a verification token will be returned. See [error section](#error-responses) for possible errors that could be thrown.
@@ -86,28 +88,31 @@ let verifyToken = try await passwordlessClient.signIn(alias: username)
 
 2. Pass the verification token to your public RESTful API to verify and return an authorization token. The user is now logged in to your app.
 
-![Alias Sign in Flow](<./ios/SignInManual.gif>)
+![Alias Sign in Flow](./ios/SignInManual.gif)
 
 #### C. Discoverable
+
 This is if you would like to show the passkey modal manually without using the keyboard shortcut or having the user type an alias.
 
 #### D. User Id
+
 This is if you already have a user Id and would like to go through the assertion process.
 
 ### Error Responses
+
 The PasswordlessClient object can throw the following errors:
 
-| Error | Description |
-| --- | --- |
-| authorizationCancelled | OS Authorization was cancelled from the key credential provider. |
-| authorizationError(Error) | OS Authorization failed from the key credential provider. |
-| internalErrorDecodingJson(Error) | There was an issue decoding json to an object from a network response. |
-| internalErrorEncodingPayload(Error) | There was an issue encoding json from an object for a network request. |
-| internalErrorInvalidURL(String) | The url used to make the network request is invalid. |
-| internalErrorNetworkRequestFailed(Error) | An error occurred when making a network request. |
+| Error                                                                      | Description                                                                                                          |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| authorizationCancelled                                                     | OS Authorization was cancelled from the key credential provider.                                                     |
+| authorizationError(Error)                                                  | OS Authorization failed from the key credential provider.                                                            |
+| internalErrorDecodingJson(Error)                                           | There was an issue decoding json to an object from a network response.                                               |
+| internalErrorEncodingPayload(Error)                                        | There was an issue encoding json from an object for a network request.                                               |
+| internalErrorInvalidURL(String)                                            | The url used to make the network request is invalid.                                                                 |
+| internalErrorNetworkRequestFailed(Error)                                   | An error occurred when making a network request.                                                                     |
 | internalErrorNetworkRequestResponseError(Int?, PasswordlessErrorResponse?) | An error response occurred when making a network request with the given status code and error response if available. |
-| internalErrorUnableToDecodeChallenge | The challenge provided is not in the correct format. |
-| internalErrorUnableToEncodeUserId | The user Id is not able to be encoded to base 64 Url. |
+| internalErrorUnableToDecodeChallenge                                       | The challenge provided is not in the correct format.                                                                 |
+| internalErrorUnableToEncodeUserId                                          | The user Id is not able to be encoded to base 64 Url.                                                                |
 
 For internalErrorNetworkRequestResponseError, the PasswordlessErrorResponse can be provided, which contains details about the error from the response. Here's an example of a response error that could be returned:
 

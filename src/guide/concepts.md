@@ -115,9 +115,23 @@ The relying party can use the attestation information to make informed decisions
 
 ### Authentication Configurations
 
-Authentication configurations allow you to configure your authentication token used in the `signin()` and `stepup()` client methods. Each method passes parameters into the authenticator accessed by the browser. Authentication Configurations allow for the Time to Live of the authentication token and the User Verification Requirement setting to be set for the given authentication workflow.
+Authentication configurations allow you to configure your authentication token used in the `signin()` and `stepup()` client methods. Each method passes parameters into the authenticator accessed by the browser. Authentication Configurations allow for the Time to Live of the authentication token and the User Verification Requirement setting to be set for the given authentication workflow. There are also other options available for configuration.
 
 There are two default Authentication Configurations for each application, `step-up` and `sign-in`. They are used in their respective client methods as the `purpose` of the authentication. They can be edited, and if deleted, they will revert back to their default settings. Authentication Configurations can be accessed via the [API](./api.md#auth-configs) or [Admin Console](./admin-console/applications.md#authentication-configurations).
+
+### Credential Hints
+
+When performing a sign-in operation, the Passwordless.dev API can provide hints to the user agent for how best to authenticate the user. These hints are not requirements and the user agent retains the liberty to choose how to react to them.
+
+The following hints are available:
+
+- `SecurityKey` - the user agent should use a security key for authentication.
+- `ClientDevice` - the user agent should use the device's built-in authenticator for authentication.
+- `Hybrid` - the user agent should use a general-purpose authenticator for authentication, such as a smartphone.
+
+Credential hints can be combined in an ordered list to provide the user agent with a preference for how to authenticate the user. The user agent should use the first hint in the list that it can satisfy.
+
+In Passwordless.dev, credential hints are configured as part of an [authentication configuration](#authentication-configurations).
 
 ## More terms
 

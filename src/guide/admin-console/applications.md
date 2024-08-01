@@ -53,6 +53,6 @@ You should now be able to call `https://v4.passwordless.dev/magic-links/send` to
 
 ### Authentication Configurations
 
-Authentication Configurations allow you to fine tune the tokens being used through the `signin` or `stepup` client methods. The two default purposes are `sign-in` and `step-up`. You can configure the TTL on each of them and change the User Verification requirement. However, they cannot be deleted.
+Authentication Configurations allow you to fine tune the tokens being used through the `signin` or `stepup` client methods. The two default purposes are `sign-in` and `step-up`. You can configure the TTL on each of them, change the User Verification requirement, as well as some other options. However, they cannot be deleted.
 
 You can create additional configurations to suit your needs and pass through the purposes through the `stepup()` client method.

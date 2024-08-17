@@ -470,7 +470,7 @@ Content-Type: application/json
 {
   "purpose": "access-secrets-purpose", // identifying string give context to the specific authentication
   "timeToLive": "00:03:00", // timespan the token is valid for
-  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "userVerificationRequirement": "preferred", // requirement for if the user has to verify they're allowed to use an authenticator
   "performedBy": "user_123" // user identifier to track changes to the configuration
 }
 ```
@@ -499,7 +499,7 @@ Content-Type: application/json
 {
   "purpose": "access-secrets-purpose", // existing purpose
   "timeToLive": "00:03:00", // timespan the token is valid for
-  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "userVerificationRequirement": "preferred", // requirement for if the user has to verify they're allowed to use an authenticator
   "performedBy": "user_123" // user identifier to track changes to the configuration
 }
 ```

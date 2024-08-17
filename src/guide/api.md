@@ -384,14 +384,14 @@ The request must include all three fields.
 - `timeToLive`: (OPTIONAL) Number of seconds the magic link token should be valid for. If not set, the default value is 1 hour.
 
 ```http request
-POST https://v4.passwwordless.dev/magic-links/send HTTP/1.1
+POST https://v4.passwordless.dev/magic-links/send HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
   "emailAddress": "user-email@example.com",
-  "urlTemplate": "https://www.myapp.com?token=$TOKEN"
-  "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
+  "urlTemplate": "https://www.myapp.com?token=$TOKEN",
+  "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9",
   "timeToLive": 3600
 }
 ```

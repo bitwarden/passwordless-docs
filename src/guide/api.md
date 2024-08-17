@@ -409,12 +409,12 @@ If Magic Links has not been enabled, the `/magic-links/send` endpoint will retur
 `GET` requests made to the `/auth-configs/list` endpoint will return a `.json` object containing a list of authentication configurations that can be used by the application. It can be filtered to one specific configuration by passing the purpose name as a query parameter.
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/list HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/list HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 ```
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/list?purpose=step-up HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/list?purpose=step-up HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 ```
 
@@ -463,7 +463,7 @@ If successful, the `/auth-configs/list` endpoint will return a `.json` object co
 - `performedBy`: user identifier to track changes to the configuration
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/add HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
@@ -492,7 +492,7 @@ If unsuccessful, the `/auth-configs/add` endpoint will return an HTTP 400 (Bad R
 - `performedBy`: user identifier to track changes to the configuration
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
@@ -516,7 +516,7 @@ If an unknown purpose is passed through, the `/auth-configs` endpoint will retur
 `POST` requests made to the `/auth-configs/delete` endpoint delete a specific authentication configuration, as specified by a `purpose`.
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/add HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 

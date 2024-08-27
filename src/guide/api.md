@@ -384,14 +384,14 @@ The request must include all three fields.
 - `timeToLive`: (OPTIONAL) Number of seconds the magic link token should be valid for. If not set, the default value is 1 hour.
 
 ```http request
-POST https://v4.passwwordless.dev/magic-links/send HTTP/1.1
+POST https://v4.passwordless.dev/magic-links/send HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
   "emailAddress": "user-email@example.com",
-  "urlTemplate": "https://www.myapp.com?token=$TOKEN"
-  "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9"
+  "urlTemplate": "https://www.myapp.com?token=$TOKEN",
+  "userId": "c8a32e5b-46d3-4808-ae10-16d3e26ff6f9",
   "timeToLive": 3600
 }
 ```
@@ -409,12 +409,12 @@ If Magic Links has not been enabled, the `/magic-links/send` endpoint will retur
 `GET` requests made to the `/auth-configs/list` endpoint will return a `.json` object containing a list of authentication configurations that can be used by the application. It can be filtered to one specific configuration by passing the purpose name as a query parameter.
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/list HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/list HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 ```
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/list?purpose=step-up HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/list?purpose=step-up HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 ```
 
@@ -463,14 +463,14 @@ If successful, the `/auth-configs/list` endpoint will return a `.json` object co
 - `performedBy`: user identifier to track changes to the configuration
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/add HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
   "purpose": "access-secrets-purpose", // identifying string give context to the specific authentication
   "timeToLive": "00:03:00", // timespan the token is valid for
-  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "userVerificationRequirement": "preferred", // requirement for if the user has to verify they're allowed to use an authenticator
   "performedBy": "user_123" // user identifier to track changes to the configuration
 }
 ```
@@ -492,14 +492,14 @@ If unsuccessful, the `/auth-configs/add` endpoint will return an HTTP 400 (Bad R
 - `performedBy`: user identifier to track changes to the configuration
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
   "purpose": "access-secrets-purpose", // existing purpose
   "timeToLive": "00:03:00", // timespan the token is valid for
-  "userVerificationRequirement": "preferred" // requirement for if the user has to verify they're allowed to use an authenticator
+  "userVerificationRequirement": "preferred", // requirement for if the user has to verify they're allowed to use an authenticator
   "performedBy": "user_123" // user identifier to track changes to the configuration
 }
 ```
@@ -516,7 +516,7 @@ If an unknown purpose is passed through, the `/auth-configs` endpoint will retur
 `POST` requests made to the `/auth-configs/delete` endpoint delete a specific authentication configuration, as specified by a `purpose`.
 
 ```http request
-GET https://v4.passwwordless.dev/auth-configs/add HTTP/1.1
+GET https://v4.passwordless.dev/auth-configs/add HTTP/1.1
 ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 

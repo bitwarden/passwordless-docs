@@ -36,7 +36,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 ### Microsoft SQL Server
 
 | Key                   | Default | Required | Description                                                                               |
-|-----------------------|---------|----------|-------------------------------------------------------------------------------------------|
+| --------------------- | ------- | -------- | ----------------------------------------------------------------------------------------- |
 | BWP_DB_PROVIDER       |         | Y        | [sqlserver/mssql] Both values will allow you to use Microsoft SQL Server.                 |
 | BWP_DB_SERVER         |         | Y        | Hostname, for example 'localhost' or 'db.example.com'.                                    |
 | BWP_DB_PORT           | 1433    | N        | [0-65536]                                                                                 |
@@ -48,7 +48,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 ## Environment variables
 
 | Key                   | Default   | Required | Description                                                                                                                                           |
-|-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| --------------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
 | BWP_PORT              | 5701      | N        | [0-65536] Only required if you don't use a reverse proxy.                                                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |
@@ -86,7 +86,7 @@ docker exec -it {name-of-container} cat /app/mail.md
 
 Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
 
-What is important is to configure ‘Mail__From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail__Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
+What is important is to configure ‘Mail**From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail**Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
 
 ```json
 "Mail": {
@@ -170,7 +170,7 @@ Example with SendGrid:
 
 Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
 
-What is important is to configure ‘Mail__From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail__Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
+What is important is to configure ‘Mail**From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail**Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
 
 Arrays start at zero so we configure AWS to be the first in line to attempt to send e-mails from, if that fails, we fall back to SendGrid.
 
@@ -241,19 +241,23 @@ Example with SendGrid:
 
 :::warning
 Requirements:
+
 - Persistent storage, see 'Volumes'.
-:::
+  :::
 
 `/etc/bitwarden_passwordless/config.json` is only generated when you have not specified the following environment variables:
-
 
 If you mount `/etc/bitwarden_passwordless` to your host. You can specify a `config.json`.
 
 If the following keys do not exist, they will be generated automatically:
+
 - Passwordless::ApiKey
 - Passwordless::ApiSecret
 - PasswordlessManagement::ManagementKey
 - SALT_KEY
 
 It is recommended that you have them generated automatically, the first time you run `bitwarden/passwordless-self-host`.
+
+```
+
 ```

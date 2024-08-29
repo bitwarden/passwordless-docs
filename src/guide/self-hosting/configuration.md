@@ -36,7 +36,7 @@ By default, the container will use Sqlite if nothing else is specified. The data
 ### Microsoft SQL Server
 
 | Key                   | Default | Required | Description                                                                               |
-| --------------------- | ------- | -------- | ----------------------------------------------------------------------------------------- |
+|-----------------------|---------|----------|-------------------------------------------------------------------------------------------|
 | BWP_DB_PROVIDER       |         | Y        | [sqlserver/mssql] Both values will allow you to use Microsoft SQL Server.                 |
 | BWP_DB_SERVER         |         | Y        | Hostname, for example 'localhost' or 'db.example.com'.                                    |
 | BWP_DB_PORT           | 1433    | N        | [0-65536]                                                                                 |
@@ -48,9 +48,9 @@ By default, the container will use Sqlite if nothing else is specified. The data
 ## Environment variables
 
 | Key                   | Default   | Required | Description                                                                                                                                           |
-| --------------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-----------------------|-----------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | BWP_ENABLE_SSL        | false     | N        | [true/false] See warning below.                                                                                                                       |
-| BWP_PORT              | 5701      | Y        | [0-65536] This will determine the port your self-hosted instance will be accessible from.                                                             |
+| BWP_PORT              | 5701      | N        | [0-65536] Only required if you don't use a reverse proxy.                                                                                             |
 | BWP_DOMAIN            | localhost | N        | [example.com] This will be the domain your self-hosted instance will be accessible from. It is important it matches for everything to work correctly. |
 | BWP_DB_PROVIDER       |           | N        | [mssql/sqlserver/] Defaults to using Sqlite if not set                                                                                                |
 | BWP_DB_SERVER         |           | N        | For any non-file hosted database, enter its domain name. Required for Microsoft SQL Server.                                                           |
@@ -70,23 +70,14 @@ Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/T
 
 Email is used by Passwordless Admin Console to notify administrators of changes to their organization. This is specifically useful for verifying administrators when first signing up.
 
-By default, all e-mail communication is written to a file for each application.
+By default, all e-mail communication is written to a file:
 
-- `/app/Admin/mail.md`
-- `/app/Api/mail.md`
+- `/app/mail.md`
 
-When using the default configuration, the following commands will output the contents of each file.
-
-For Admin Console:
+When using the default configuration, the following command will output the contents of the file.
 
 ```bash
-docker exec -it {name-of-container} cat /app/AdminConsole/mail.md
-```
-
-For Api:
-
-```bash
-docker exec -it {name-of-container} cat /app/Api/mail.md
+docker exec -it {name-of-container} cat /app/mail.md
 ```
 
 If you provide a directory for the application configuration to be stored in on your machine, the `mail.md` file will be located there.

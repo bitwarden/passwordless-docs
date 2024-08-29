@@ -63,6 +63,8 @@ By default, the container will use Sqlite if nothing else is specified. The data
 :::warning
 Setting SSL with `BWP_ENABLE_SSL` is required in [insecure contexts](https://w3c.github.io/webappsec-secure-contexts/#secure-contexts). Running the container locally on 'localhost' is considered a secure context.
 
+If you are using a load balancer or reverse proxy, you can leave it set to false and handle SSL termination there.
+
 Read the 'WebAuthn' specification here: [See specification](https://www.w3.org/TR/webauthn-2/#web-authentication-api).
 :::
 
@@ -80,41 +82,160 @@ When using the default configuration, the following command will output the cont
 docker exec -it {name-of-container} cat /app/mail.md
 ```
 
-If you provide a directory for the application configuration to be stored in on your machine, the `mail.md` file will be located there.
+### JSON
 
-It's recommended you configure the SMTP parameters below:
+Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
 
-| Key                  | Default | Required | Description                                                                             |
-| -------------------- | ------- | -------- | --------------------------------------------------------------------------------------- |
-| BWP_SMTP_FROM        |         | Y        | Use your sender e-mail.                                                                 |
-| BWP_SMTP_USERNAME    |         | Y        |                                                                                         |
-| BWP_SMTP_PASSWORD    |         | Y        |                                                                                         |
-| BWP_SMTP_HOST        |         | Y        | Hostname                                                                                |
-| BWP_SMTP_PORT        |         | Y        | [0-65535]                                                                               |
-| BWP_SMTP_STARTTLS    | false   | N        | [true/false]                                                                            |
-| BWP_SMTP_SSL         | false   | N        | [true/false]                                                                            |
-| BWP_SMTP_TRUSTSERVER | false   | N        | [true/false] Allows you to skip certificate validation. Not recommended for production. |
+What is important is to configure ‘Mail__From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail__Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
 
-:::warning
-To verify e-mailing is working correctly:
+```json
+"Mail": {
+  "From": "johndoe@example.com",
+  "Providers": [
+    {
+      // Provider 1
+    },
+    {
+      // Provider 2
+    },
+    {
+      ...
+    }
+  ]
+},
+```
 
-- Create an admin with a new organization.
-- Invite an admin to an existing organization.
-  :::
+#### AWS
 
-### SendGrid example with SSL
+```json
+{
+  "Name": "aws",
+  "AccessKey": "aws_access_key_id",
+  "SecretKey": "aws_secret_key",
+  "Region": "us-west-2"
+}
+```
 
-For verifying e-mailing is working correctly, you can use health-checks, read more [here](health-checks).
+#### File
+
+```json
+{
+  "Name": "file",
+  "Path": "/path/on/your/machine" //(optional)
+}
+```
+
+#### SendGrid
+
+```json
+{
+  "Name": "sendgrid",
+  "ApiKey": "sendgrid_api_key"
+}
+```
+
+#### SMTP
+
+```json
+{
+  "Name": "smtp",
+  "Host": "smtp.example.com",
+  "Port": 123,
+  "Username": "johndoe",
+  "Password": "YourPassword123!",
+  "StartTls": true/false,
+  "Ssl": true/false,
+  "SslOverride": true/false,
+  "TrustServer": true/false // skips SSL certificate validation when set to `true`.
+}
+```
+
+Example with SendGrid:
+
+```json
+{
+  "Name": "smtp",
+  "Host": "smtp.sendgrid.net",
+  "Port": 465,
+  "Username": "apikey",
+  "Password": "<your-sendgrid-api-key>",
+  "StartTls": false,
+  "Ssl": true,
+  "SslOverride": false,
+  "TrustServer": true
+}
+```
+
+### Environment variables
+
+Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
+
+What is important is to configure ‘Mail__From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail__Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
+
+Arrays start at zero so we configure AWS to be the first in line to attempt to send e-mails from, if that fails, we fall back to SendGrid.
 
 ```bash
+-e Mail__From='johndoe@example.com'
+-e Mail__FromName='John Doe'
+-e Mail__Providers__0__Name='aws'
+-e Mail__Providers__0__AccessKey='aws_access_key_id'
+-e Mail__Providers__0__SecretKey='aws_secret_key'
+-e Mail__Providers__1__Name='sendgrid'
+-e Mail__Providers__1__ApiKey='sendgrid_api_key'
+```
 
-* BWP_SMTP_FROM: you@example.com
-* BWP_SMTP_USERNAME: apikey
-* BWP_SMTP_PASSWORD: <your-api-key>
-* BWP_SMTP_HOST: smtp.sendgrid.net
-* BWP_SMTP_PORT: 465
-* BWP_SMTP_SSL: true
-* BWP_SMTP_TRUSTSERVER: true (for local testing)
+In the vendor specific examples below, we will always use '#' as the provider index.
+
+#### AWS
+
+```bash
+-e Mail__Providers__#__Name='aws'
+-e Mail__Providers__#__AccessKey='aws_access_key_id'
+-e Mail__Providers__#__SecretKey='aws_secret_key'
+-e Mail__Providers__#__Region='us-west-2'
+```
+
+#### File
+
+```bash
+-e Mail__Providers__#__Name='file'
+-e Mail__Providers__#__Path='/path/on/your/machine' #(optional)
+```
+
+#### SendGrid
+
+```bash
+-e Mail__Providers__#__Name='sendgrid'
+-e Mail__Providers__#__ApiKey='sendgrid_api_key'
+```
+
+#### SMTP
+
+```bash
+-e Mail__Providers__#__Name='smtp'
+-e Mail__Providers__#__Host='smtp.example.com'
+-e Mail__Providers__#__Port=123
+-e Mail__Providers__#__Username='johndoe'
+-e Mail__Providers__#__Password='YourPassword123!'
+-e Mail__Providers__#__StartTls=true/false
+-e Mail__Providers__#__Ssl=true/false
+-e Mail__Providers__#__SslOverride=true/false
+-e Mail__Providers__#__TrustServer=true/false # skips SSL certificate validation when set to `true`.
+```
+
+Example with SendGrid:
+
+```bash
+-e Mail__Providers__#__Name='smtp'
+-e Mail__Providers__#__Host='smtp.sendgrid.net'
+-e Mail__Providers__#__Port=465
+-e Mail__Providers__#__Username='apikey'
+-e Mail__Providers__#__Password='<your-sendgrid-api-key>'
+-e Mail__Providers__#__StartTls=false
+-e Mail__Providers__#__Ssl=true
+-e Mail__Providers__#__SslOverride=false
+-e Mail__Providers__#__TrustServer=true
+```
 
 ## config.json
 

@@ -170,6 +170,7 @@ Example with SendGrid:
 
 Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
 
+<!-- prettier-ignore -->
 What is important is to configure ‘Mail__From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail__Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
 
 Arrays start at zero so we configure AWS to be the first in line to attempt to send e-mails from, if that fails, we fall back to SendGrid.
@@ -243,7 +244,7 @@ Example with SendGrid:
 Requirements:
 
 - Persistent storage, see 'Volumes'.
-:::
+  :::
 
 `/etc/bitwarden_passwordless/config.json` is only generated when you have not specified the following environment variables:
 

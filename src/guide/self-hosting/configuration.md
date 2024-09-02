@@ -257,7 +257,3 @@ If the following keys do not exist, they will be generated automatically:
 - SALT_KEY
 
 It is recommended that you have them generated automatically, the first time you run `bitwarden/passwordless-self-host`.
-
-```
-
-```

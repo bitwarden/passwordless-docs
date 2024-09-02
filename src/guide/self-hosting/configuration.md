@@ -243,7 +243,7 @@ Example with SendGrid:
 Requirements:
 
 - Persistent storage, see 'Volumes'.
-  :::
+:::
 
 `/etc/bitwarden_passwordless/config.json` is only generated when you have not specified the following environment variables:
 

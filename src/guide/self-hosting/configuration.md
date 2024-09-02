@@ -86,7 +86,7 @@ docker exec -it {name-of-container} cat /app/mail.md
 
 Reference: [Configuration in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/configuration/?view=aspnetcore-8.0)
 
-What is important is to configure ‘Mail.From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail**Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
+What is important is to configure ‘Mail.From' as shown below. This is required to have a fallback e-mail address to send e-mails from. On the 'Mail.Providers’ is an array, which is an ordered list of e-mail providers that we will attempt to execute in order if they fail. To configure an e-mail provider, see the sub sections below.
 
 ```json
 "Mail": {

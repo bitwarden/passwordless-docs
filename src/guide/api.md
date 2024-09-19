@@ -162,7 +162,8 @@ ApiSecret: myapplication:secret:11f8dd7733744f2596f2a28544b5fbc4
 Content-Type: application/json
 
 {
-  "userId": "123"
+  "userId": "123",
+  "timeToLive": 30
 }
 ```
 
@@ -173,7 +174,8 @@ const apiUrl = 'https://v4.passwordless.dev';
 
 // Generate an authentication token, side-stepping the usual signin process.
 const payload = {
-  userId: '107fb578-9559-4540-a0e2-f82ad78852f7'
+  userId: '107fb578-9559-4540-a0e2-f82ad78852f7', // ID of the user to generate the token for.
+  timeToLive: 30 // Time in seconds the token is valid for. Default is 120 seconds.
 };
 
 // POST the user ID to the Passwordless.dev API using your API private secret.
@@ -187,6 +189,10 @@ const response = await fetch(apiUrl + '/signin/generate-token', {
 });
 ```
 
+:::
+
+::: tip
+By default, manually generated authentication tokens are valid for 120 seconds. You can adjust this by setting the `timeToLive` parameter in the request body.
 :::
 
 ### Response

@@ -84,7 +84,15 @@ import { Client } from '@passwordlessdev/passwordless-client';
 
 ## .register()
 
-Call the `.register()` method to fetch a [registration token](../concepts.md#tokens) from your backend to authorize creation of a passkey on the end-user's device, for example:
+Call the `.register()` method to fetch a [registration token](../concepts.md#tokens) from your backend to authorize creation of a passkey on the end-user's device.
+
+This method accepts the following parameters:
+
+- `registerToken` (string): The registration token fetched from your backend.
+- `nickname` (string): This is optional and can be used to help the user
+  identify the passkey.
+
+For example:
 
 ```js
 // Instantiate a passwordless client using your API public key.
@@ -99,7 +107,7 @@ const registerToken = await fetch(backendUrl + '/create-token?userId' + userId).
 );
 
 // Register the token with the end-user's device.
-const { token, error } = await p.register(registerToken);
+const { token, error } = await p.register(registerToken, nickname);
 ```
 
 Successful implementation will prompt Passwordless.dev to negotiate creation of a passkey through the user's web browser API and save its public key to the database for future sign-in operations.

@@ -221,8 +221,8 @@ _passwordless.setCoroutineScope(lifecycleScope)
 ```kotlin
 // Pass the registration token to PasswordlessClient.register()
 _passwordless.register(
-    token = responseToken,
-    nickname = nickname
+    token = responseToken, // Token received from your back-end
+    nickname = nickname // (Optional) Can be used by the user to identify the credential, e.g. "Work Laptop"
 ) { success, exception, result ->
     if (success) {
         Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show()

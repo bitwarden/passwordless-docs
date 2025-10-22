@@ -29,8 +29,6 @@
     "prettier": "3.2.4",
     "prettier-plugin-organize-imports": "4.0.0",
     "sass-embedded": "^1.93.2",
-    "vuepress": "2.0.0-rc.26",
-    "vuepress-plugin-code-switcher": "2.0.0",
-    "vuepress-plugin-md-enhance": "2.0.0-rc.95"
+    "vuepress": "2.0.0-rc.26"
   }
 }

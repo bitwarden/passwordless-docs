@@ -1,6 +1,5 @@
 import { viteBundler } from '@vuepress/bundler-vite';
 import { defaultTheme } from '@vuepress/theme-default';
-import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import * as path from 'path';
@@ -191,19 +190,12 @@ export default {
 
   plugins: [
     docsearchPlugin({
+      appId: 'H4XQ4LY5NY',
       apiKey: '76fc9fe901fe62268368f74e492ccbd0',
       indexName: 'passwordless',
-      appId: 'H4XQ4LY5NY'
-    }),
-    mdEnhancePlugin({
-      breaks: true,
-      imgMark: true,
-      imgSize: true,
-      checkLinks: {
-        status: 'dev'
+      searchParameters: {
+        facetFilters: [],
       },
-      codetabs: true,
-      tabs: true
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')

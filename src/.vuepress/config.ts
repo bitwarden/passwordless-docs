@@ -74,7 +74,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/backend',
+            link: '/guide/backend/',
             text: 'Backend',
             children: [
               {
@@ -109,7 +109,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/frontend',
+            link: '/guide/frontend/',
             text: 'Frontend',
             children: [
               {

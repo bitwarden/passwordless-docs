@@ -1,11 +1,23 @@
 @import 'docsearch';
 
 :root {
-  // brand colors
+  // brand colors (VuePress 2.x uses --vp-c-accent for primary brand color)
+  --vp-c-accent: #175ddc;
+  --vp-c-accent-bg: #175ddc;
+  --vp-c-accent-hover: #1250c4;
+  --vp-c-accent-text: #ffffff;
+  --vp-c-accent-soft: rgba(23, 93, 220, 0.14);
+
+  // Legacy variable names for backward compatibility
   --c-brand: #175ddc;
   --c-brand-light: #175ddc;
 
-  // background colors
+  // background colors (VuePress 2.x naming)
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f3f4f5;
+  --vp-c-bg-elv: #ffffff;
+
+  // Legacy background colors
   --c-bg: #ffffff;
   --c-bg-light: #f3f4f5;
   --c-bg-lighter: #eeeeee;
@@ -15,7 +27,12 @@
   --c-bg-sidebar: var(--c-bg);
   --c-bg-arrow: #cccccc;
 
-  // text colors
+  // text colors (VuePress 2.x naming)
+  --vp-c-text: #2c3e50;
+  --vp-c-text-mute: #4e6e8e;
+  --vp-c-text-subtle: #6a8bad;
+
+  // Legacy text colors
   --c-text: #2c3e50;
   --c-text-accent: var(--c-brand);
   --c-text-light: #3a5169;
@@ -23,7 +40,11 @@
   --c-text-lightest: #6a8bad;
   --c-text-quote: #999999;
 
-  // border colors
+  // border colors (VuePress 2.x naming)
+  --vp-c-border: #eaecef;
+  --vp-c-divider: #dfe2e5;
+
+  // Legacy border colors
   --c-border: #eaecef;
   --c-border-dark: #dfe2e5;
 

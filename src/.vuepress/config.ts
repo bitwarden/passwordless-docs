@@ -1,4 +1,5 @@
-import { defaultTheme } from 'vuepress';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
@@ -10,6 +11,7 @@ export default {
   title: 'Passwordless.dev Documentation',
   base: '/',
   description: description,
+  bundler: viteBundler(),
   head: [
     ['link', { rel: 'icon', href: '/icon.svg' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],

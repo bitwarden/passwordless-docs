@@ -194,8 +194,8 @@ export default {
       apiKey: '76fc9fe901fe62268368f74e492ccbd0',
       indexName: 'passwordless',
       searchParameters: {
-        facetFilters: [],
-      },
+        facetFilters: []
+      }
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')

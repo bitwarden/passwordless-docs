@@ -1,5 +1,5 @@
-import { defaultTheme } from 'vuepress';
-import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import * as path from 'path';
@@ -10,6 +10,7 @@ export default {
   title: 'Passwordless.dev Documentation',
   base: '/',
   description: description,
+  bundler: viteBundler(),
   head: [
     ['link', { rel: 'icon', href: '/icon.svg' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
@@ -72,7 +73,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/backend',
+            link: '/guide/backend/',
             text: 'Backend',
             children: [
               {
@@ -107,7 +108,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/frontend',
+            link: '/guide/frontend/',
             text: 'Frontend',
             children: [
               {
@@ -189,19 +190,12 @@ export default {
 
   plugins: [
     docsearchPlugin({
+      appId: 'H4XQ4LY5NY',
       apiKey: '76fc9fe901fe62268368f74e492ccbd0',
       indexName: 'passwordless',
-      appId: 'H4XQ4LY5NY'
-    }),
-    mdEnhancePlugin({
-      breaks: true,
-      imgMark: true,
-      imgSize: true,
-      checkLinks: {
-        status: 'dev'
-      },
-      codetabs: true,
-      tabs: true
+      searchParameters: {
+        facetFilters: []
+      }
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')

@@ -191,7 +191,7 @@ export default {
   plugins: [
     docsearchPlugin({
       appId: 'H4XQ4LY5NY',
-      apiKey: '76fc9fe901fe62268368f74e492ccbd0',
+      apiKey: '8d5802f08d00cda8d5847673be9c43ad',
       indexName: 'passwordless',
       searchParameters: {
         facetFilters: []

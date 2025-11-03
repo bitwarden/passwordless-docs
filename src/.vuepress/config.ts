@@ -15,6 +15,7 @@ export default {
     ['link', { rel: 'icon', href: '/icon.svg' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['meta', { name: 'algolia-site-verification', content: 'EF9A7A964AB9DB3E' }],
     [
       'script',
       { 'src': 'https://plausible.io/js/script.js', 'data-domain': 'docs.passwordless.dev' }
@@ -191,7 +192,7 @@ export default {
   plugins: [
     docsearchPlugin({
       appId: 'H4XQ4LY5NY',
-      apiKey: '76fc9fe901fe62268368f74e492ccbd0',
+      apiKey: '8d5802f08d00cda8d5847673be9c43ad',
       indexName: 'passwordless',
       searchParameters: {
         facetFilters: []

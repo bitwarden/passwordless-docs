@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-docsearch": "2.0.0-rc.115",
+    "@vuepress/plugin-docsearch": "^2.0.0-rc.118",
     "@vuepress/plugin-register-components": "2.0.0-rc.114",
     "@vuepress/theme-default": "2.0.0-rc.115",
     "eslint": "8.56.0",

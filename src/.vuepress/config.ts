@@ -15,6 +15,7 @@ export default {
     ['link', { rel: 'icon', href: '/icon.svg' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['meta', { name: 'algolia-site-verification', content: 'EF9A7A964AB9DB3E' }],
     [
       'script',
       { 'src': 'https://plausible.io/js/script.js', 'data-domain': 'docs.passwordless.dev' }

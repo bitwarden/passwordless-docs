@@ -8,7 +8,7 @@ The Docker image will allow you to set up your self-hosted instances in less tha
 
 ## Getting Started
 
-In order to retain settings and data from self-hosting Passwordless, it is recommended that you set up a directory for storing the generated configuration file and database. Otherwise, the database and configuration file will be deleted when with the container.
+In order to retain settings and data from self-hosting Passwordless, it is recommended that you set up a directory for storing the generated configuration file and database. Otherwise, the database and configuration file will be deleted along with the container.
 
 ### Installation and running
 

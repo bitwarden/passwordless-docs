@@ -14,8 +14,8 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
-    "lint": "prettier . --write && eslint \"**/*.{js,ts,vue}\" --fix",
-    "lint:check": "prettier . --check && eslint \"**/*.{js,ts,vue}\""
+    "lint": "prettier . --write && eslint \"**/*.{ts,vue}\" --fix",
+    "lint:check": "prettier . --check && eslint \"**/*.{ts,vue}\""
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "1.1.2",

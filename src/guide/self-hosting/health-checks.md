@@ -9,7 +9,7 @@ We have added some health-check endpoints to the API, so that you can monitor th
 The simple health-check endpoint does not check any dependencies, and only validates that the given endpoint is reachable. You can use it to check whether your container is still running, or to validate your port mapping or DNS configuration.
 
 ```bash
-curl https://yourdomain.com:5701/api/health/http
+curl https://example.com:5701/api/health/http
 ```
 
 Returns a `200 OK` if the API is running with the body `Healthy`.
@@ -19,7 +19,7 @@ Returns a `200 OK` if the API is running with the body `Healthy`.
 To validate that your database configuration has been done correctly, you can use the database health-check endpoint. This endpoint will validate that the database is reachable, and that the database schema is up-to-date.
 
 ```bash
-curl https://yourdomain.com:5701/api/health/storage
+curl https://example.com:5701/api/health/storage
 ```
 
 Will return the following response as a `200 OK`. When the database is not configured correctly or unreachable, it will return a `503 Service Unavailable`.
@@ -54,7 +54,7 @@ For a successful response, like the one below you may find the following keys un
 To validate that your e-mail configuration has been done correctly, you can use the e-mail health-check endpoint. This endpoint will validate that the e-mail server is reachable, and that the e-mail credentials are correct.
 
 ```bash
-curl https://yourdomain.com:5701/api/health/mail
+curl https://example.com:5701/api/health/mail
 ```
 
 #### Default (Not configured)

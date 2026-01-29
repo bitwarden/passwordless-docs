@@ -1,5 +1,5 @@
-import { defaultTheme } from 'vuepress';
-import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
 import { docsearchPlugin } from '@vuepress/plugin-docsearch';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 import * as path from 'path';
@@ -10,10 +10,12 @@ export default {
   title: 'Passwordless.dev Documentation',
   base: '/',
   description: description,
+  bundler: viteBundler(),
   head: [
     ['link', { rel: 'icon', href: '/icon.svg' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+    ['meta', { name: 'algolia-site-verification', content: 'EF9A7A964AB9DB3E' }],
     [
       'script',
       { 'src': 'https://plausible.io/js/script.js', 'data-domain': 'docs.passwordless.dev' }
@@ -72,7 +74,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/backend',
+            link: '/guide/backend/',
             text: 'Backend',
             children: [
               {
@@ -107,7 +109,7 @@ export default {
           },
           {
             collapsible: true,
-            link: '/guide/frontend',
+            link: '/guide/frontend/',
             text: 'Frontend',
             children: [
               {
@@ -189,19 +191,12 @@ export default {
 
   plugins: [
     docsearchPlugin({
-      apiKey: '76fc9fe901fe62268368f74e492ccbd0',
+      appId: 'H4XQ4LY5NY',
+      apiKey: '8d5802f08d00cda8d5847673be9c43ad',
       indexName: 'passwordless',
-      appId: 'H4XQ4LY5NY'
-    }),
-    mdEnhancePlugin({
-      breaks: true,
-      imgMark: true,
-      imgSize: true,
-      checkLinks: {
-        status: 'dev'
-      },
-      codetabs: true,
-      tabs: true
+      searchParameters: {
+        facetFilters: []
+      }
     }),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, './components')

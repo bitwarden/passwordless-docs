@@ -27,3 +27,7 @@ When contributing PRs, please do your best to follow these guidelines:
 - Always capitalize "Passwordless.dev" and "Bitwarden".
 - Feel free to use **bold** text to emphasize words or phrases, but please avoid italics or underlines.
 - Use numerals (e.g. 1, 2, 3) to represent numbers.
+
+## Support
+
+If you need help with your Passwordless.dev integration, please reach out to support@bitwarden.com.

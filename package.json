@@ -15,7 +15,8 @@
     "dev": "vuepress dev src",
     "build": "vuepress build src",
     "lint": "prettier . --write && eslint \"**/*.{js,ts,vue}\" --fix",
-    "lint:check": "prettier . --check && eslint \"**/*.{js,ts,vue}\""
+    "lint:check": "prettier . --check && eslint \"**/*.{js,ts,vue}\"",
+    "postinstall": "npx @socketsecurity/socket-patch apply --silent --ecosystems npm"
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "1.1.2",

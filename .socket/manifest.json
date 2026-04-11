@@ -1,0 +1,27 @@
+{
+  "patches": {
+    "pkg:npm/minimatch@3.1.2": {
+      "uuid": "cedb0b5d-3ee6-4d6d-984e-d3c607ebb2be",
+      "exportedAt": "Sat, 28 Feb 2026 22:11:42 GMT",
+      "files": {
+        "package/minimatch.js": {
+          "beforeHash": "92f6edcacf6c67b0c9fe6594cb3eef9cdad4dd725b3bfed3423517ed325e12d0",
+          "afterHash": "00c65c675e8d6f5ba63a7b571e0bc63773f6c7bba0f4b3299fbbeed039c39a58"
+        }
+      },
+      "vulnerabilities": {
+        "GHSA-3ppc-4f35-3m26": {
+          "cves": [
+            "CVE-2026-26996"
+          ],
+          "summary": "minimatch has a ReDoS via repeated wildcards with non-matching literal in pattern",
+          "severity": "HIGH",
+          "description": "### Summary\n`minimatch` is vulnerable to Regular Expression Denial of Service (ReDoS) when a glob pattern contains many consecutive `*` wildcards followed by a literal character that doesn't appear in the test string. Each `*` compiles to a separate `[^/]*?` regex group, and when the match fails, V8's regex engine backtracks exponentially across all possible splits.\n\nThe time complexity is O(4^N) where N is the number of `*` characters. With N=15, a single `minimatch()` call takes ~2 seconds. With N=34, it hangs effectively forever.\n\n\n### Details\n_Give all details on the vulnerability. Pointing to the incriminated source code is very helpful for the maintainer._\n\n### PoC\nWhen minimatch compiles a glob pattern, each `*` becomes `[^/]*?` in the generated regex. For a pattern like `***************X***`:\n\n```\n/^(?!\\.)[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?[^/]*?X[^/]*?[^/]*?[^/]*?$/\n```\n\nWhen the test string doesn't contain `X`, the regex engine must try every possible way to distribute the characters across all the `[^/]*?` groups before concluding no match exists. With N groups and M characters, this is O(C(N+M, N)) — exponential.\n### Impact\nAny application that passes user-controlled strings to `minimatch()` as the pattern argument is vulnerable to DoS. This includes:\n- File search/filter UIs that accept glob patterns\n- `.gitignore`-style filtering with user-defined rules\n- Build tools that accept glob configuration\n- Any API that exposes glob matching to untrusted input\n\n----\n\nThanks to @ljharb for back-porting the fix to legacy versions of minimatch."
+        }
+      },
+      "description": "",
+      "license": "MIT",
+      "tier": "free"
+    }
+  }
+}

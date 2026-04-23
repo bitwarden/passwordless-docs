@@ -14,8 +14,8 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
-    "lint": "prettier . --write && eslint \"**/*.{js,ts,vue}\" --fix",
-    "lint:check": "prettier . --check && eslint \"**/*.{js,ts,vue}\""
+    "lint": "oxfmt && eslint \"**/*.{js,ts,vue}\" --fix",
+    "lint:check": "oxfmt --check && eslint \"**/*.{js,ts,vue}\""
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "1.1.2",
@@ -29,8 +29,7 @@
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-vue": "9.20.1",
-    "prettier": "3.2.4",
-    "prettier-plugin-organize-imports": "4.0.0",
+    "oxfmt": "^0.46.0",
     "sass-embedded": "^1.93.2",
     "vuepress": "2.0.0-rc.26"
   },

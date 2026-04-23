@@ -1,4 +1,3 @@
-import js from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import pluginVue from 'eslint-plugin-vue';
 
@@ -15,12 +14,6 @@ export default [
       '**/*.min.js'
     ]
   },
-  js.configs.recommended,
   ...pluginVue.configs['flat/recommended'],
-  prettier,
-  {
-    rules: {
-      'no-unused-vars': 'warn'
-    }
-  }
+  prettier
 ];

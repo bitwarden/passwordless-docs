@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["vue", "unicorn"],
+  "categories": {
+    "correctness": "error"
+  },
+  "env": {
+    "builtin": true
+  },
+  "rules": {
+    "no-case-declarations": "error",
+    "no-empty": "error",
+    "no-fallthrough": "error",
+    "no-prototype-builtins": "error",
+    "no-redeclare": "error",
+    "no-regex-spaces": "error",
+    "no-unused-vars": "warn",
+    "preserve-caught-error": "error",
+    "vue/no-multiple-slot-args": "warn",
+    "vue/no-required-prop-with-default": "warn"
+  },
+  "ignorePatterns": [
+    "node_modules/**",
+    "dist/**",
+    ".temp/**",
+    ".cache/**",
+    "src/.vuepress/dist/**",
+    "src/.vuepress/.temp/**",
+    "src/.vuepress/.cache/**",
+    "**/*.min.js"
+  ]
+}

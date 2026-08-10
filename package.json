@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@passwordlessdev/passwordless-client": "1.1.2",
-    "swagger-ui-dist": "5.12.3"
+    "swagger-ui-dist": "5.32.12"
   },
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.26",

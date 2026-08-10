@@ -11,6 +11,9 @@
   "engines": {
     "node": ">=20.10.0"
   },
+  "scarfSettings": {
+    "enabled": false
+  },
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",

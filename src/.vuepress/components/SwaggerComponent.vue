@@ -29,6 +29,17 @@ h2.title,
   display: none;
 }
 
+/* The default theme defines an unscoped `.arrow` class that paints a chevron as a
+   1em background-image. Swagger UI marks its own inline SVG chevrons with
+   class="arrow", so both get drawn — a second chevron behind each one, with the SVG
+   stretched to 1em. Undo the theme's rule inside the embed; `auto` lets each SVG
+   fall back to its own width/height attributes. */
+.swagger-ui .arrow {
+  width: auto;
+  height: auto;
+  background-image: none;
+}
+
 .page .theme-default-content {
   max-width: 100%;
 }
